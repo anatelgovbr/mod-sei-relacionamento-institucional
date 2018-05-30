@@ -135,7 +135,7 @@ action="<?=PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->ass
 PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
 PaginaSEI::getInstance()->abrirAreaDados('30em');
 ?>
-  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:</label>
+  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Os Tipos de Reiteração são utilizados pelos Usuários na tela de preenchimento dos dados sobre as Reiterações apresentadas.\n\n\nPor exemplo, os Tipos de Reiteração podem ser de Solicitação de Informações Complementares, Reiteração de Demanda Já Respondida, Reiteração de Demanda Não Respondida etc.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
   <input type="text" id="txtNome" name="txtNome" class="infraText" value="<?=PaginaSEI::tratarHTML($objTipoReiteracaoRIDTO->getStrTipoReiteracao());?>" 
   onkeypress="return infraMascaraTexto(this,event,100);" maxlength="100" size="50" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>" />
   

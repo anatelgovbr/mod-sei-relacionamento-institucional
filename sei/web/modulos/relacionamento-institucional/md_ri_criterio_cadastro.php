@@ -636,7 +636,7 @@ function salvar() {
 
         <!-- TIPOS DE CONTATO -->
         <label id="lblTipoContato" for="txtTipoContato" class="infraLabelObrigatorio">
-            Tipos de Contato para Entidades Reclamadas: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Indique em quais Tipos de Contatos constam os Contatos de Pessoas Jurídicas que mantém Relacionamento Institucional com o seu Órgão (p. ex. Ministério Público Estadual/Distrital, Ministério Público Federal, Poder Executivo Municipal, Poder Executivo Estadual/Distrital, Poder Executivo Federal etc).\n\n\nSomente será permitida a indicação do Demandante se o Contato indicado como Remetente do Documento Externo da Demanda estiver cadastrado nos Tipos de Contatos indicados.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg">
+            Tipos de Contato de Entidades Reclamadas: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Indique em quais Tipos de Contatos estão localizados os Contatos de Pessoas Jurídicas afetos às Entidades que são Reclamadas no âmbito das Demandas de Relacionamento Institucional.\n\n\n Por exemplo, o próprio Órgão Público sobre os Serviços que presta, Órgãos vinculados a ele ou Entidades Outorgadas/Autorizadas por ele sobre as quais o Órgão avalia demandas externas que os envolvam.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg">
         </label>
 
         <input type="text" id="txtTipoContato" name="txtTipoContato" class="infraText"

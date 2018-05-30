@@ -58,7 +58,7 @@ try {
 
     case 'md_ri_tipo_processo_reativar':
       
-      $strTitulo = 'Reativar Tipo de Processo Demandante';
+      $strTitulo = 'Reativar Tipo de Processo no Órgão Demandante';
 
       if ($_GET['acao_confirmada']=='sim'){
         
@@ -83,7 +83,7 @@ try {
 
     case 'md_ri_tipo_processo_selecionar':
 
-    	$strTitulo = PaginaSEI::getInstance()->getTituloSelecao('Selecionar Tipo de Processo Demandante','Selecionar Tipo de Processo Demandante');
+    	$strTitulo = PaginaSEI::getInstance()->getTituloSelecao('Selecionar Tipo de Processo no Órgão Demandante','Selecionar Tipo de Processo no Órgão Demandante');
 		//$bolAcaoCadastrar = false;
       
       //Se cadastrou alguem
@@ -96,7 +96,7 @@ try {
 
     case 'md_ri_tipo_processo_listar':
         
-      $strTitulo = 'Tipo de Processo Demandante';
+      $strTitulo = 'Tipos de Processos no Órgão Demandante';
       break;
 
     default:
@@ -217,11 +217,11 @@ try {
     $strResultado = '';
 
     if ($_GET['acao']!='md_ri_tipo_processo_reativar'){
-      $strSumarioTabela = 'Tabela de Tipos de Processo Demandante.';
-      $strCaptionTabela = 'Tipos de Processo Demandante';
+      $strSumarioTabela = 'Tabela de Tipos de Processos no Órgão Demandante.';
+      $strCaptionTabela = 'Tipos de Processos no Órgão Demandante';
     }else{
-      $strSumarioTabela = 'Tabela de Tipos de Processo Demandante Inativos.';
-      $strCaptionTabela = 'Tipos de Processo Demandante Inativos';
+      $strSumarioTabela = 'Tabela de Tipos de Processos no Órgão Demandante Inativos.';
+      $strCaptionTabela = 'Tipos de Processos no Órgão Demandante Inativos';
     }
 
     $strResultado .= '<table width="99%" class="infraTable" summary="'.$strSumarioTabela.'">'."\n";
@@ -241,9 +241,9 @@ try {
     
     //Coluna Nome
     if( $_GET['acao']=='md_ri_tipo_processo_selecionar') {
-      $strResultado .= '<th class="infraTh" width="auto">'.PaginaSEI::getInstance()->getThOrdenacao($objTpProcessoRIDTO,'Tipo de Processo Demandante','TipoProcesso',$arrObjTpProcessoRIDTO).'</th>'."\n";
+      $strResultado .= '<th class="infraTh" width="auto">'.PaginaSEI::getInstance()->getThOrdenacao($objTpProcessoRIDTO,'Tipo de Processo no Órgão Demandante','TipoProcesso',$arrObjTpProcessoRIDTO).'</th>'."\n";
     } else {
-    	$strResultado .= '<th class="infraTh" width="auto">'.PaginaSEI::getInstance()->getThOrdenacao($objTpProcessoRIDTO,'Tipo de Processo Demandante','TipoProcesso',$arrObjTpProcessoRIDTO).'</th>'."\n";
+    	$strResultado .= '<th class="infraTh" width="auto">'.PaginaSEI::getInstance()->getThOrdenacao($objTpProcessoRIDTO,'Tipo de Processo no Órgão Demandante','TipoProcesso',$arrObjTpProcessoRIDTO).'</th>'."\n";
     }
     
     //coluna Ações
@@ -273,11 +273,11 @@ try {
      $strResultado .= PaginaSEI::getInstance()->getAcaoTransportarItem($i, $arrObjTpProcessoRIDTO[$i]->getNumIdTipoProcessoRelacionamentoInstitucional());
 	  
       if ($bolAcaoConsultar){
-        $strResultado .= '<a href="'.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_tipo_processo_consultar&acao_origem='.$_GET['acao'].'&acao_retorno='.$_GET['acao'].'&id_tipo_processo_ri='.$arrObjTpProcessoRIDTO[$i]->getNumIdTipoProcessoRelacionamentoInstitucional())).'" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/consultar.gif" title="Consultar Tipo de Processo Demandante" alt="Consultar Tipo de Processo Demandante" class="infraImg" /></a>&nbsp;';
+        $strResultado .= '<a href="'.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_tipo_processo_consultar&acao_origem='.$_GET['acao'].'&acao_retorno='.$_GET['acao'].'&id_tipo_processo_ri='.$arrObjTpProcessoRIDTO[$i]->getNumIdTipoProcessoRelacionamentoInstitucional())).'" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/consultar.gif" title="Consultar Tipo de Processo no Órgão Demandante" alt="Consultar Tipo de Processo no Órgão Demandante" class="infraImg" /></a>&nbsp;';
       }
    
       if ($bolAcaoAlterar){
-        $strResultado .= '<a href="'.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_tipo_processo_alterar&acao_origem='.$_GET['acao'].'&acao_retorno='.$_GET['acao'].'&id_tipo_processo_ri='.$arrObjTpProcessoRIDTO[$i]->getNumIdTipoProcessoRelacionamentoInstitucional())).'" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/alterar.gif" title="Alterar Tipo de Processo Demandante" alt="Alterar Tipo de Processo Demandante" class="infraImg" /></a>&nbsp;';
+        $strResultado .= '<a href="'.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_tipo_processo_alterar&acao_origem='.$_GET['acao'].'&acao_retorno='.$_GET['acao'].'&id_tipo_processo_ri='.$arrObjTpProcessoRIDTO[$i]->getNumIdTipoProcessoRelacionamentoInstitucional())).'" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/alterar.gif" title="Alterar Tipo de Processo no Órgão Demandante" alt="Alterar Tipo de Processo no Órgão Demandante" class="infraImg" /></a>&nbsp;';
       }	
 
       if ($bolAcaoDesativar || $bolAcaoReativar || $bolAcaoExcluir){
@@ -286,15 +286,15 @@ try {
       }
        
       if ($bolAcaoDesativar && $arrObjTpProcessoRIDTO[$i]->getStrSinAtivo() == 'S'){
-        $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoDesativar(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/desativar.gif" title="Desativar Tipo de Processo Demandante" alt="Desativar Tipo de Processo Demandante" class="infraImg" /></a>&nbsp;';
+        $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoDesativar(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/desativar.gif" title="Desativar Tipo de Processo no Órgão Demandante" alt="Desativar Tipo de Processo no Órgão Demandante" class="infraImg" /></a>&nbsp;';
       } 
       
       if( $bolAcaoReativar && $arrObjTpProcessoRIDTO[$i]->getStrSinAtivo() == 'N' ) {
-	    $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoReativar(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/reativar.gif" title="Reativar Tipo de Processo Demandante" alt="Reativar Tipo de Processo Demandante" class="infraImg" /></a>&nbsp;';
+	    $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoReativar(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/reativar.gif" title="Reativar Tipo de Processo no Órgão Demandante" alt="Reativar Tipo de Processo no Órgão Demandante" class="infraImg" /></a>&nbsp;';
       }
 
       if ($bolAcaoExcluir){
-        $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoExcluir(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/excluir.gif" title="Excluir Tipo de Processo Demandante" alt="Excluir Tipo de Processo Demandante" class="infraImg" /></a>&nbsp;';
+        $strResultado .= '<a href="'.PaginaSEI::getInstance()->montarAncora($strId).'" onclick="acaoExcluir(\''.$strId.'\',\''.$strDescricao.'\');" tabindex="'.PaginaSEI::getInstance()->getProxTabTabela().'"><img src="'.PaginaSEI::getInstance()->getDiretorioImagensGlobal().'/excluir.gif" title="Excluir Tipo de Processo no Órgão Demandante" alt="Excluir Tipo de Processo no Órgão Demandante" class="infraImg" /></a>&nbsp;';
       }
 
       $strResultado .= '</td></tr>'."\n";
@@ -383,7 +383,7 @@ function acaoDesativar(id,desc){
        
    }
 
-  if (confirm("Confirma desativação do Tipo de Processo Demandante \""+desc+"\"?")){
+  if (confirm("Confirma desativação do Tipo de Processo no Órgão Demandante \""+desc+"\"?")){
     document.getElementById('hdnInfraItemId').value=id;
     document.getElementById('frmProcessoRILista').action='<?=$strLinkDesativar?>';
     document.getElementById('frmProcessoRILista').submit();
@@ -393,7 +393,7 @@ function acaoDesativar(id,desc){
 <? } ?>
 
 function acaoReativar(id,desc){
-  if (confirm("Confirma reativação do Tipo de Processo Demandante \""+desc+"\"?")){
+  if (confirm("Confirma reativação do Tipo de Processo no Órgão Demandante \""+desc+"\"?")){
     document.getElementById('hdnInfraItemId').value=id;
     document.getElementById('frmProcessoRILista').action='<?=$strLinkReativar?>';
     document.getElementById('frmProcessoRILista').submit();
@@ -438,7 +438,7 @@ function acaoExcluir(id,desc){
        
    }
   
-  if (confirm("Confirma exclusão do Tipo de Processo Demandante \""+desc+"\"?")){
+  if (confirm("Confirma exclusão do Tipo de Processo no Órgão Demandante \""+desc+"\"?")){
     document.getElementById('hdnInfraItemId').value=id;
     document.getElementById('frmProcessoRILista').action='<?=$strLinkExcluir?>';
     document.getElementById('frmProcessoRILista').submit();
@@ -470,7 +470,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo,'onload="inicializar();"');
   PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
   ?>
   <div style="height:4.5em; margin-top: 11px;" class="infraAreaDados" id="divInfraAreaDados">
-  <label id="lblProcesso" for="txtProcesso" accesskey="S" class="infraLabelOpcional">Tipo de Processo Demandante:</label>
+  <label id="lblProcesso" for="txtProcesso" accesskey="S" class="infraLabelOpcional">Tipo de Processo no Órgão Demandante:</label>
   <input type="text" id="txtProcesso" name="txtProcesso" class="infraText" value="<?php echo isset($_POST['txtProcesso']) ? $_POST['txtProcesso'] : ''?>" maxlength="100" size="50" tabindex="502">
   </div>
   <?php 

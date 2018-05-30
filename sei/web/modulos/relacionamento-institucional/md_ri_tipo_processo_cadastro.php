@@ -26,7 +26,7 @@ try {
   switch($_GET['acao']){
     case 'md_ri_tipo_processo_cadastrar':
 
-      $strTitulo = 'Novo Tipo de Processo Demandante';
+      $strTitulo = 'Novo Tipo de Processo no Órgão Demandante';
 
       $arrComandos[] = '<button type="submit" accesskey="S" name="sbmCadastrarTpProcessoRI" id="sbmCadastrarTpProcessoRI" value="Salvar" class="infraButton"><span class="infraTeclaAtalho">S</span>alvar</button>';
       $arrComandos[] = '<button type="button" accesskey="C" name="btnCancelar" id="btnCancelar" value="Cancelar" onclick="location.href=\''.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao='.PaginaSEI::getInstance()->getAcaoRetorno().'&id_tipo_processo_litigioso='.$_GET['id_tipo_processo_litigioso'].'&acao_origem='.$_GET['acao'])).'\';" class="infraButton"><span class="infraTeclaAtalho">C</span>ancelar</button>';
@@ -48,7 +48,7 @@ try {
       break;
 
     case 'md_ri_tipo_processo_alterar':
-      $strTitulo = 'Alterar Tipo de Processo Demandante';
+      $strTitulo = 'Alterar Tipo de Processo no Órgão Demandante';
       $arrComandos[] = '<button type="submit" accesskey="S" name="sbmAlterarTpProcessoRI" value="Salvar" class="infraButton"><span class="infraTeclaAtalho">S</span>alvar</button>';
       $strDesabilitar = 'disabled="disabled"';
 
@@ -86,7 +86,7 @@ try {
       break;
 
     case 'md_ri_tipo_processo_consultar':
-      $strTitulo = 'Consultar Tipo de Processo Demandante';
+      $strTitulo = 'Consultar Tipo de Processo no Órgão Demandante';
       $arrComandos[] = '<button type="button" accesskey="C" name="btnFechar" value="Fechar" onclick="location.href=\''.PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?id_tipo_processo_litigioso='. $_GET['id_tipo_processo_litigioso'] .'&acao='.PaginaSEI::getInstance()->getAcaoRetorno().'&acao_origem='.$_GET['acao'].PaginaSEI::getInstance()->montarAncora($_GET['id_tipo_processo_ri']))).'\';" class="infraButton">Fe<span class="infraTeclaAtalho">c</span>har</button>';
       $objTpProcessoRIDTO->setNumIdTipoProcessoRelacionamentoInstitucional($_GET['id_tipo_processo_ri']);
       $objTpProcessoRIDTO->setBolExclusaoLogica(false);
@@ -138,7 +138,7 @@ action="<?=PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->ass
 PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
 PaginaSEI::getInstance()->abrirAreaDados('30em');
 ?>
-  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:</label>
+  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Relacionamento Institucional a indicação de Processo no Órgão Demandante não é obrigatória, mas caso tenha número de identificação da demanda no Órgão Demandante é necessário indicar o Tipo de Processo no Órgão Demandante selecionando a opção a partir da lista aqui parametrizada.\n\n\nPor exemplo, no Órgão Demandante o processo pode ter seu número próprio e identificado como CPI, Inquérito Civil, Inquérito Penal, Processo Judicial, Projeto de Lei, Ação Civil Pública etc.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
   <input type="text" id="txtNome" name="txtNome" class="infraText" value="<?=PaginaSEI::tratarHTML($objTpProcessoRIDTO->getStrTipoProcesso());?>" 
   onkeypress="return infraMascaraTexto(this,event,100);" maxlength="100" size="50" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>"/>
   

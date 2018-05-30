@@ -164,7 +164,7 @@
 
         <div>
             <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">
-                Nome:
+                Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('A indicação de Serviços pode ser em sentido amplo ou estrito. Por exemplo, os Serviços que o Órgão Outorga/Autoriza a terceiros são serviços em sentido estrito e os Serviços que o Órgão presta à sociedade em geral ou que deve responder a controle externo ou afetos às suas competências legais são Serviços em sentido amplo.\n\n\nÉ possível também criar um Serviço identificado como Não se aplica, para os casos excepcionais que não envolva um Serviço afeto ao Órgão ou à Entidade por ele Outorgada/Autorizada.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg">
             </label>
         </div>
 

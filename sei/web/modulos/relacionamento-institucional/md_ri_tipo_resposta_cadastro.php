@@ -22,7 +22,7 @@ try {
   $strDesabilitar = '';
   $arrComandos = array();
   $checkedMerito = '';
-    $strTolTip = 'Por padrão, os Tipos de Respostas são sempre afetas ao mérito, ou seja, dá baixa sobre a demanda ou reiteração ora respondida.\n \nMarcar esta opção caso o Tipo de Resposta seja intermediária, ou seja, não responde o mérito. Exemplo: Dilação de Prazo.';
+    $strTolTip = 'Por padrão os Tipos de Respostas são sempre afetos ao mérito, ou seja, dá baixa sobre a Demanda ou Reiteração ora respondida.\n\n\nMarcar esta opção caso o Tipo de Resposta seja intermediária, ou seja, não responde o mérito. Exemplo: Dilação de Prazo.';
 
   switch($_GET['acao']){
     case 'md_ri_tipo_resposta_cadastrar':
@@ -148,7 +148,7 @@ PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
 PaginaSEI::getInstance()->abrirAreaDados('30em');
 ?>
   <div class="bloco">
-  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:</label>
+  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Os Tipos de Respostas são utilizados pelos Usuários na tela de preenchimento dos dados sobre as Respostas à Demanda ou às Reiterações apresentadas.\n\n\nPor exemplo, os Tipos de Respostas podem ser de Dilação de Prazo, Resposta de Mérito, Não Competência do Órgão etc.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
   <input style="display: block" type="text" id="txtNome" name="txtNome" class="infraText" value="<?=PaginaSEI::tratarHTML($objTipoRespostaRIDTO->getStrTipoResposta());?>"
   onkeypress="return infraMascaraTexto(this,event,100);" maxlength="100" size="50" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>" />
   </div>
@@ -161,8 +161,8 @@ PaginaSEI::getInstance()->abrirAreaDados('30em');
     <input <?php echo $checkedMerito ?> type="checkbox" name="chkMerito" class="infraCheckbox" id="chkMerito">
 
     <label id="lblMerito" for="lblMerito" class="infraLabel">
-      Não responde mérito
-        <img style="margin-bottom: -4px;" src="<?= PaginaSEI::getInstance()->getDiretorioImagensGlobal() ?>/ajuda.gif" name="ajuda" <?= PaginaSEI::montarTitleTooltip($strTolTip) ?> alt="Ajuda" class="infraImg"/>
+      Não Responde ao Mérito da Demanda
+        <img style="margin-bottom: -4px; height:16px; width:16px;" src="<?= PaginaSEI::getInstance()->getDiretorioImagensGlobal() ?>/ajuda.gif" name="ajuda" <?= PaginaSEI::montarTitleTooltip($strTolTip) ?> alt="Ajuda" class="infraImg"/>
     </label>
 
   </div>

@@ -136,7 +136,7 @@ action="<?=PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->ass
 PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
 PaginaSEI::getInstance()->abrirAreaDados('30em');
 ?>
-  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:</label>
+  <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Relacionamento Institucional, na seção de Controle sobre a Demanda, a indicação de Número e Tipo de Controle não é obrigatória, pois nem sempre a Demanda externa se desdobra em outros procedimentos, até mesmo em outros sistemas que tenham número próprio de identificação. Mas caso se desdobre em outros procedimentos próprios é necessário indicar o Tipo de Controle da Demanda selecionando a opção a partir da lista aqui parametrizada.\n\n\nPor exemplo, no Órgão a Demanda pode se desdobrar em Processo de Fiscalização, Processo Sancionatório, Sindicância etc.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
   <input type="text" id="txtNome" name="txtNome" class="infraText" value="<?=PaginaSEI::tratarHTML($objTipoControleRIDTO->getStrTipoControle());?>" 
   onkeypress="return infraMascaraTexto(this,event,100);" maxlength="100" style="width: 330px;" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>" />
   

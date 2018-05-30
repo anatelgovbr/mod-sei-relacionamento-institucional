@@ -235,14 +235,14 @@ PaginaSEI::getInstance()->abrirAreaDados('30em');
 ?>
 <div class="bloco" >
 
-  <label id="lblNome" for="txtNome" class="infraLabelObrigatorio">Nome:</label>
+  <label id="lblNome" for="txtNome" class="infraLabelObrigatorio">Nome: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('O nome da Classificação por Tela deve ser macro, para agrupar diversos Subtemas que definem mais precisamente sobre o que se trata a demanda.\n\n\nA definição dos Temas e Subtemas deve ter por finalidade maior a organização de dados de forma a viabilizar dashboards e relatório (por ferramentas de BI) para construção de painéis sobre os dados que os Usuários preencherão em cada processo sob o controle do Módulo, com vistas a ter dados consolidados e sobre pendências afetos ao uso do Módulo.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
   <input tabindex="443" type="text" id="txtNome" name="txtNome" class="infraText" value="<?=PaginaSEI::tratarHTML($objClassTemaRIDTO->getStrClassificacaoTema());?>"
   onkeypress="return infraMascaraTexto(this,event,70);" maxlength="70" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>" />
 
 </div>
 
     <div class="bloco" >
-     <label id="lblDescricaoSubtema" for="txtSubtema" class="infraLabelObrigatorio">Subtemas associados:</label>
+     <label id="lblDescricaoSubtema" for="txtSubtema" class="infraLabelObrigatorio">Subtemas Associados: <img align="top" style="height:16px; width:16px;" id="imgAjuda" src="/infra_css/imagens/ajuda.gif" name="ajuda" onmouseover="return infraTooltipMostrar('Indique os Subtemas Associados à Classificação por Tema correspondente, sendo adequado que tenha mais de um Subtema Associado, para que estes fiquem agrupados em um nível maior de organização.\n\n\nPor exemplo, num Tema de Atendimento ao Usuário, a demanda pode tratar de aquestões afetas a Dúvidas, Acessibilidade, Inexistência de Informações, Falta de Opções no Atendimento, Qualidade do Atendimento, Elogios etc. Em um Tema de Decisão Judicial/Litígios, a demanda pode tratar de aquestões afetas a Cumprimento de Decisão, Inclusão indevida do Órgão como parte, Indicação de Períto etc.');" onmouseout="return infraTooltipOcultar();" alt="Ajuda" class="infraImg"></label>
     <input tabindex="444"  type="text" id="txtSubtema" name="txtSubtema" class="infraText" tabindex="<?=PaginaSEI::getInstance()->getProxTabDados()?>" />
     </div>
 
