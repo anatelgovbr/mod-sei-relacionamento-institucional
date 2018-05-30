@@ -4,6 +4,7 @@
 - SEI 3.0.11 instalado/atualizado ou versão superior.
    - Verificar valor da constante de versão no arquivo /sei/web/SEI.php ou, após logado no sistema, parando o mouse sobre a logo do SEI no canto superior esquerdo.
 - Antes de executar os scripts de instalação/atualização (itens 4 e 5 abaixo), o usuário de acesso aos bancos de dados do SEI e do SIP, constante nos arquivos ConfiguracaoSEI.php e ConfiguracaoSip.php, deverá ter permissão de acesso total ao banco de dados, permitindo, por exemplo, criação e exclusão de tabelas.
+- Os códigos-fonte do Módulo podem ser baixados a partir do link a seguir, devendo sempre utilizar a versão mais recente: https://softwarepublico.gov.br/gitlab/anatel/mod-sei-relacionamento-institucional/tags
 - **IMPORTANTE**:
     - Este Módulo tem por finalidade adicionar aos Processos afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo, etc) telas para o Cadastro da Demanda, de suas Respostas e de suas possíveis Reiterações, agregando aos mencionados processos dados para controle das demandas institucionais dentro do SEI.
     - Para o adequado uso do Módulo o órgão já deve possuir organizado seu processo afeto a Relacionamento Institucional, com processo mapeado, competências bem definidas e procedimentos estabelecidos, especialmente por meio do envolvimento da área que coordene o assunto como um todo dentro do órgão.
