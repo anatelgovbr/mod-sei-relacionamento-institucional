@@ -468,7 +468,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo,'onload="inicializar();"');
   <?
   PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
   ?>
-  <div style="height:4.5em; margin-top: 11px;" class="infraAreaDados" id="divInfraAreaDados">
+  <div id="divInfraAreaDados" class="infraAreaDados" style="height:4.5em;">
   <label id="lblTipoReiteracao" for="txtTipoReiteracao" accesskey="S" class="infraLabelOpcional">Tipo de Reiteração:</label>
   <input type="text" id="txtTipoReiteracao" size="50" name="txtTipoReiteracao" class="infraText" value="<?php echo isset($_POST['txtTipoReiteracao']) ? $_POST['txtTipoReiteracao'] : ''?>" maxlength="100" tabindex="502">
   </div>

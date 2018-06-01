@@ -469,7 +469,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo,'onload="inicializar();"');
   <?
   PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
   ?>
-  <div style="height:4.5em; margin-top: 11px;" class="infraAreaDados" id="divInfraAreaDados">
+  <div id="divInfraAreaDados" class="infraAreaDados" style="height:4.5em;">
   <label id="lblProcesso" for="txtProcesso" accesskey="S" class="infraLabelOpcional">Tipo de Processo no Órgão Demandante:</label>
   <input type="text" id="txtProcesso" name="txtProcesso" class="infraText" value="<?php echo isset($_POST['txtProcesso']) ? $_POST['txtProcesso'] : ''?>" maxlength="100" size="50" tabindex="502">
   </div>

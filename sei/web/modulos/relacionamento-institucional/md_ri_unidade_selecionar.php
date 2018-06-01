@@ -150,7 +150,7 @@
 
             <?php PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos); ?>
 
-            <div style="height:4.5em; margin-top: 11px;" class="infraAreaDados" id="divInfraAreaDados">
+            <div id="divInfraAreaDados" class="infraAreaDados" style="height:4.5em;">
                 <div>
                     <label id="lblSigla" for="txtSigla" class="infraLabelOpcional" style="display: block">
                         Sigla:

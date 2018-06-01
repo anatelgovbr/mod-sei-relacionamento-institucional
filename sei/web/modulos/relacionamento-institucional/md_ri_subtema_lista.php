@@ -475,7 +475,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo,'onload="inicializar();"');
   <?
   PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
   ?>
-  <div style="height:4.5em; margin-top: 11px;" class="infraAreaDados" id="divInfraAreaDados">
+  <div id="divInfraAreaDados" class="infraAreaDados" style="height:4.5em;">
   <label id="lblSubtema" for="txtSubtema" accesskey="S" class="infraLabelOpcional">Subtema:</label>
   <input size="50" type="text" id="txtSubtema" name="txtSubtema" class="infraText" value="<?php echo isset($_POST['txtSubtema']) ? $_POST['txtSubtema'] : ''?>" maxlength="100" tabindex="502">
   </div>
