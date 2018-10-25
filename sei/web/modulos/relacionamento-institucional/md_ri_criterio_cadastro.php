@@ -339,6 +339,16 @@
 
 }
 
+function validarFormatoData(obj){
+
+    var validar = infraValidarData(obj, false);
+    if(!validar){
+    alert('Data Inválida!');
+    obj.value = '';
+    }
+
+}
+
 function montarTipoProcesso() {
     
     objAutoCompletarTipoProcesso = new infraAjaxAutoCompletar('hdnIdTipoProcesso', 'txtTipoProcesso', '<?= $strUrlAjaxTipoProcesso ?>');
@@ -547,7 +557,7 @@ function salvar() {
             Data de Corte:
         </label>
 
-        <input type="text" id="txtDataCorte" name="txtDataCorte" onkeypress="return infraMascaraData(this, event)" class="infraText" tabindex="528" style="width: 100px;" value="<?php echo $dataCorte; ?>">
+        <input type="text" id="txtDataCorte" onchange="return validarFormatoData(this);" name="txtDataCorte" onkeypress="return infraMascaraData(this, event)" class="infraText" tabindex="528" style="width: 100px;" value="<?php echo $dataCorte; ?>">
 
         <img src="/infra_css/imagens/calendario.gif" id="imgCalDataCorte" title="Selecionar Data de corte" alt="Selecionar Data de Corte" size="10" style="margin-bottom: -4px;" class="infraImg" onclick="infraCalendario('txtDataCorte',this);" tabindex="529">
         
