@@ -21,7 +21,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
     <!--FIM DATA CERTA-->
 
 
-        <input type="text" id="txtDataCerta" name="txtDataCerta" onkeypress="return infraMascaraData(this, event)"
+        <input onchange="return validarFormatoData(this);"  type="text" id="txtDataCerta" name="txtDataCerta" onkeypress="return infraMascaraData(this, event)"
                class="infraText" tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                style="width: 100px;margin-top: 1%;"
                value="<?= $objDemandaExternaDTO->isSetDtaDataPrazo() ? $objDemandaExternaDTO->getDtaDataPrazo() : '' ?>"/>

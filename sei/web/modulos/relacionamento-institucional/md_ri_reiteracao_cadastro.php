@@ -386,6 +386,16 @@ PaginaSEI::getInstance()->montarJavaScript();
         return ajaxBuscarSiglasUnidades(arrIdsUnidades, 1);
     }
 
+    function validarFormatoData(obj){
+
+        var validar = infraValidarData(obj, false);
+        if(!validar){
+            alert('Data Inválida!');
+            obj.value = '';
+        }
+
+    }
+
     function ajaxBuscarSiglasUnidades(arrIdsUnidadesJson, gerarTabela){
         var arrIdsUnidadesResponsaveis = gerarTabela == '1' ? arrIdsUnidadesJson : JSON.parse(arrIdsUnidadesJson);
 
@@ -1152,7 +1162,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                 Data Final para Resposta:
             </label>
 
-            <input type="text" id="txtDataCerta" name="txtDataCerta" onkeypress="return infraMascaraData(this, event)"
+            <input onchange="return validarFormatoData(this);" type="text" id="txtDataCerta" name="txtDataCerta" onkeypress="return infraMascaraData(this, event)"
                    class="infraText" tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                    style="width: 100px;margin-top: 1%;"
                    value="<?= !is_null($objReiteracaoDTO) && $objReiteracaoDTO->isSetDtaDataCerta() ? $objReiteracaoDTO->getDtaDataCerta() : '' ?>"/>

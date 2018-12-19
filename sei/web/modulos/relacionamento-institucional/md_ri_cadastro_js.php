@@ -565,6 +565,17 @@
         document.getElementById('tbDemanda2').style.display = '';
     }
 
+
+    function validarFormatoData(obj){
+
+        var validar = infraValidarData(obj, false);
+        if(!validar){
+            alert('Data Inválida!');
+            obj.value = '';
+        }
+
+    }
+
     function validarNumeroSEI() {
 
         var txtNumeroSei = document.getElementById('txtNumeroSei');
