@@ -12,10 +12,10 @@ class MdRiAtualizadorSipRN extends InfraRN
 {
 
     private $numSeg = 0;
-    private $versaoAtualDesteModulo = '1.0.1';
+    private $versaoAtualDesteModulo = '1.0.2';
     private $nomeDesteModulo = 'RELACIONAMENTO INSTITUCIONAL';
     private $nomeParametroModulo = 'VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL';
-    private $historicoVersoes = array('1.0.0', '1.0.1');
+    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2');
 
     public function __construct()
     {
@@ -117,10 +117,16 @@ class MdRiAtualizadorSipRN extends InfraRN
             if (InfraString::isBolVazia($strVersaoModulo)) {
                 $this->instalarv100();
                 $this->instalarv101();
+                $this->instalarv102();
                 $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
                 $this->finalizar('FIM', false);
             } else if ($strVersaoModulo == '1.0.0') {
                 $this->instalarv101();
+                $this->instalarv102();
+                $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
+                $this->finalizar('FIM', false);
+            } else if ($strVersaoModulo == '1.0.1') {
+                $this->instalarv102();
                 $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
                 $this->finalizar('FIM', false);
             } else {
@@ -541,6 +547,13 @@ class MdRiAtualizadorSipRN extends InfraRN
         $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.1 DO ' . $this->nomeDesteModulo . ' NA BASE DO SIP');
         $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
         BancoSip::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.0.1\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
+    }
+
+    protected function instalarv102()
+    {
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.2 DO ' . $this->nomeDesteModulo . ' NA BASE DO SIP');
+        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
+        BancoSip::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.0.2\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
     }
 
     private function adicionarRecursoPerfil($numIdSistema, $numIdPerfil, $strNome, $strCaminho = null)
