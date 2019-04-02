@@ -37,46 +37,67 @@
             return $ret;
 
         }
-        
+
         public static function autoCompletarContato($strPalavrasPesquisa)
         {
 
+            $arrObjContatoDTO = array();
 
-            $objRelCritCadTipoContatoDTO = new MdRiRelCriterioCadastroTipoContatoDTO();
-            $objRelCritCadTipoContatoDTO->setNumIdCriterioCadastro(MdRiCriterioCadastroRN::ID_CRITERIO_CADASTRO);
-            $objRelCritCadTipoContatoDTO->retNumIdTipoContato();
+            $objPesquisaTipoContatoDTO = new PesquisaTipoContatoDTO();
+            $objPesquisaTipoContatoDTO->setStrStaAcesso(TipoContatoRN::$TA_CONSULTA_RESUMIDA);
 
-            $objRelCritCadTipoContatoRN = new MdRiRelCriterioCadastroTipoContatoRN();
-            $arrIdTipoContato           = InfraArray::converterArrInfraDTO($objRelCritCadTipoContatoRN->listar($objRelCritCadTipoContatoDTO), 'IdTipoContato');
+            $objTipoContatoRN = new TipoContatoRN();
+            $arrIdTipoContatoAcesso = $objTipoContatoRN->pesquisarAcessoUnidade($objPesquisaTipoContatoDTO);
 
+            if (count($arrIdTipoContatoAcesso)) {
+                $objRelCritCadTipoContatoDTO = new MdRiRelCriterioCadastroTipoContatoDTO();
+                $objRelCritCadTipoContatoDTO->setNumIdCriterioCadastro(MdRiCriterioCadastroRN::ID_CRITERIO_CADASTRO);
+                $objRelCritCadTipoContatoDTO->retNumIdTipoContato();
 
-            $objContatoDTO = new ContatoDTO();
-            $objContatoDTO->retNumIdContato();
-            $objContatoDTO->retStrNome();
-            $objContatoDTO->retStrSigla();
-            $objContatoDTO->setNumIdTipoContato($arrIdTipoContato, InfraDTO::$OPER_IN);
-            $objContatoDTO->setStrSinAtivo('S');
-            $objContatoDTO->setOrdStrNome(InfraDTO::$TIPO_ORDENACAO_ASC);
+                $objRelCritCadTipoContatoRN = new MdRiRelCriterioCadastroTipoContatoRN();
+                $arrIdTipoContato = InfraArray::converterArrInfraDTO($objRelCritCadTipoContatoRN->listar($objRelCritCadTipoContatoDTO), 'IdTipoContato');
 
-            $objContatoRN     = new ContatoRN();
-            $arrObjContatoDTO = $objContatoRN->pesquisarRN0471($objContatoDTO);
+                if (count($arrIdTipoContato) > 0) {
+                    $idsTpContatoUnd = array_intersect($arrIdTipoContato, $arrIdTipoContatoAcesso);
 
-            $strPalavrasPesquisa = trim($strPalavrasPesquisa);
-            if ($strPalavrasPesquisa != '') {
-                $ret                 = array();
-                $strPalavrasPesquisa = strtolower($strPalavrasPesquisa);
-                foreach ($arrObjContatoDTO as $objContatoDTO) {
-                    if (strpos(strtolower(ContatoINT::formatarNomeSiglaRI1224($objContatoDTO->getStrNome(), $objContatoDTO->getStrSigla())), $strPalavrasPesquisa) !== false) {
-                        $objContatoDTO->setStrNome(ContatoINT::formatarNomeSiglaRI1224($objContatoDTO->getStrNome(), $objContatoDTO->getStrSigla()));
-                        $ret[] = $objContatoDTO;
+                    if (count($idsTpContatoUnd) > 0) {
+                        $objContatoDTO = new ContatoDTO();
+                        $objContatoDTO->retNumIdContato();
+                        $objContatoDTO->retStrSigla();
+                        $objContatoDTO->retStrNome();
+
+                        $objContatoDTO->setStrPalavrasPesquisa($strPalavrasPesquisa);
+
+                        $objContatoDTO->setNumIdTipoContato($idsTpContatoUnd, InfraDTO::$OPER_IN);
+
+                        $objContatoDTO->setStrSinAtivo('S');
+                        $objContatoDTO->setStrSinAtivoTipoContato('S');
+                        $objContatoDTO->setNumMaxRegistrosRetorno(50);
+                        $objContatoDTO->setOrdStrNome(InfraDTO::$TIPO_ORDENACAO_ASC);
+
+                        $objContatoRN = new ContatoRN();
+                        $arrObjContatoDTO = $objContatoRN->pesquisarRN0471($objContatoDTO);
+
+                        $strPalavrasPesquisa = trim($strPalavrasPesquisa);
+
+                        if ($strPalavrasPesquisa != '') {
+                            $ret = array();
+                            $strPalavrasPesquisa = strtolower($strPalavrasPesquisa);
+                            foreach ($arrObjContatoDTO as $objContatoDTO) {
+                                if (strpos(strtolower(ContatoINT::formatarNomeSiglaRI1224($objContatoDTO->getStrNome(), $objContatoDTO->getStrSigla())), $strPalavrasPesquisa) !== false) {
+                                    $nomeContato = ContatoINT::formatarNomeSiglaRI1224($objContatoDTO->getStrNome(), $objContatoDTO->getStrSigla());
+                                    $nomeContato = PaginaSEI::tratarHTML($nomeContato);
+                                    $objContatoDTO->setStrNome($nomeContato);
+                                    $ret[] = $objContatoDTO;
+                                }
+                            }
+                        } else {
+                            $ret = $objContatoDTO;
+                        }
+
+                        return $ret;
                     }
                 }
-            } else {
-                $ret = $objContatoDTO;
             }
-
-            return $ret;
-
         }
-
     }

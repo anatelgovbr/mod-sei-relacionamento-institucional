@@ -10,7 +10,7 @@
 
         public function getVersao()
         {
-            return '1.0.1';
+            return '1.0.2';
         }
 
         public function getInstituicao()
@@ -221,7 +221,7 @@
 
                 case 'md_ri_contato_auto_completar':
                     $arrContatoDTO = MdRiTipoContatoINT::autoCompletarContato($_POST['palavras_pesquisa']);
-                    $xml           = InfraAjax::gerarXMLItensArrInfraDTO($arrContatoDTO, 'IdContato', 'Nome');
+                    $xml = InfraAjax::gerarXMLItensArrInfraDTO($arrContatoDTO,'IdContato', 'Nome');
                     break;
 
                 case 'md_ri_validar_numero_sei' :
