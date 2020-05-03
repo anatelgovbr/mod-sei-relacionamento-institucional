@@ -159,7 +159,7 @@
         	
         			$dto = new MdRiRelCadastroServicoDTO();
         			$dto->setNumIdMdRiCadastro( $idDemanda );
-        			$dto->setNumIdServicoRelacionamentoInstitucional( $item->getNumIdServicoRelacionamentoInstitucional() );
+        			$dto->setNumIdServicoRI( $item->getNumIdServicoRI() );
         			$rn->cadastrar( $dto );
         			 
         		}

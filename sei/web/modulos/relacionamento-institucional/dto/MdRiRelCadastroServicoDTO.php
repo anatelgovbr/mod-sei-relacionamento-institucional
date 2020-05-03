@@ -24,13 +24,13 @@
                                            'id_md_ri_cadastro');
 
             $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdServicoRelacionamentoInstitucional',
+                                           'IdServicoRI',
                                            'id_md_ri_servico');
 
-            $this->configurarPK('IdServicoRelacionamentoInstitucional', InfraDTO::$TIPO_PK_INFORMADO);
+            $this->configurarPK('IdServicoRI', InfraDTO::$TIPO_PK_INFORMADO);
             $this->configurarPK('IdMdRiCadastro', InfraDTO::$TIPO_PK_INFORMADO);
 
-            $this->configurarFK('IdServicoRelacionamentoInstitucional', 'md_ri_servico serv', 'serv.id_md_ri_servico');
+            $this->configurarFK('IdServicoRI', 'md_ri_servico serv', 'serv.id_md_ri_servico');
             $this->configurarFK('IdMdRiCadastro', 'md_ri_cadastro cad', 'cad.id_md_ri_cadastro');
 
             $this->adicionarAtributoTabelaRelacionada(InfraDTO::$PREFIXO_STR,

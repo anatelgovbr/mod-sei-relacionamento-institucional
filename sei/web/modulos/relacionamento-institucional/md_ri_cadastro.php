@@ -185,7 +185,7 @@
                 //Preencher Serviços
                 $strItensSelServico = '';
                 for ($x = 0; $x < count($arrObjRelDemExtServDTO); $x++) {
-                    $strItensSelServico .= "<option value='" . $arrObjRelDemExtServDTO[$x]->getNumIdServicoRelacionamentoInstitucional() . "'>" . $arrObjRelDemExtServDTO[$x]->getStrNomeServico() . "</option>";
+                    $strItensSelServico .= "<option value='" . $arrObjRelDemExtServDTO[$x]->getNumIdServicoRI() . "'>" . $arrObjRelDemExtServDTO[$x]->getStrNomeServico() . "</option>";
                 }
 
                 //Get Classificação Por Tema
@@ -406,7 +406,7 @@
                 foreach ($_POST['selCompServico'] as $item) {
 
                     $dto = new MdRiRelCadastroServicoDTO();
-                    $dto->setNumIdServicoRelacionamentoInstitucional($item);
+                    $dto->setNumIdServicoRI($item);
                     $arrServicos[] = $dto;
 
                 }

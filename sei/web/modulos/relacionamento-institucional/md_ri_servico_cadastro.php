@@ -38,16 +38,16 @@
 
             #Inicia o objeto para não dar estoura na hora de setar no hidden
             $objServicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
-            $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional(null);
+            $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI(null);
             $objServicoRelacionamentoInstitucionalDTO->setStrNome($_POST['txtNome']);
             $objServicoRelacionamentoInstitucionalDTO->setStrSinAtivo('S');
 
-            if (isset($_POST['hdnIdServicoRelacionamentoInstitucional'])) {
+            if (isset($_POST['hdnIdServicoRI'])) {
                 try {
                     $objServicoRelacionamentoInstitucionalRN  = new MdRiServicoRN();
                     $arrObjServicoRelacionamentoInstitucional = $objServicoRelacionamentoInstitucionalRN->cadastrar($objServicoRelacionamentoInstitucionalDTO);
                     PaginaSEI::getInstance()->adicionarMensagem('Os dados cadastrados foram salvos com sucesso.');
-                    header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional()));
+                    header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI()));
                 } catch (Exception $e) {
                     PaginaSEI::getInstance()->processarExcecao($e);
                 }
@@ -63,7 +63,7 @@
             $objServicoRelacionamentoInstitucionalRN  = new MdRiServicoRN();
 
             if (isset($_GET['id_servico_relacionamento_institucional'])) {
-                $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($_GET['id_servico_relacionamento_institucional']);
+                $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($_GET['id_servico_relacionamento_institucional']);
                 $objServicoRelacionamentoInstitucionalDTO->retTodos();
                 $objServicoRelacionamentoInstitucionalDTO = $objServicoRelacionamentoInstitucionalRN->consultar($objServicoRelacionamentoInstitucionalDTO);
 
@@ -72,11 +72,11 @@
                 }
             } else {
                 try {
-                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($_POST['hdnIdServicoRelacionamentoInstitucional']);
+                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($_POST['hdnIdServicoRI']);
                     $objServicoRelacionamentoInstitucionalDTO->setStrNome(trim($_POST['txtNome']));
                     $objServicoRelacionamentoInstitucionalRN->alterar($objServicoRelacionamentoInstitucionalDTO);
                     PaginaSEI::getInstance()->adicionarMensagem('Os dados foram alterados com sucesso.');
-                    header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional()));
+                    header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI()));
                 } catch (Exception $e) {
                     PaginaSEI::getInstance()->processarExcecao($e);
                 }
@@ -95,7 +95,7 @@
                               </button>';
 
             $objServicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
-            $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($_GET['id_servico_relacionamento_institucional']);
+            $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($_GET['id_servico_relacionamento_institucional']);
             $objServicoRelacionamentoInstitucionalDTO->retTodos();
             $objServicoRelacionamentoInstitucionalDTO->setBolExclusaoLogica(false);
             $objServicoRelacionamentoInstitucionalRN  = new MdRiServicoRN();
@@ -176,8 +176,8 @@
             />
         </div>
 
-        <input type="hidden" id="hdnIdServicoRelacionamentoInstitucional" name="hdnIdServicoRelacionamentoInstitucional"
-               value="<?= $objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional() ?>"/>
+        <input type="hidden" id="hdnIdServicoRI" name="hdnIdServicoRI"
+               value="<?= $objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI() ?>"/>
 
         <?php PaginaSEI::getInstance()->fecharAreaDados(); ?>
     </form>

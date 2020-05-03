@@ -12,7 +12,7 @@
         public static function autoCompletarServico($strPalavrasPesquisa)
         {
             $objServicoDTO = new MdRiServicoDTO();
-            $objServicoDTO->retNumIdServicoRelacionamentoInstitucional();
+            $objServicoDTO->retNumIdServicoRI();
             $objServicoDTO->retStrNome();
             $objServicoDTO->setOrdStrNome(InfraDTO::$TIPO_ORDENACAO_ASC);
 

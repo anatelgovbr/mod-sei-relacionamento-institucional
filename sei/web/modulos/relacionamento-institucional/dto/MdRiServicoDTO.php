@@ -16,7 +16,7 @@
         public function montar()
         {
             $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdServicoRelacionamentoInstitucional',
+                                           'IdServicoRI',
                                            'id_md_ri_servico');
 
             $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_STR,
@@ -27,7 +27,7 @@
                                            'SinAtivo',
                                            'sin_ativo');
 
-            $this->configurarPK('IdServicoRelacionamentoInstitucional', InfraDTO::$TIPO_PK_NATIVA);
+            $this->configurarPK('IdServicoRI', InfraDTO::$TIPO_PK_NATIVA);
         }
 
     }

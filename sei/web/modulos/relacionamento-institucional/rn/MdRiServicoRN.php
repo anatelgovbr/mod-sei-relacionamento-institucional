@@ -51,9 +51,9 @@
             $servicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
             $servicoRelacionamentoInstitucionalDTO->setStrNome(trim($objServicoRelacionamentoInstitucionalDTO->getStrNome()), InfraDTO::$OPER_IGUAL);
 
-            if (!is_null($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional())) {
-                $servicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional(
-                    $objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional(), InfraDTO::$OPER_DIFERENTE);
+            if (!is_null($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI())) {
+                $servicoRelacionamentoInstitucionalDTO->setNumIdServicoRI(
+                    $objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI(), InfraDTO::$OPER_DIFERENTE);
             }
 
             $bolCadastrado = $objServicoRelacionamentoInstitucionalBD->contar($servicoRelacionamentoInstitucionalDTO) > 0;
@@ -159,7 +159,7 @@
         {
 
             $objRelDemandaExternaServRIDTO = new MdRiRelCadastroServicoDTO();
-            $objRelDemandaExternaServRIDTO->setNumIdServicoRelacionamentoInstitucional($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRelacionamentoInstitucional());
+            $objRelDemandaExternaServRIDTO->setNumIdServicoRI($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI());
             $objRelDemandaExternaServRIRN = new MdRiRelCadastroServicoRN();
             $countServico                 = $objRelDemandaExternaServRIRN->contar($objRelDemandaExternaServRIDTO);
 

@@ -81,7 +81,9 @@
                 $objUnidadeDTO->retStrSigla();
                 $objUnidadeDTO->retStrDescricao();
                 $objUnidadeDTO = $objUnidadeRN->consultarRN0125($objUnidadeDTO);
-                $strItensSelUnidade .= "<option value='" . $idUnidade . "'>" . $objUnidadeDTO->getStrSigla() . ' - ' . $objUnidadeDTO->getStrDescricao() . "</option>";
+                if(!is_null($objUnidadeDTO)) {
+                    $strItensSelUnidade .= "<option value='" . $idUnidade . "'>" . $objUnidadeDTO->getStrSigla() . ' - ' . $objUnidadeDTO->getStrDescricao() . "</option>";
+                }
             }
 
             #options do campo Tipo Processo

@@ -34,7 +34,7 @@
                 $arrStrIds = PaginaSEI::getInstance()->getArrStrItensSelecionados();
                 for ($i = 0; $i < count($arrStrIds); $i++) {
                     $objServicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
-                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($arrStrIds[$i]);
+                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($arrStrIds[$i]);
                     $arrObjServicoRelacionamentoInstitucional[] = $objServicoRelacionamentoInstitucionalDTO;
                 }
                 $objServicoRelacionamentoInstitucionalRN = new MdRiServicoRN();
@@ -56,7 +56,7 @@
                 $id        = reset($arrStrIds);
                 for ($i = 0; $i < count($arrStrIds); $i++) {
                     $objServicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
-                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($arrStrIds[$i]);
+                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($arrStrIds[$i]);
                     $arrObjServicoRelacionamentoInstitucional[] = $objServicoRelacionamentoInstitucionalDTO;
                 }
                 $objServicoRelacionamentoInstitucionalRN = new MdRiServicoRN();
@@ -81,7 +81,7 @@
 
                 for ($i = 0; $i < count($arrStrIds); $i++) {
                     $objServicoRelacionamentoInstitucionalDTO = new MdRiServicoDTO();
-                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRelacionamentoInstitucional($arrStrIds[$i]);
+                    $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($arrStrIds[$i]);
                     $arrObjServicoRelacionamentoInstitucional[] = $objServicoRelacionamentoInstitucionalDTO;
                 }
                 
@@ -189,7 +189,7 @@
         for ($i = 0; $i < $numRegistros; $i++) {
 
             #vars
-            $strId                   = $arrObjServicoRelacionamentoInstitucional[$i]->getNumIdServicoRelacionamentoInstitucional();
+            $strId                   = $arrObjServicoRelacionamentoInstitucional[$i]->getNumIdServicoRI();
             $strNomeServico          = $arrObjServicoRelacionamentoInstitucional[$i]->getStrNome();
             $strNomeServicoParametro = PaginaSEI::getInstance()->formatarParametrosJavaScript($arrObjServicoRelacionamentoInstitucional[$i]->getStrNome());
             $bolRegistroAtivo        = $arrObjServicoRelacionamentoInstitucional[$i]->getStrSinAtivo() == 'S';

@@ -1,35 +1,25 @@
-<?php
-/**
- * ANATEL
- *
- * 27/10/2016 - criado por marcelo.bezerra - CAST
- *
- */
+<?
+try {
 
-require_once dirname(__FILE__) . '/../web/Sip.php';
+require_once dirname(__FILE__).'/../web/Sip.php';
 
-class MdRiAtualizadorSipRN extends InfraRN
-{
+class MdRiAtualizadorSipRN extends InfraRN {
 
     private $numSeg = 0;
-    private $versaoAtualDesteModulo = '1.0.2';
-    private $nomeDesteModulo = 'RELACIONAMENTO INSTITUCIONAL';
+    private $versaoAtualDesteModulo = '1.1.0';
+    private $nomeDesteModulo = 'MÓDULO DE RELACIONAMENTO INSTITUCIONAL';
     private $nomeParametroModulo = 'VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL';
-    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2');
+    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2','1.1.0');
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    protected function inicializarObjInfraIBanco()
-    {
+    protected function inicializarObjInfraIBanco() {
         return BancoSip::getInstance();
     }
 
-    private function inicializar($strTitulo)
-    {
-
+    private function inicializar($strTitulo) {
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
 
@@ -78,26 +68,25 @@ class MdRiAtualizadorSipRN extends InfraRN
         die;
     }
 
-    protected function atualizarVersaoConectado()
-    {
+    protected function atualizarVersaoConectado() {
 
         try {
-            $this->inicializar('INICIANDO INSTALAÇÃO/ATUALIZAÇÃO DO MODULO ' . $this->nomeDesteModulo . ' NO SIP VERSÃO ' . SIP_VERSAO);
+            $this->inicializar('INICIANDO A INSTALAÇÃO/ATUALIZAÇÃO DO ' . $this->nomeDesteModulo . ' NO SIP VERSÃO ' . SIP_VERSAO);
 
-            $numVersaoInfraRequerida = '1.493';
+            //testando versao do framework
+			$numVersaoInfraRequerida = '1.532';
             $versaoInfraFormatada = (int)str_replace('.', '', VERSAO_INFRA);
             $versaoInfraReqFormatada = (int)str_replace('.', '', $numVersaoInfraRequerida);
 
             if ($versaoInfraFormatada < $versaoInfraReqFormatada) {
-                $this->finalizar('VERSAO DO FRAMEWORK PHP INCOMPATÍVEL (VERSÃO ATUAL ' . VERSAO_INFRA . ', SENDO REQUERIDA VERSÃO IGUAL OU SUPERIOR A ' . $numVersaoInfraRequerida . ')', true);
+                $this->finalizar('VERSÃO DO FRAMEWORK PHP INCOMPATÍVEL (VERSÃO ATUAL ' . VERSAO_INFRA . ', SENDO REQUERIDA VERSÃO IGUAL OU SUPERIOR A ' . $numVersaoInfraRequerida . ')', true);
             }
 
             //checando BDs suportados
             if (!(BancoSip::getInstance() instanceof InfraMySql) &&
                 !(BancoSip::getInstance() instanceof InfraSqlServer) &&
-                !(BancoSip::getInstance() instanceof InfraOracle)
-            ) {
-                $this->finalizar('BANCO DE DADOS NAO SUPORTADO: ' . get_parent_class(BancoSip::getInstance()), true);
+                !(BancoSip::getInstance() instanceof InfraOracle)) {
+                $this->finalizar('BANCO DE DADOS NÃO SUPORTADO: ' . get_parent_class(BancoSip::getInstance()), true);
             }
 
             //checando permissoes na base de dados
@@ -118,20 +107,27 @@ class MdRiAtualizadorSipRN extends InfraRN
                 $this->instalarv100();
                 $this->instalarv101();
                 $this->instalarv102();
+                $this->instalarv110();
                 $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
                 $this->finalizar('FIM', false);
             } else if ($strVersaoModulo == '1.0.0') {
                 $this->instalarv101();
                 $this->instalarv102();
+                $this->instalarv110();
                 $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
                 $this->finalizar('FIM', false);
             } else if ($strVersaoModulo == '1.0.1') {
                 $this->instalarv102();
+                $this->instalarv110();
+                $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
+                $this->finalizar('FIM', false);
+            } else if ($strVersaoModulo == '1.0.2') {
+                $this->instalarv110();
                 $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO  ' . $this->versaoAtualDesteModulo . ' DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SIP');
                 $this->finalizar('FIM', false);
             } else {
                 $this->logar('A VERSÃO MAIS ATUAL DO MODULO ' . $this->nomeDesteModulo . ' (v' . $this->versaoAtualDesteModulo . ') JÁ ESTÁ INSTALADA');
-                $this->finalizar('FIM', true);
+                $this->finalizar('FIM', false);
             }
 
             InfraDebug::getInstance()->setBolLigado(false);
@@ -556,6 +552,14 @@ class MdRiAtualizadorSipRN extends InfraRN
         BancoSip::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.0.2\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
     }
 
+    protected function instalarv110()
+    {
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.1.0 DO ' . $this->nomeDesteModulo . ' NA BASE DO SIP');
+
+        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
+        BancoSip::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.1.0\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
+    }
+
     private function adicionarRecursoPerfil($numIdSistema, $numIdPerfil, $strNome, $strCaminho = null)
     {
 
@@ -854,20 +858,44 @@ class MdRiAtualizadorSipRN extends InfraRN
 
 }
 
+}catch(Exception $e){
+    echo(InfraException::inspecionar($e));
+    try{LogSip::getInstance()->gravar(InfraException::inspecionar($e));	}catch (Exception $e){}
+    exit(1);
+}
+
 //========================= INICIO SCRIPT EXECUÇAO =============
 
 try {
 
-    session_start();
+	session_start();
+	SessaoSip::getInstance(false);
+	BancoSip::getInstance()->setBolScript(true);
 
-    SessaoSip::getInstance(false);
+	if (!ConfiguracaoSip::getInstance()->isSetValor('BancoSip','UsuarioScript')){
+		throw new InfraException('Chave BancoSip/UsuarioScript não encontrada.');
+	}
 
+	if (InfraString::isBolVazia(ConfiguracaoSip::getInstance()->getValor('BancoSip','UsuarioScript'))){
+		throw new InfraException('Chave BancoSip/UsuarioScript não possui valor.');
+	}
+
+	if (!ConfiguracaoSip::getInstance()->isSetValor('BancoSip','SenhaScript')){
+		throw new InfraException('Chave BancoSip/SenhaScript não encontrada.');
+	}
+
+	if (InfraString::isBolVazia(ConfiguracaoSip::getInstance()->getValor('BancoSip','SenhaScript'))){
+		throw new InfraException('Chave BancoSip/SenhaScript não possui valor.');
+	}
+	
     $objVersaoRN = new MdRiAtualizadorSipRN();
     $objVersaoRN->atualizarVersao();
 
-} catch (Exception $e) {
-    echo(nl2br(InfraException::inspecionar($e)));
-    try{LogSip::getInstance()->gravar(InfraException::inspecionar($e));}catch(Exception $e){}
+}catch(Exception $e){
+    echo(InfraException::inspecionar($e));
+    try{LogSip::getInstance()->gravar(InfraException::inspecionar($e));	}catch (Exception $e){}
+    exit(1);
 }
 
 //========================== FIM SCRIPT EXECUÇÂO ====================
+?>
