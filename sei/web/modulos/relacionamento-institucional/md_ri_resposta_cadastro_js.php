@@ -424,8 +424,8 @@
         html += '<td style="text-align: center" valor="' + hdnIdUsuarioAtual.value + '" id="tduser' + id + '_' + numeroSei.value + '"> <a alt="' + hdnNomeUsuarioAtual.value + '" title="' + hdnNomeUsuarioAtual.value + '" class="ancoraSigla">' + hdnSiglaUsuario.value + '</td>';
         html += '<td style="text-align: center" valor="' + hdnIdUnidadeAtual.value + '" id="tdunid' + id + '_' + numeroSei.value + '"> <a alt="' + hdnDescUnidadeAtual.value + '" title="' + hdnDescUnidadeAtual.value + '" class="ancoraSigla">' + hdnNomeUnidadeAtual.value + '</a></td>';
         html += '<td style="text-align: center">';
-        html += '<img class="infraImg" title="Alterar ' + tabela + '" alt="Alterar ' + tabela + '" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/alterar.svg" onclick="editar(this, ' + reiteracao + ')" id="imgAlterar">';
-        html += '<img class="infraImg" title="Remover ' + tabela + '" alt="Remover ' + tabela + '" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg" onclick="removerLinha(this, ' + reiteracao + ')" id="imgExcluir">';
+        html += '<img class="infraImg" title="Alterar ' + tabela + '" alt="Alterar ' + tabela + '" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/alterar.svg?<?= Icone::VERSAO ?>" onclick="editar(this, ' + reiteracao + ')" id="imgAlterar">';
+        html += '<img class="infraImg" title="Remover ' + tabela + '" alt="Remover ' + tabela + '" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>" onclick="removerLinha(this, ' + reiteracao + ')" id="imgExcluir">';
         html += '</td>';
 
         return html;

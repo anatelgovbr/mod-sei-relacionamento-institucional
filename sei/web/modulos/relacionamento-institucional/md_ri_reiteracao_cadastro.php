@@ -235,8 +235,8 @@ switch ($_GET['acao']) {
                 $tbReiteracao .= '</td>';
 
                 $tbReiteracao .= '<td align="center">';
-                $tbReiteracao .= '<img class="infraImg" title="Alterar Reiteração" alt="Alterar Reiteração" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg" onclick="alterar(this)" id="imgAlterar">';
-                $tbReiteracao .= '<img class="infraImg" title="Remover Reiteração" alt="Remover Reiteração" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg" onclick="remover(this)" id="imgExcluir">';
+                $tbReiteracao .= '<img class="infraImg" title="Alterar Reiteração" alt="Alterar Reiteração" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg?'.Icone::VERSAO.'" onclick="alterar(this)" id="imgAlterar">';
+                $tbReiteracao .= '<img class="infraImg" title="Remover Reiteração" alt="Remover Reiteração" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg?'.Icone::VERSAO.'" onclick="remover(this)" id="imgExcluir">';
                 $tbReiteracao .= '</td>';
 
                 $tbReiteracao .= '</tr>';
@@ -282,7 +282,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
         <?php PaginaSEI::getInstance()->abrirAreaDados(); ?>
 
         <a href="#" onclick="abrirLink('<?= $strUrlCadastroDemandaExterna ?>')" class="ancoraPadraoTransparent">
-            <img src="modulos/relacionamento-institucional/imagens/svg/cadastrar.svg"
+            <img src="modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?<?= Icone::VERSAO ?>"
                  title="Relacionamento Institucional - Cadastro"
                  alt="Relacionamento Institucional - Cadastro"
                  class="infraImg 3"
@@ -292,7 +292,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
 
         <?php if ($respostaCadastrada) : ?>
             <a href="#" onclick="abrirLink('<?= $strUrlCadastroResposta ?>')" class="ancoraPadraoTransparent">
-                <img src="modulos/relacionamento-institucional/imagens/svg/responder.svg"
+                <img src="modulos/relacionamento-institucional/imagens/svg/responder.svg?<?= Icone::VERSAO ?>"
                      title="Relacionamento Institucional - Respostas"
                      alt="Relacionamento Institucional - Respostas"
                      class="infraImg 4"
@@ -374,7 +374,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                        tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                        value="<?= !is_null($objReiteracaoDTO) && $objReiteracaoDTO->isSetDtaDataCerta() ? $objReiteracaoDTO->getDtaDataCerta() : '' ?>"/>
 
-                                <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg"
+                                <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg?<?= Icone::VERSAO ?>"
                                      id="imgCalDataDecisao" title="Selecionar Prazo"
                                      alt="Selecionar Prazo"
                                      class="infraImg" onclick="infraCalendario('txtDataCerta',this);"
@@ -404,12 +404,12 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                 </select>
                                 <div class="divIcones">
                                     <img id="imgLupaUnidade" onclick="objLupaUnidade.selecionar(700,500);"
-                                         src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                         src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                          alt="Selecionar Unidades" title="Selecionar Unidades" class="infraImg"
                                          tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                                     <br>
                                     <img id="imgExcluirUnidade" onclick="objLupaUnidade.remover();"
-                                         src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                         src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                          alt="Remover Unidades Selecionadas" title="Remover Unidades Selecionadas"
                                          class="infraImg"
                                          tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>

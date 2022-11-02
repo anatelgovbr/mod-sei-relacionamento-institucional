@@ -142,7 +142,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">
                             Nome: <img align="top" id="imgAjuda"
-                                       src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                       src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                        name="ajuda"
                                        onmouseover="return infraTooltipMostrar('A indicação de Serviços pode ser em sentido amplo ou estrito. Por exemplo, os Serviços que o Órgão Outorga/Autoriza a terceiros são serviços em sentido estrito e os Serviços que o Órgão presta à sociedade em geral ou que deve responder a controle externo ou afetos às suas competências legais são Serviços em sentido amplo.\n\n\nÉ possível também criar um Serviço identificado como Não se aplica, para os casos excepcionais que não envolva um Serviço afeto ao Órgão ou à Entidade por ele Outorgada/Autorizada.', 'Ajuda');"
                                        onmouseout="return infraTooltipOcultar();"

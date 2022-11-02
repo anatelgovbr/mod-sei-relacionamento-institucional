@@ -23,7 +23,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                                tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                value="<?= $objDemandaExternaDTO->isSetDtaDataPrazo() ? $objDemandaExternaDTO->getDtaDataPrazo() : '' ?>"/>
 
-                        <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg"
+                        <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg?<?= Icone::VERSAO ?>"
                              id="imgCalDataDecisao" title="Selecionar Prazo"
                              alt="Selecionar Prazo"
                              class="infraImgModulo" onclick="infraCalendario('txtDataCerta',this);"
@@ -57,12 +57,12 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                         <div>
                             <input type="hidden" name="hdnIdUnidade" id="hdnIdUnidade"/>
                             <img id="imgLupaUnidade" onclick="objLupaUnidade.selecionar(700,500);"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Unidades" title="Selecionar Unidades" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
                             <img id="imgExcluirUnidade" onclick="objLupaUnidade.remover();"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Unidades Selecionadas" title="Remover Unidades Selecionadas"
                                  class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>

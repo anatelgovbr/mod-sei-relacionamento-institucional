@@ -130,7 +130,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:
                             <img align="top"
                                  id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Os Tipos de Reiteração são utilizados pelos Usuários na tela de preenchimento dos dados sobre as Reiterações apresentadas.\n\n\nPor exemplo, os Tipos de Reiteração podem ser de Solicitação de Informações Complementares, Reiteração de Demanda Já Respondida, Reiteração de Demanda Não Respondida etc.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"

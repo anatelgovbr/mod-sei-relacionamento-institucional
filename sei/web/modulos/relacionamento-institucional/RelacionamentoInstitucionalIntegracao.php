@@ -365,7 +365,7 @@
 
                                         $strLink = SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_cadastro_cadastrar&id_md_ri_demanda_externa=' . $idDemandaExterna . '&numeroSei=' . $numeroSei . '&id_procedimento=' . $idProcedimento);
 
-                                        $imgIcone = "modulos/relacionamento-institucional/imagens/svg/cadastrar.svg";
+                                        $imgIcone = "modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?".Icone::VERSAO;
                                         $title = "Relacionamento Institucional - Cadastro";
                                         $strAcoesProcedimento = '<a href="' . $strLink . '" class="botaoSEI"><img class="infraCorBarraSistema" src="' . $imgIcone . '" alt="' . $title . '" title="' . $title . '"></a>';
 
@@ -434,7 +434,7 @@
                     }
 
                     if ($exibirBotao) {
-                        $imgIcone = 'modulos/relacionamento-institucional/imagens/svg/cadastrar.svg';
+                        $imgIcone = 'modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?'.Icone::VERSAO;
                         $title    = "Relacionamento Institucional - Cadastro";
 
                         $strLinkResposta = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -458,7 +458,7 @@
                 if ($objNumeroSeiValidacaoRN->validarNumeroSeiBotao($arrParamentros)) {
 
                     $strLink  = SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_resposta_cadastrar&numeroSei=' . $numeroSei . '&id_procedimento=' . $idProcedimento . '&id_documento=' . $documentoAPI->getIdDocumento());
-                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/responder.svg";
+                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/responder.svg?".Icone::VERSAO;
                     $title    = "Relacionamento Institucional - Respostas";
 
                     $strLinkResposta = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -487,7 +487,7 @@
                         'controlador.php?acao=md_ri_reiteracao_cadastrar&numero_sei=' . $numeroSei . '&id_procedimento=' . $idProcedimento . '&id_documento=' . $documentoAPI->getIdDocumento()
                     );
 
-                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/reiteracao.svg";
+                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/reiteracao.svg?".Icone::VERSAO;
                     $title    = "Relacionamento Institucional - Reiterações";
 
                     $strLinkReiteracao = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -681,7 +681,7 @@
         	if( is_array( $arrMdRiCadastroDTO ) && count( $arrMdRiCadastroDTO ) > 0 ){
         		
         		//por padrao, seta o icone de sem pendencias, ao longo da verificação altera o icone caso sejam identificadas pendencias
-        		$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_sem_pendencia_resposta_merito.svg";
+        		$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_sem_pendencia_resposta_merito.svg?".Icone::VERSAO;
         		
         		//dto da demanda
         		$dtoDemanda = $arrMdRiCadastroDTO[0];
@@ -716,7 +716,7 @@
         					$qtd_dias = "dia";
         				}
         				
-        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vencido_sem_resposta_merito.svg";
+        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vencido_sem_resposta_merito.svg?".Icone::VERSAO;
         				$prazoControle = $prazoControle . ' (atrasado ' . abs($intervalo) . ' '. $qtd_dias . ')';
 
         			}
@@ -729,7 +729,7 @@
         					$qtd_dias = "dia";
         				}
         				
-        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vigente_sem_resposta_merito.svg";
+        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vigente_sem_resposta_merito.svg?".Icone::VERSAO;
         				$prazoControle = $prazoControle . ' (' . abs($intervalo) . ' ' . $qtd_dias . ')';
         				
         			}

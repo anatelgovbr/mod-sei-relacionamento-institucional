@@ -163,8 +163,8 @@ switch ($_GET['acao']) {
                     $htmlTabResp .= '<td style="text-align: center" valor="' . $objRespostaRIDTO->getNumIdUsuario() . '" id="tduser_' . $doc . '">  <a alt="' . $objRespostaRIDTO->getStrNomeUsuario() . '" title="' . $objRespostaRIDTO->getStrNomeUsuario() . '" class="ancoraSigla">' . $objRespostaRIDTO->getStrSiglaUsuario() . '</a></td>';
                     $htmlTabResp .= '<td style="text-align: center" valor="' . $objRespostaRIDTO->getNumIdUnidade() . '" id="tdunid_' . $doc . '">  <a alt="' . $descricaoUnidade . '" title="' . $descricaoUnidade . '" class="ancoraSigla">' . $unidade . '</a></td>';
                     $htmlTabResp .= '<td style="text-align: center">';
-                    $htmlTabResp .= '<img class="infraImg" title="Alterar Resposta á Demanda" alt="Alterar Resposta á Demanda" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg" onclick="editar(this, false)" id="imgAlterar">';
-                    $htmlTabResp .= '<img class="infraImg" title="Remover Resposta á Demanda" alt="Remover Resposta á Demanda" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg" onclick="removerLinha(this, false)" id="imgExcluir">';
+                    $htmlTabResp .= '<img class="infraImg" title="Alterar Resposta á Demanda" alt="Alterar Resposta á Demanda" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg?'.Icone::VERSAO.'" onclick="editar(this, false)" id="imgAlterar">';
+                    $htmlTabResp .= '<img class="infraImg" title="Remover Resposta á Demanda" alt="Remover Resposta á Demanda" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg?'.Icone::VERSAO.'" onclick="removerLinha(this, false)" id="imgExcluir">';
                     $htmlTabResp .= '</td></tr>';
 
                     $showNumeroSei = $doc == $_GET['numeroSei'] ? false : $showNumeroSei;
@@ -247,8 +247,8 @@ switch ($_GET['acao']) {
                     $htmlTabReit .= '<td style="text-align: center" valor="' . $objDTO->getNumIdUsuario() . '" id="tduser2_' . $docRespReit . '">  <a alt="' . $objDTO->getStrNomeUsuario() . '" title="' . $objDTO->getStrNomeUsuario() . '" class="ancoraSigla">' . $objDTO->getStrSiglaUsuario() . '</a></td>';
                     $htmlTabReit .= '<td style="text-align: center" valor="' . $objDTO->getNumIdUnidade() . '" id="tdunid2_' . $docRespReit . '">  <a alt="' . $descricaoUnidade . '" title="' . $descricaoUnidade . '" class="ancoraSigla">' . $unidade . '</a></td>';
                     $htmlTabReit .= '<td style="text-align: center">';
-                    $htmlTabReit .= '<img class="infraImg" title="Alterar Resposta às Reiterações" alt="Alterar Resposta às Reiterações" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg" onclick="editar(this, true)" id="imgAlterar">';
-                    $htmlTabReit .= '<img class="infraImg" title="Remover Resposta às Reiterações" alt="Remover Resposta às Reiterações" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg" onclick="removerLinha(this, true)" id="imgExcluir">';
+                    $htmlTabReit .= '<img class="infraImg" title="Alterar Resposta às Reiterações" alt="Alterar Resposta às Reiterações" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/alterar.svg?'.Icone::VERSAO.'" onclick="editar(this, true)" id="imgAlterar">';
+                    $htmlTabReit .= '<img class="infraImg" title="Remover Resposta às Reiterações" alt="Remover Resposta às Reiterações" src="' . PaginaSEI::getInstance()->getDiretorioSvgGlobal() . '/remover.svg?'.Icone::VERSAO.'" onclick="removerLinha(this, true)" id="imgExcluir">';
                     $htmlTabReit .= '</td></tr>';
 
                     $showNumeroSeiReit = $doc == $_GET['numeroSei'] ? false : $showNumeroSeiReit;
@@ -441,7 +441,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
     <?php PaginaSEI::getInstance()->abrirAreaDados(); ?>
 
     <a href="#" onclick="changeTela('D')" class="ancoraPadraoTransparent">
-        <img src="modulos/relacionamento-institucional/imagens/svg/cadastrar.svg"
+        <img src="modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?<?= Icone::VERSAO ?>"
              title="Relacionamento Institucional - Cadastro"
              alt="Relacionamento Institucional - Cadastro"
              class="infraImg 5"
@@ -451,7 +451,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
 
     <?php if ($strItensSelReiteracao != '') { ?>
         <a href="#" onclick="changeTela('R')" class="ancoraPadraoTransparent">
-            <img src="modulos/relacionamento-institucional/imagens/svg/reiteracao.svg"
+            <img src="modulos/relacionamento-institucional/imagens/svg/reiteracao.svg?<?= Icone::VERSAO ?>"
                  title="Relacionamento Institucional - Reiterações"
                  alt="Relacionamento Institucional - Reiterações"
                  class="infraImg 6"

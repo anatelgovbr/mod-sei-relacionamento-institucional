@@ -131,7 +131,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:
                             <img align="top"
                                  id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Relacionamento Institucional, na seção de Controle sobre a Demanda, a indicação de Número e Tipo de Controle não é obrigatória, pois nem sempre a Demanda externa se desdobra em outros procedimentos, até mesmo em outros sistemas que tenham número próprio de identificação. Mas caso se desdobre em outros procedimentos próprios é necessário indicar o Tipo de Controle da Demanda selecionando a opção a partir da lista aqui parametrizada.\n\n\nPor exemplo, no Órgão a Demanda pode se desdobrar em Processo de Fiscalização, Processo Sancionatório, Sindicância etc.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"

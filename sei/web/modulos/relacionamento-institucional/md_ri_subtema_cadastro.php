@@ -135,7 +135,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:
                             <img align="top"
                                  id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
                                  onmouseover="return infraTooltipMostrar('O nome do Subtema deve definir mais precisamente sobre o que se trata a demanda, seu assunto de forma mais detalhada, sabendo que depois devem ser associados à Classificação por Tema mais adequado, que servirá de agrupador de Subtemas.\n\n\nA definição dos Temas e Subtemas deve ter por finalidade maior a organização de dados de forma a viabilizar dashboards e relatório (por ferramentas de BI) para construção de painéis sobre os dados que os Usuários preencherão em cada processo sob o controle do Módulo, com vistas a ter dados consolidados e sobre pendências afetos ao uso do Módulo.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"

@@ -145,7 +145,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         <label id="lblNome" for="txtNome" accesskey="f" class="infraLabelObrigatorio">Nome:
                             <img align="top"
                                  id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Os Tipos de Respostas são utilizados pelos Usuários na tela de preenchimento dos dados sobre as Respostas à Demanda ou às Reiterações apresentadas.\n\n\nPor exemplo, os Tipos de Respostas podem ser de Dilação de Prazo, Resposta de Mérito, Não Competência do Órgão etc.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
@@ -168,7 +168,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             <label id="lblMerito" for="lblMerito" class="infraLabel">
                                 Não Responde ao Mérito da Demanda
                             <img
-                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                     onmouseover="return infraTooltipMostrar('Por padrão os Tipos de Respostas são sempre afetos ao mérito, ou seja, dá baixa sobre a Demanda ou Reiteração ora respondida.\n\n\nMarcar esta opção caso o Tipo de Resposta seja intermediária, ou seja, não responde o mérito. Exemplo: Dilação de Prazo.', 'Ajuda');"
                                     onmouseout="return infraTooltipOcultar();"
                                     class="infraImgModulo"/>

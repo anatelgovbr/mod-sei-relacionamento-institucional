@@ -199,7 +199,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         <label id="lblNome" for="txtNome" class="infraLabelObrigatorio">Nome:
                             <img
                                     align="top" id="imgAjuda"
-                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                     name="ajuda"
                                     onmouseover="return infraTooltipMostrar('O nome da Classificação por Tela deve ser macro, para agrupar diversos Subtemas que definem mais precisamente sobre o que se trata a demanda.\n\n\nA definição dos Temas e Subtemas deve ter por finalidade maior a organização de dados de forma a viabilizar dashboards e relatório (por ferramentas de BI) para construção de painéis sobre os dados que os Usuários preencherão em cada processo sob o controle do Módulo, com vistas a ter dados consolidados e sobre pendências afetos ao uso do Módulo.', 'Ajuda');"
                                     onmouseout="return infraTooltipOcultar();"
@@ -217,7 +217,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             Associados:
                             <img
                                     align="top" id="imgAjuda"
-                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                    src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                     name="ajuda"
                                     onmouseover="return infraTooltipMostrar('Indique os Subtemas Associados à Classificação por Tema correspondente, sendo adequado que tenha mais de um Subtema Associado, para que estes fiquem agrupados em um nível maior de organização.\n\n\nPor exemplo, num Tema de Atendimento ao Usuário, a demanda pode tratar de questões afetas a Dúvidas, Acessibilidade, Inexistência de Informações, Falta de Opções no Atendimento, Qualidade do Atendimento, Elogios etc. Em um Tema de Decisão Judicial/Litígios, a demanda pode tratar de questões afetas a Cumprimento de Decisão, Inclusão indevida do Órgão como parte, Indicação de Perito etc.', 'Ajuda');"
                                     onmouseout="return infraTooltipOcultar();"
@@ -237,12 +237,12 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             </select>
                             <div class="botoes">
                                 <img tabindex="446" id="imgLupaSubtema" onclick="objLupaSubtema.selecionar(700,500);"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                      alt="Selecionar Subtemas"
                                      title="Selecionar Subtemas" class="infraImg"/>
                                 <br>
                                 <img tabindex="447" id="imgExcluirSubtema" onclick="objLupaSubtema.remover();"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                      alt="Remover Subtemas Selecionados"
                                      title="Remover Subtemas Selecionados" class="infraImg"/>
                             </div>

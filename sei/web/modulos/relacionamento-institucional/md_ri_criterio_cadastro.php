@@ -275,7 +275,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                             Data de Corte:
                         </label>
                         <img align="center" id="imgAjudaCalendario"
-                             src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg" name="ajuda"
+                             src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                              onmouseover="return infraTooltipMostrar('Serve para definir a data a partir da qual os processos gerados dos Tipos indicados nos Critérios serão considerados pendentes de Cadastro no Módulo de Relacionamento Institucional.\n\n\n A data de referência será a Data de Autuação de cada processo, não havendo impedimento de cadastro de processos com Data de Autuação anterior à Data de Corte.', 'Ajuda');"
                              onmouseout="return infraTooltipOcultar();"
                              class="infraImgModulo"/>
@@ -286,7 +286,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                                    class="infraText form-control" tabindex="528"
                                    value="<?php echo $dataCorte; ?>">
 
-                            <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg"
+                            <img src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/calendario.svg?<?= Icone::VERSAO ?>"
                                  id="imgCalDataCorte"
                                  title="Selecionar Data de corte" alt="Selecionar Data de Corte" size="10"
                                  class="infraImg"
@@ -300,7 +300,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                         <label id="lblUnidade" for="txtUnidade" class="infraLabelObrigatorio">
                             Unidades:
                             <img id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg" name="ajuda"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Indique quais Unidades trabalharão nos processos afetos a Relacionamento Institucional, dos Tipos abaixo indicados, utilizando as telas de Cadastro, Respostas e Reiterações do Módulo.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
                                  class="infraImgModulo"/>
@@ -322,13 +322,13 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                             </select>
                             <div class="botoes">
                                 <img id="imgLupaUnidade" onclick="objLupaUnidade.selecionar(700,500);"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                      alt="Selecionar Unidade Solicitante" title="Selecionar Unidade Solicitante"
                                      class="infraImg"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                                 <br/>
                                 <img id="imgExcluirUnidade" onclick="objLupaUnidade.remover();"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                      alt="Remover Unidade" title="Remover Unidade" class="infraImg"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             </div>
@@ -340,7 +340,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                         <label id="lblTipoProcesso" for="selTipoProcesso" accesskey="" class="infraLabelObrigatorio">
                             Tipos de Processos:
                             <img align="top" id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg" name="ajuda"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Indique quais os Tipos de Processos que são afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo etc), sobre os quais os Usuários das Unidades acima indicadas deverão trabalhar nas telas do Módulo.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
                                  class="infraImgModulo"/>
@@ -363,12 +363,12 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                             <div class="botoes">
                                 <img id="imgLupaTipoProcesso" onclick="objLupaTipoProcesso.selecionar(700,500);"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                      alt="Selecionar Tipos de Processos"
                                      title="Selecionar Tipos de Processos" class="infraImg"/>
                                 <br>
                                 <img id="imgExcluirTipoProcesso" onclick="objLupaTipoProcesso.remover();"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                      alt="Remover Tipos de Processos Selecionados"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                      title="Remover Tipos de Processos Selecionados" class="infraImg"/>
@@ -383,7 +383,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                         <label id="lblTipoDocumento" for="selTipoDocumento" class="infraLabelObrigatorio">
                             Tipos de Documentos:
                             <img align="top" id="imgAjuda"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg" name="ajuda"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Indique os Tipos de Documentos a partir dos quais os Usuários das Unidades e nos processos dos Tipos indicados acima acessarão as telas correspondentes e poderão marcar o Cadastro da Demanda de Relacionamento Institucional, suas Respostas e suas possíveis Reiterações.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
                                  class="infraImgModulo"/>
@@ -406,13 +406,13 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                             </select>
                             <div class="botoes">
                                 <img id="imgLupaTipoDocumento" onclick="objLupaTipoDocumento.selecionar(700,500);"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                      alt="Selecionar Tipos de Documentos"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                      title="Selecionar Tipos de Documentos" class="infraImg"/>
                                 <br>
                                 <img id="imgExcluirTipoDocumento" onclick="objLupaTipoDocumento.remover();"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                      alt="Remover Tipos de Documentos Selecionados"
                                      title="Remover Tipos de Documentos Selecionados" class="infraImg"/>
@@ -427,7 +427,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                         <label id="lblTipoContato" for="txtTipoContato" class="infraLabelObrigatorio">
                             Tipos de Contato de Entidades Reclamadas:
                             <img align="top"
-                                 id="imgAjuda" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg"
+                                 id="imgAjuda" src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
                                  onmouseover="return infraTooltipMostrar('Indique em quais Tipos de Contatos estão localizados os Contatos de Pessoas Jurídicas afetos às Entidades que são Reclamadas no âmbito das Demandas de Relacionamento Institucional.\n\n\n Por exemplo, o próprio Órgão Público sobre os Serviços que presta, Órgãos vinculados a ele ou Entidades Outorgadas/Autorizadas por ele sobre as quais o Órgão avalia demandas externas que os envolvam.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
@@ -451,12 +451,12 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                             <div class="botoes">
                                 <img id="imgLupaTipoContato" onclick="objLupaTipoContato.selecionar(700,500);"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                      alt="Selecionar Tipos de Contato"
                                      title="Selecionar Tipos de Contato" class="infraImg"/>
                                 <br>
                                 <img id="imgExcluirTipoContato" onclick="objLupaTipoContato.remover();"
-                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                     src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                      tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                      alt="Remover Tipos de Contato Selecionados"
                                      title="Remover Tipos de Contato Selecionados" class="infraImg"/>

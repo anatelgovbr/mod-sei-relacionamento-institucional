@@ -28,12 +28,12 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         </select>
                         <div>
                             <img id="imgLupaEstado" onclick="objLupaEstado.selecionar(700,500);"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Estado" title="Selecionar Estado" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
                             <img id="imgExcluirEstado" onclick="objLupaEstado.remover();"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Estados Selecionados" title="Remover Estados Selecionados"
                                  class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
@@ -64,12 +64,12 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         </select>
                         <div>
                             <img id="imgLupaMunicipio" onclick="abrirJanelaMunicipio();"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Munícipio" title="Selecionar Munícipio" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
                             <img id="imgExcluirMunicipio" onclick="removerMunicipio()"
-                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg"
+                                 src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Munícipios Selecionados" title="Remover Munícipios Selecionados"
                                  class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
@@ -98,7 +98,7 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                     <label id="lblLocalidade" for="txtLocalidade" class="infraLabelOpcional">
                         Localidade:
                     </label>
-                    <img src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/ajuda.svg" name="ajuda"
+                    <img src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                          onmouseover="return infraTooltipMostrar('Indicar, por exemplo, distrito, bairro, trecho de rodovia, etc. \n \n Caso a demanda cite mais de uma localidade de um mesmo Município, indicá-los separados por vírgula.', 'Ajuda');"
                          onmouseout="return infraTooltipOcultar();" class="infraImgModulo">
                     <input type="hidden" name="hdnNomeUF" id="hdnNomeUF" value=""/>
@@ -164,12 +164,12 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
 
                         <div>
                             <img id="imgLupaEntidade" onclick="objLupaEntidade.selecionar(700,500);"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Entidade" title="Selecionar Entidade" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
                             <img id="imgExcluirEntidade" onclick="objLupaEntidade.remover();"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Entidades Selecionadas" title="Remover Entidades Selecionadas" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                         </div>
@@ -199,12 +199,12 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         </select>
                         <div>
                             <img id="imgLupaServico" onclick="objLupaServico.selecionar(700,500);"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Serviço" title="Selecionar Serviço" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
                             <img id="imgExcluirServico" onclick="objLupaServico.remover();"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Serviços Selecionados" title="Remover Serviços Selecionados" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                         </div>
@@ -237,13 +237,13 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         </select>
                         <div>
                             <img id="imgLupaClassificacaoTema" onclick="objLupaClassificacaoTema.selecionar(700,500);"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/pesquisar.svg?<?= Icone::VERSAO ?>"
                                  alt="Selecionar Classificação por Tema" title="Selecionar Classificação por Tema" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
                             <br>
 
                             <img id="imgExcluirClassificacaoTema" onclick="objLupaClassificacaoTema.remover();"
-                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg"
+                                 src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg?<?= Icone::VERSAO ?>"
                                  alt="Remover Classificações por Temas Selecionadas"
                                  title="Remover Classificações por Temas Selecionadas" class="infraImg"
                                  tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>

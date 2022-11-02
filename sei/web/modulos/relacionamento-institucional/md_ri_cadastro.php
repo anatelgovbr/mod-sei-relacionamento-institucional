@@ -667,7 +667,7 @@ if ($countRespostasDTO > 0) {
     $isExibirLink = true;
     ?>
     <a onclick="changeTela('RP')" class="ancoraPadraoTransparent">
-        <img src="modulos/relacionamento-institucional/imagens/svg/responder.svg"
+        <img src="modulos/relacionamento-institucional/imagens/svg/responder.svg?<?= Icone::VERSAO ?>"
              title="Relacionamento Institucional - Respostas"
              alt="Relacionamento Institucional - Respostas"
              class="infraImg"
@@ -681,7 +681,7 @@ if ($countReiteracaoDTO > 0) {
     $isExibirLink = true;
     ?>
     <a onclick="changeTela('RI')" class="ancoraPadraoTransparent">
-        <img src="modulos/relacionamento-institucional/imagens/svg/reiteracao.svg"
+        <img src="modulos/relacionamento-institucional/imagens/svg/reiteracao.svg?<?= Icone::VERSAO ?>"
              title="Relacionamento Institucional - Reiterações"
              alt="Relacionamento Institucional - Reiterações"
              class="infraImg"

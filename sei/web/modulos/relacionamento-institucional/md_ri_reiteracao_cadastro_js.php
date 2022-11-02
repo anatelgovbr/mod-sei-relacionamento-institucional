@@ -242,8 +242,8 @@
 
         //Acões
         td = tr.insertCell(10);
-        html = '<img class="infraImg" title="Alterar Reiteração" alt="Alterar Reiteração" src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/alterar.svg" onclick="alterar(this)" id="imgAlterar">';
-        html += '<img class="infraImg" title="Remover Reiteração" alt="Remover Reiteração" src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg" onclick="remover(this)" id="imgExcluir">';
+        html = '<img class="infraImg" title="Alterar Reiteração" alt="Alterar Reiteração" src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/alterar.svg?<?= Icone::VERSAO ?>" onclick="alterar(this)" id="imgAlterar">';
+        html += '<img class="infraImg" title="Remover Reiteração" alt="Remover Reiteração" src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/remover.svg?<?= Icone::VERSAO ?>" onclick="remover(this)" id="imgExcluir">';
         td.innerHTML = html;
         td.setAttribute('align', 'center');
 
