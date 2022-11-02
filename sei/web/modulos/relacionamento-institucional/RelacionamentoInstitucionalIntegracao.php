@@ -5,17 +5,17 @@
 
         public function getNome()
         {
-            return 'Relacionamento Institucional';
+            return 'SEI Relacionamento Institucional';
         }
 
         public function getVersao()
         {
-            return '1.1.0';
+            return '2.0.0';
         }
 
         public function getInstituicao()
         {
-            return 'ANATEL (Projeto Colaborativo no Portal do SPB)';
+            return 'Anatel - Agência Nacional de Telecomunicações';
         }
 
         public function processarControlador($strAcao)
@@ -365,7 +365,7 @@
 
                                         $strLink = SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_cadastro_cadastrar&id_md_ri_demanda_externa=' . $idDemandaExterna . '&numeroSei=' . $numeroSei . '&id_procedimento=' . $idProcedimento);
 
-                                        $imgIcone = "modulos/relacionamento-institucional/imagens/cadastrar.svg";
+                                        $imgIcone = "modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?".Icone::VERSAO;
                                         $title = "Relacionamento Institucional - Cadastro";
                                         $strAcoesProcedimento = '<a href="' . $strLink . '" class="botaoSEI"><img class="infraCorBarraSistema" src="' . $imgIcone . '" alt="' . $title . '" title="' . $title . '"></a>';
 
@@ -434,7 +434,7 @@
                     }
 
                     if ($exibirBotao) {
-                        $imgIcone = 'modulos/relacionamento-institucional/imagens/cadastrar.svg';
+                        $imgIcone = 'modulos/relacionamento-institucional/imagens/svg/cadastrar.svg?'.Icone::VERSAO;
                         $title    = "Relacionamento Institucional - Cadastro";
 
                         $strLinkResposta = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -458,7 +458,7 @@
                 if ($objNumeroSeiValidacaoRN->validarNumeroSeiBotao($arrParamentros)) {
 
                     $strLink  = SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_resposta_cadastrar&numeroSei=' . $numeroSei . '&id_procedimento=' . $idProcedimento . '&id_documento=' . $documentoAPI->getIdDocumento());
-                    $imgIcone = "modulos/relacionamento-institucional/imagens/responder.svg";
+                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/responder.svg?".Icone::VERSAO;
                     $title    = "Relacionamento Institucional - Respostas";
 
                     $strLinkResposta = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -487,7 +487,7 @@
                         'controlador.php?acao=md_ri_reiteracao_cadastrar&numero_sei=' . $numeroSei . '&id_procedimento=' . $idProcedimento . '&id_documento=' . $documentoAPI->getIdDocumento()
                     );
 
-                    $imgIcone = "modulos/relacionamento-institucional/imagens/reiteracao.svg";
+                    $imgIcone = "modulos/relacionamento-institucional/imagens/svg/reiteracao.svg?".Icone::VERSAO;
                     $title    = "Relacionamento Institucional - Reiterações";
 
                     $strLinkReiteracao = '<a href="' . $strLink . '"class="botaoSEI">';
@@ -681,7 +681,7 @@
         	if( is_array( $arrMdRiCadastroDTO ) && count( $arrMdRiCadastroDTO ) > 0 ){
         		
         		//por padrao, seta o icone de sem pendencias, ao longo da verificação altera o icone caso sejam identificadas pendencias
-        		$icone = "modulos/relacionamento-institucional/imagens/icone_processo_sem_pendencia_resposta_merito.svg";
+        		$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_sem_pendencia_resposta_merito.svg?".Icone::VERSAO;
         		
         		//dto da demanda
         		$dtoDemanda = $arrMdRiCadastroDTO[0];
@@ -716,7 +716,7 @@
         					$qtd_dias = "dia";
         				}
         				
-        				$icone = "modulos/relacionamento-institucional/imagens/icone_processo_prazo_vencido_sem_resposta_merito.svg";
+        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vencido_sem_resposta_merito.svg?".Icone::VERSAO;
         				$prazoControle = $prazoControle . ' (atrasado ' . abs($intervalo) . ' '. $qtd_dias . ')';
 
         			}
@@ -729,7 +729,7 @@
         					$qtd_dias = "dia";
         				}
         				
-        				$icone = "modulos/relacionamento-institucional/imagens/icone_processo_prazo_vigente_sem_resposta_merito.svg";
+        				$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vigente_sem_resposta_merito.svg?".Icone::VERSAO;
         				$prazoControle = $prazoControle . ' (' . abs($intervalo) . ' ' . $qtd_dias . ')';
         				
         			}
@@ -791,7 +791,7 @@
         				//icone vermelho - Reiteracao fora do prazo OU demanda sem resposta e fora do prazo
         				if( $atrasadoReiteracao || $demandaSemRespostaForaDoPrazo == true ){
         					
-        					$icone = "modulos/relacionamento-institucional/imagens/icone_processo_prazo_vencido_sem_resposta_merito.svg";
+        					$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vencido_sem_resposta_merito.svg";
 
         					//aplicando texto certo de atraso ou nao na tooltip conforme o caso
         					if( $atrasadoReiteracao ) {
@@ -808,7 +808,7 @@
         				//icone amarelo - Reiteracao ainda no prazo
         				else {
 
-        					$icone = "modulos/relacionamento-institucional/imagens/icone_processo_prazo_vigente_sem_resposta_merito.svg";
+        					$icone = "modulos/relacionamento-institucional/imagens/svg/icone_processo_prazo_vigente_sem_resposta_merito.svg";
 
                             if($prazo_controle_reiteracao != '') {
                                 $prazo_controle_reiteracao = $prazo_controle_reiteracao . ' (' . abs($intervaloDataReiteracao) . ' ' . $qtd_dias_reiteracao . ')';
@@ -850,7 +850,7 @@
         			
         			//adição do novo ícone
         			return '<a
-href="javascript:void(0);" '. PaginaSEI::montarTitleTooltip($textoToolTipBaixaReplace, $textoToolTipTopo ).'><img src="' . $icone. '"
+href="javascript:void(0);" '. PaginaSEI::montarTitleTooltip($textoToolTipBaixaReplace, $textoToolTipTopo ).'><img style="padding-top: 1px" src="' . $icone. '"
 class="imagemStatus" /></a>';
         			
         		}
@@ -891,7 +891,7 @@ class="imagemStatus" /></a>';
         					
         					$retorno = array();
         					$retorno['texto'] = $textoToolTipBaixaPendente;
-        					$retorno['icone'] = "modulos/relacionamento-institucional/imagens/icone_processo_nao_cadastrado.svg";
+        					$retorno['icone'] = "modulos/relacionamento-institucional/imagens/svg/icone_processo_nao_cadastrado.svg";
         					
         					//adição do novo ícone
         					return $retorno;
@@ -903,8 +903,8 @@ class="imagemStatus" /></a>';
         					
         					//adição do novo ícone
         					return '<a
-href="javascript:void(0);" '. PaginaSEI::montarTitleTooltip($textoToolTipBaixaPendente , $textoToolTipTopo ).'><img src="modulos/relacionamento-institucional/imagens/icone_processo_nao_cadastrado.svg"
-class="imagemStatus" /></a>';
+href="javascript:void(0);" '. PaginaSEI::montarTitleTooltip($textoToolTipBaixaPendente , $textoToolTipTopo ).'><img src="modulos/relacionamento-institucional/imagens/svg/icone_processo_nao_cadastrado.svg"
+class="imagemStatus" style="padding-top: 1px" /></a>';
         					
         				}
         				
@@ -939,7 +939,7 @@ class="imagemStatus" /></a>';
 	        	$objArvoreAcaoItemAPI->setIcone($ret['icone']);
 	        	
 	        	$objArvoreAcaoItemAPI->setTarget( null );
-	        	$objArvoreAcaoItemAPI->setHref('javascript:;');        	
+	        	$objArvoreAcaoItemAPI->setHref('javascript:;');
 	        	$objArvoreAcaoItemAPI->setSinHabilitado('S');        	
 	        	$arrObjArvoreAcaoItemAPI[] = $objArvoreAcaoItemAPI;
 	        	

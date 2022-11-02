@@ -768,7 +768,7 @@
 
         if(addStyle){
             document.getElementById('fldDemandante').style.display = 'inline';
-            document.getElementById('fldDemandante').style.width = '97.6%';
+            // document.getElementById('fldDemandante').style.width = '97.6%';
         }
 
     }

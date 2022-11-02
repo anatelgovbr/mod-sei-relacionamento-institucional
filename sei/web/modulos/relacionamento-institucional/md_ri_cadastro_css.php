@@ -14,62 +14,43 @@ background-color: transparent;
 background-color: #b0b0b0;
 }
 
-   label[for^=txt] {
-        display: block;
-    }
+#divNumeroOrgaoDemandante{padding-top: 20px}
+#divTipoProcessoOrgaoDemandante{padding-top: 20px}
+#divTableOrgaoDemandante{padding-top: 10px}
 
-    label[for^=sel] {
-        display: block;
-    }
+.row div .mb-3{ margin: 0px !important;padding: 0px !important}
+.infraFieldset{height: 100%}
+#divTxtCompEstado{margin-top:15px}
+.infraImgModulo{width: 20px;height:20px;margin-top:5px}
+#divSelMunicipio{padding-top:9px}
 
-    input[type=checkbox] {
-        position: relative;
-        top: 2px;
-    }
+.divIcones div{padding-left:5px;}
+.row div{ padding-top: 2px}
 
-    input[type=radio] {
-        position: relative;
-        top: 2px;
-    }
+#txtNumero {
+width: 250px;
+}
 
-    input[type=text] {
-        border: .1em solid #666;
-    }
+#btnValidar, #btnAdicionarOrgaoDemandante, #btnAdicionarLocalidade, #btnAdicionarTipoControle{
+margin-left:5px;
+}
 
-    .bloco {
-        position: relative;
-        float: left;
-    }
+#txtNumeroSei, #txtTipo, #txtNumeroOrgaoDemandante, #selTipoProcessoOrgaoDemandante {
+width: 260px;
+}
 
-    .clear {
-        clear: both;
-    }
+.selInfoDemanda{
+width: calc(100% - 30px);
+}
 
-    select {
-        display: inline !important;
-        border: .1em solid #666;
-    }
+#divInfoComplementar {
+margin-top:15px;
+}
 
-    *[id^="txtComp"] {
-        width: 100%;
-    }
+#txtInfoComplementar {
+white-space: nowrap;
+}
 
-    *[id^="selComp"] {
-        width: 70%;
-    }
-
-    *[id^="imgLupa"] {
-        margin-left: 5px;
-        position: absolute;
-    }
-
-    *[id^="imgExcluir"] {
-        margin-left: 5px;
-        position: absolute;
-        top: 20px;
-    }
-    
-    #divInfoComplementar {
-         display:none;
-    
-    }
+#divTipoControle{
+margin-left:45px;
+}
