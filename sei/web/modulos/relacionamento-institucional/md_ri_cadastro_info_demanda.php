@@ -11,11 +11,10 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                     <label id="lblEstado" for="txtCompEstado" class="infraLabelObrigatorio">
                         Unidades Federativas:
                     </label>
-                    <input type="text" id="txtCompEstado"
-                           name="txtCompEstado" class="infraText form-control"
+                    <input type="text" id="txtCompEstado" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
 
-                    <input type="hidden" id="hdnIdEstado" name="hdnIdEstado" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdEstado" class="infraText" value=""/>
                 </div>
             </div>
             <div class="row">
@@ -48,10 +47,9 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         Cidades:
                     </label>
 
-                    <input type="text" id="txtCompMunicipio"
-                           name="txtCompMunicipio" class="infraText form-control"
+                    <input type="text" id="txtCompMunicipio" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
-                    <input type="hidden" id="hdnIdMunicipio" name="hdnIdMunicipio" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdMunicipio" class="infraText" value=""/>
                 </div>
             </div>
             <div class="row">
@@ -84,7 +82,7 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                             Cidades:
                         </label>
                         <div class="input-group mb-3">
-                            <select id="selMunicipio" name="selMunicipio" class="infraSelect selInfoDemanda"
+                            <select id="selMunicipio" class="infraSelect selInfoDemanda"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value="null" selected="selected"></option>
                                 <?= $strSelectMunicipioLocalidade ?>
@@ -101,11 +99,11 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                     <img src="<?=PaginaSEI::getInstance()->getDiretorioSvgGlobal()?>/ajuda.svg?<?= Icone::VERSAO ?>" name="ajuda"
                          onmouseover="return infraTooltipMostrar('Indicar, por exemplo, distrito, bairro, trecho de rodovia, etc. \n \n Caso a demanda cite mais de uma localidade de um mesmo Município, indicá-los separados por vírgula.', 'Ajuda');"
                          onmouseout="return infraTooltipOcultar();" class="infraImgModulo">
-                    <input type="hidden" name="hdnNomeUF" id="hdnNomeUF" value=""/>
-                    <input type="hidden" name="hdnIdUF" id="hdnIdUF" value=""/>
+                    <input type="hidden" id="hdnNomeUF" value=""/>
+                    <input type="hidden" id="hdnIdUF" value=""/>
 
                     <div class="input-group mb-3" id="divTxtLocalidade">
-                        <input type="text" id="txtLocalidade" name="txtLocalidade" class="infraText form-control"
+                        <input type="text" id="txtLocalidade" class="infraText form-control"
                                maxlength="500" onkeypress="return infraLimitarTexto(this,event,500);"
                                tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>" value=""/>
 
@@ -136,7 +134,7 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                             <th class="infraTh" align="center" width="10%">Ações</th>
                         </tr>
                     </table>
-                    <input type="hidden" name="hdnIdNumeroLocalidade" id="hdnIdNumeroLocalidade" value=""/>
+                    <input type="hidden" id="hdnIdNumeroLocalidade" value=""/>
                     <input type="hidden" name="hdnLocalidades" id="hdnLocalidades" value="<?= $strGridLocalidades ?>"/>
                     <!--FIM TABELA LOCALIDADES -->
                 </div>
@@ -147,10 +145,9 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                     <label id="lblCompEntidade" for="txtCompEntidade" class="infraLabelObrigatorio">Entidades
                         Reclamadas:</label>
 
-                    <input type="text" id="txtCompEntidade"
-                           name="txtCompEntidade" class="infraText form-control"
+                    <input type="text" id="txtCompEntidade" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
-                    <input type="hidden" id="hdnIdEntidade" name="hdnIdEntidade" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdEntidade" class="infraText" value=""/>
                 </div>
             </div>
 
@@ -183,11 +180,10 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         Serviços:
                     </label>
 
-                    <input type="text" id="txtCompServico"
-                           name="txtCompServico" class="infraText form-control"
+                    <input type="text" id="txtCompServico" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
 
-                    <input type="hidden" id="hdnIdServico" name="hdnIdServico" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdServico" class="infraText" value=""/>
                 </div>
             </div>
             <div class="row">
@@ -219,11 +215,10 @@ FIELDSET INFORMAÇÕES SOBRE DEMANDA
                         Classificação por Temas:
                     </label>
 
-                    <input type="text" id="txtCompClassificacaoTema"
-                           name="txtCompClassificacaoTema" class="infraText form-control"
+                    <input type="text" id="txtCompClassificacaoTema" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
 
-                    <input type="hidden" id="hdnIdClassificacao" name="hdnIdClassificacao" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdClassificacao" class="infraText" value=""/>
                 </div>
             </div>
 

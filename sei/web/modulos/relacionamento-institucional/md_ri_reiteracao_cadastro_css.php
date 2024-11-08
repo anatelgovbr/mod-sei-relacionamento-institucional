@@ -1,4 +1,4 @@
-.row div{ padding-top: 2px}
+
 .row div .mb-3{ margin-bottom: 0px !important}
 .infraFieldset{height: 100%}
 .divIcones{padding-left:5px}

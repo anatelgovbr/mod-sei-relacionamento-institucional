@@ -1745,18 +1745,19 @@ function removeItensComboLocalidadeVinculada( arrSelecionados ){
 
   //funções abaixo para capturar o evento que ocorre quando nova option é adicionada a uma combo (via popup de transportar)
   function AddEventToSelect ( elem ) {
-
-      if (elem.addEventListener) {
-    	  elem.addEventListener ('DOMNodeInserted', OnNodeInserted, false);
-      }
-      
+      const observer = new MutationObserver( mutations => {
+          mutations.forEach( mutation => {
+              if ( mutation.addedNodes.length > 0 ) {
+                  OnNodeInserted(mutation.addedNodes[0])
+              }
+          })
+      })
+      observer.observe( elem , { childList: true } )
   }
 
   function OnNodeInserted (event) {
-
-      var elemento = event.target;
-      var nomeItem = elemento.text;
-      var idItem = elemento.value;
+      var nomeItem = event.textContent; //elemento.text;
+      var idItem = event.value; //elemento.value;
       infraSelectAdicionarOption(document.getElementById('selMunicipio'), nomeItem, idItem);
       getUfByIdMunicipioCombo( idItem );
       //alert ("The text node '" + textNode.data + "' has been added to an element.");

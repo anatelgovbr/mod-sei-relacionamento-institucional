@@ -10,7 +10,7 @@
 
         public function getVersao()
         {
-            return '2.0.0';
+            return '2.0.1';
         }
 
         public function getInstituicao()

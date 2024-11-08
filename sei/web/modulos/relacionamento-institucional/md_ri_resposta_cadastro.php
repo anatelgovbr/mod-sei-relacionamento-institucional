@@ -478,7 +478,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                         </label>
 
                         <div class="input-group mb-3">
-                            <input type="text" id="txtDemandaNumeroSei" name="txtDemandaNumeroSei"
+                            <input type="text" id="txtDemandaNumeroSei"
                                    class="infraText form-control" onchange="changeNumeroSei(false);"
                                    onkeypress="return infraMascaraNumero(this,event,100);" maxlength="100"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
@@ -524,8 +524,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             Tipo de Resposta:
                         </label>
                         <div class="input-group mb-3">
-                            <select id="selDemandaTipoResposta" name="selDemandaTipoResposta"
-                                    class="infraSelect form-control"
+                            <select id="selDemandaTipoResposta" class="infraSelect form-control"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value=""></option>
                                 <?= $strItensSelTipoResposta ?>
@@ -594,7 +593,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             <label id="lblReiteracao" for="selReiteracao" class="infraLabelObrigatorio">
                                 Reiteração:
                             </label>
-                            <select id="selReiteracao" name="selReiteracao" class="infraSelect form-control"
+                            <select id="selReiteracao" class="infraSelect form-control"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value=""></option>
                                 <?= $strItensSelReiteracao ?>
@@ -611,7 +610,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             </label>
                             <div class="input-group mb-3">
                                 <input onchange="changeNumeroSei(true);" type="text" id="txtReiteracaoNumeroSei"
-                                       name="txtReiteracaoNumeroSei" class="infraText form-control"
+                                       class="infraText form-control"
                                        onkeypress="return infraMascaraNumero(this,event,100);" maxlength="100"
                                        tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>" value=""/>
 
@@ -645,8 +644,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                 Tipo de Resposta:
                             </label>
                             <div class="input-group mb-3">
-                                <select id="selReiteracaoTipoResposta" name="selReiteracaoTipoResposta"
-                                        class="infraSelect form-control"
+                                <select id="selReiteracaoTipoResposta" class="infraSelect form-control"
                                         tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                     <option value=""></option>
                                     <?= $strItensSelTipoResposta ?>
@@ -699,42 +697,35 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
     <?php } ?>
     <!-- Hiddens -->
     <input type="hidden" id="hdnbolAlterar" name="hdnbolAlterar" value="<?php echo $bolAlterar; ?>"/>
-    <input type="hidden" id="hdnLinkCadastroReiteracao" name="hdnLinkCadastroReiteracao"
-           value="<?php echo $strUrlCadastroReiteracao ?>"/>
-    <input type="hidden" id="hdnLinkCadastroDemandaExterna" name="hdnLinkCadastroDemandaExterna"
-           value="<?php echo $strUrlCadastroDemandaExterna ?>"/>
-    <input type="hidden" id="hdnUnidade" name="hdnUnidade" value="<?= $_POST['hdnUnidade'] ?>"/>
-    <input type="hidden" id="hdnIdUnidadeAtual" name="hdnIdUnidadeAtual"
-           value="<?= SessaoSEI::getInstance()->getNumIdUnidadeAtual() ?>"/>
-    <input type="hidden" id="hdnNomeUnidadeAtual" name="hdnNomeUnidadeAtual" value="<?= $nomeUnidade ?>"/>
-    <input type="hidden" id="hdnDescricaoUnidadeAtual" name="hdnDescricaoUnidadeAtual"
-           value="<?= $descricaoUnidade ?>"/>
+    <input type="hidden" id="hdnLinkCadastroReiteracao" value="<?php echo $strUrlCadastroReiteracao ?>"/>
+    <input type="hidden" id="hdnLinkCadastroDemandaExterna" value="<?php echo $strUrlCadastroDemandaExterna ?>"/>
+    <input type="hidden" id="hdnUnidade" value=""/>
+    <input type="hidden" id="hdnIdUnidadeAtual" value="<?= SessaoSEI::getInstance()->getNumIdUnidadeAtual() ?>"/>
+    <input type="hidden" id="hdnNomeUnidadeAtual" value="<?= $nomeUnidade ?>"/>
+    <input type="hidden" id="hdnDescricaoUnidadeAtual" value="<?= $descricaoUnidade ?>"/>
 
-    <input type="hidden" id="hdnIdUsuarioAtual" name="hdnIdUsuarioAtual"
-           value="<?= SessaoSEI::getInstance()->getNumIdUsuario() ?>"/>
-    <input type="hidden" id="hdnNomeUsuarioAtual" name="hdnNomeUsuarioAtual" value="<?= $usuario ?>"/>
-    <input type="hidden" id="hdnSiglaUsuarioAtual" name="hdnSiglaUsuarioAtual" value="<?= $siglaUsuario ?>"/>
+    <input type="hidden" id="hdnIdUsuarioAtual" value="<?= SessaoSEI::getInstance()->getNumIdUsuario() ?>"/>
+    <input type="hidden" id="hdnNomeUsuarioAtual" value="<?= $usuario ?>"/>
+    <input type="hidden" id="hdnSiglaUsuarioAtual" value="<?= $siglaUsuario ?>"/>
 
     <input type="hidden" id="hdnIdProcedimento" name="hdnIdProcedimento" value="<?= $idProcedimento ?>"/>
-    <input type="hidden" id="hdnBooleanEdicaoDemanda" name="hdnBooleanEdicaoDemanda" value="0"/>
-    <input type="hidden" id="hdnBooleanEdicaoReiteracao" name="hdnBooleanEdicaoReiteracao" value="0"/>
+    <input type="hidden" id="hdnBooleanEdicaoDemanda" value="0"/>
+    <input type="hidden" id="hdnBooleanEdicaoReiteracao" value="0"/>
 
     <!--  <input type="hidden" id="hdnValoresInitDemanda" name="hdnValoresInitDemanda" value='echo //$arrDadosResp;'/> -->
-    <input type="hidden" id="hdnValoresInitReiteracao" name="hdnValoresInitReiteracao" value="&quot;"/>
+    <input type="hidden" id="hdnValoresInitReiteracao" value="&quot;"/>
 
     <input type="hidden" id="hdnValoresDemanda" name="hdnValoresDemanda" value="&quot;"/>
     <input type="hidden" id="hdnValoresReiteracao" name="hdnValoresReiteracao" value="&quot;"/>
-    <input type="hidden" id="hdnNumeroSei" name="hdnNumeroSei" value=""/>
-    <input type="hidden" id="hdnIdDocumentoReiteracao" name="hdnIdDocumentoReiteracao" value=""/>
-    <input type="hidden" id="hdnIdDocumentoResposta" name="hdnIdDocumentoResposta"
-           value="<?= $hdnIdDocumentoDemanda ?>"/>
-    <input type="hidden" id="hdnDataDocDemanda" value="<?= $hdnDataGeracaoDemada; ?>" name="hdnDataDocDemanda"/>
-    <input type="hidden" id="hdnDataDocReiteracao" name="hdnDataDocReiteracao" value=""/>
-    <input type="hidden" id="hdnLinha" name="hdnLinha" value=""/>
+    <input type="hidden" id="hdnNumeroSei" value=""/>
+    <input type="hidden" id="hdnIdDocumentoReiteracao" value=""/>
+    <input type="hidden" id="hdnIdDocumentoResposta" value="<?= $hdnIdDocumentoDemanda ?>"/>
+    <input type="hidden" id="hdnDataDocDemanda" value="<?= $hdnDataGeracaoDemada; ?>"/>
+    <input type="hidden" id="hdnDataDocReiteracao" value=""/>
+    <input type="hidden" id="hdnLinha" value=""/>
     <input type="hidden" id="hdnSalvar" name="hdnSalvar" value="N"/>
     <input type="hidden" id="hdnIdDocumentoArvore" name="hdnIdDocumentoArvore" value="<?= $_GET['id_documento'] ?>"/>
-    <input type="hidden" id="hdnIdProcedimentoArvore" name="hdnIdProcedimentoArvore"
-           value="<?= $_GET['id_procedimento'] ?>"/>
+    <input type="hidden" id="hdnIdProcedimentoArvore" name="hdnIdProcedimentoArvore" value="<?= $_GET['id_procedimento'] ?>"/>
 
     <?php PaginaSEI::getInstance()->fecharAreaDados(); ?>
 </form>
