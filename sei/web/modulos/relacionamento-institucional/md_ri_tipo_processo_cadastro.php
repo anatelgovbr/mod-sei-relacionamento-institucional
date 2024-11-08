@@ -26,7 +26,7 @@ try {
     switch ($_GET['acao']) {
         case 'md_ri_tipo_processo_cadastrar':
 
-            $strTitulo = 'Novo Tipo de Processo no ï¿½rgï¿½o Demandante';
+            $strTitulo = 'Novo Tipo de Processo no Órgão Demandante';
 
             $arrComandos[] = '<button type="submit" accesskey="S" name="sbmCadastrarTpProcessoRI" id="sbmCadastrarTpProcessoRI" value="Salvar" class="infraButton"><span class="infraTeclaAtalho">S</span>alvar</button>';
             $arrComandos[] = '<button type="button" accesskey="C" name="btnCancelar" id="btnCancelar" value="Cancelar" onclick="location.href=\'' . PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=' . PaginaSEI::getInstance()->getAcaoRetorno() . '&id_tipo_processo_litigioso=' . $_GET['id_tipo_processo_litigioso'] . '&acao_origem=' . $_GET['acao'])) . '\';" class="infraButton"><span class="infraTeclaAtalho">C</span>ancelar</button>';
@@ -48,7 +48,7 @@ try {
             break;
 
         case 'md_ri_tipo_processo_alterar':
-            $strTitulo = 'Alterar Tipo de Processo no ï¿½rgï¿½o Demandante';
+            $strTitulo = 'Alterar Tipo de Processo no Órgão Demandante';
             $arrComandos[] = '<button type="submit" accesskey="S" name="sbmAlterarTpProcessoRI" value="Salvar" class="infraButton"><span class="infraTeclaAtalho">S</span>alvar</button>';
             $strDesabilitar = 'disabled="disabled"';
 
@@ -60,7 +60,7 @@ try {
                 $objTpProcessoRIDTO = $objTpProcessoRIRN->consultar($objTpProcessoRIDTO);
 
                 if ($objTpProcessoRIDTO == null) {
-                    throw new InfraException("Registro nï¿½o encontrado.");
+                    throw new InfraException("Registro não encontrado.");
                 }
 
             } else {
@@ -86,7 +86,7 @@ try {
             break;
 
         case 'md_ri_tipo_processo_consultar':
-            $strTitulo = 'Consultar Tipo de Processo no ï¿½rgï¿½o Demandante';
+            $strTitulo = 'Consultar Tipo de Processo no Órgão Demandante';
             $arrComandos[] = '<button type="button" accesskey="C" name="btnFechar" value="Fechar" onclick="location.href=\'' . PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?id_tipo_processo_litigioso=' . $_GET['id_tipo_processo_litigioso'] . '&acao=' . PaginaSEI::getInstance()->getAcaoRetorno() . '&acao_origem=' . $_GET['acao'] . PaginaSEI::getInstance()->montarAncora($_GET['id_tipo_processo_ri']))) . '\';" class="infraButton">Fe<span class="infraTeclaAtalho">c</span>har</button>';
             $objTpProcessoRIDTO->setNumIdTipoProcessoRelacionamentoInstitucional($_GET['id_tipo_processo_ri']);
             $objTpProcessoRIDTO->setBolExclusaoLogica(false);
@@ -94,12 +94,12 @@ try {
             $objTpProcessoRIRN = new MdRiTipoProcessoRN();
             $objTpProcessoRIDTO = $objTpProcessoRIRN->consultar($objTpProcessoRIDTO);
             if ($objTpProcessoRIDTO === null) {
-                throw new InfraException("Registro nï¿½o encontrado.");
+                throw new InfraException("Registro não encontrado.");
             }
             break;
 
         default:
-            throw new InfraException("Aï¿½ï¿½o '" . $_GET['acao'] . "' nï¿½o reconhecida.");
+            throw new InfraException("Ação '" . $_GET['acao'] . "' não reconhecida.");
     }
 
 
@@ -141,7 +141,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                  id="imgAjuda"
                                  src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
-                                 onmouseover="return infraTooltipMostrar('Nas telas dos Usuï¿½rios no Cadastro da Demanda de Relacionamento Institucional a indicaï¿½ï¿½o de Processo no ï¿½rgï¿½o Demandante nï¿½o ï¿½ obrigatï¿½ria, mas caso tenha nï¿½mero de identificaï¿½ï¿½o da demanda no ï¿½rgï¿½o Demandante ï¿½ necessï¿½rio indicar o Tipo de Processo no ï¿½rgï¿½o Demandante selecionando a opï¿½ï¿½o a partir da lista aqui parametrizada.\n\n\nPor exemplo, no ï¿½rgï¿½o Demandante o processo pode ter seu nï¿½mero prï¿½prio e identificado como CPI, Inquï¿½rito Civil, Inquï¿½rito Penal, Processo Judicial, Projeto de Lei, Aï¿½ï¿½o Civil Pï¿½blica etc.', 'Ajuda');"
+                                 onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Relacionamento Institucional a indicação de Processo no Órgão Demandante não é obrigatória, mas caso tenha número de identificação da demanda no Órgão Demandante é necessário indicar o Tipo de Processo no Órgão Demandante selecionando a opção a partir da lista aqui parametrizada.\n\nPor exemplo, no Órgão Demandante o processo pode ter seu número próprio e identificado como CPI, Inquérito Civil, Inquérito Penal, Processo Judicial, Projeto de Lei, Ação Civil Pública etc.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
                                  class="infraImgModulo"/>
                         </label>

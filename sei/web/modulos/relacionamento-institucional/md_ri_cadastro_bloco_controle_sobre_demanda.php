@@ -39,9 +39,9 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                     <label id="lblCompUnidade" for="txtCompUnidade" class="infraLabelObrigatorio">
                         Unidades Responsáveis:
                     </label>
-                    <input type="text" id="txtCompUnidade" name="txtCompUnidade" class="infraText form-control"
+                    <input type="text" id="txtCompUnidade" class="infraText form-control"
                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"/>
-                    <input type="hidden" id="hdnIdUnidade" name="hdnIdUnidade" class="infraText" value=""/>
+                    <input type="hidden" id="hdnIdUnidade" class="infraText" value=""/>
                 </div>
             </div>
             <!--UNIDADES RESPONSAVEIS-->
@@ -80,7 +80,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                             <label id="lblNumero" for="txtNumero" accesskey="f" class="infraLabelOpcional">
                                 Número:
                             </label>
-                            <input type="text" id="txtNumero" name="txtNumero" class="infraText form-control"
+                            <input type="text" id="txtNumero" class="infraText form-control"
                                    onkeypress="return maskNumOrgaoDemandante(this,event,50);" maxlength="50"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>" value=""/>
                         </div>
@@ -91,7 +91,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                                 Tipo de Controle:
                             </label>
                             <div class="input-group mb-3" id="divIconesCompEstado">
-                                <select id="selTipoControle" name="selTipoControle" class="infraSelect"
+                                <select id="selTipoControle" class="infraSelect"
                                         style="width: 265px;"
                                         tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                     <?= $strSelectTipoControle ?>
@@ -123,7 +123,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                             <th class="infraTh" align="center" width="10%">Ações</th>
                         </tr>
                     </table>
-                    <input type="hidden" name="hdnIdNumeroTpControle" id="hdnIdNumeroTpControle" value=""/>
+                    <input type="hidden" id="hdnIdNumeroTpControle" value=""/>
                     <input type="hidden" name="hdnTipoControle" id="hdnTipoControle"
                            value="<?= $strGridTipoControle ?>"/>
                     <!--FIM TABELA-->

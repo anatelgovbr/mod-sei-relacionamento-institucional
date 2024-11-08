@@ -274,7 +274,6 @@ switch ($_GET['acao']) {
             }
 
             if (isset($_POST['hdnCadastrar'])) {
-
                 $arr = PaginaSEI::getInstance()->getArrItensTabelaDinamica($_POST['hdnTbDocumento']);
 
                 $limparDados = count($arr) == 0;
@@ -751,26 +750,18 @@ PaginaSEI::getInstance()->fecharAreaDados();
     <input type="hidden" name="hdnCadastrar" id="hdnCadastrar"/>
     <input type="hidden" name="idProcedimento" id="idProcedimento"
            value="<?php echo isset($_GET['id_procedimento']) ? $_GET['id_procedimento'] : $_POST['hdnIdProcedimento']; ?>"/>
-    <input type="hidden" name="hdnDataOperacao" id="hdnDataOperacao" value="<?= $dataOperacao ?>"/>
-    <input type="hidden" name="hdnIdDemandaRI" id="hdnIdDemandaRI" value="<?= $idDemandaExterna ?>"/>
-    <input type="hidden" name="hdnIdUsuario" id="hdnIdUsuario" value="<?= $idUsuarioLogado ?>"/>
-    <input type="hidden" name="hdnNomeUsuario" id="hdnNomeUsuario" value="<?= $nomeUsuarioLogado ?>"/>
-    <input type="hidden" name="hdnSiglaUsuario" id="hdnSiglaUsuario" value="<?= $siglaUsuarioLogado ?>"/>
-    <input type="hidden" name="hdnIdUnidadeAtual" id="hdnIdUnidadeAtual" value="<?= $idUnidadeAtual ?>"/>
-    <input type="hidden" name="hdnSiglaUnidadeAtual" id="hdnSiglaUnidadeAtual" value="<?= $siglaUnidadeAtual ?>"/>
-    <input type="hidden" name="hdnDescricaoUnidadeAtual" id="hdnDescricaoUnidadeAtual"
-           value="<?= $descricaoUnidadeAtual ?>"/>
-
-    <input type="hidden" name="hdnDescricaoUnidadeAtual" id="hdnDescricaoUnidadeAtual"
-           value="<?= $descricaoUnidadeAtual ?>"/>
-    <input type="hidden" name="hdnLinkCadastroResposta" id="hdnLinkCadastroResposta"
-           value="<?php echo $strUrlCadastroResposta ?>"/>
-    <input type="hidden" name="hdnLinkCadastroReiteracao" id="hdnLinkCadastroReiteracao"
-           value="<?php echo $strUrlCadastroReiteracao ?>"/>
+    <input type="hidden" id="hdnDataOperacao" value="<?= $dataOperacao ?>"/>
+    <input type="hidden" id="hdnIdDemandaRI" value="<?= $idDemandaExterna ?>"/>
+    <input type="hidden" id="hdnIdUsuario" value="<?= $idUsuarioLogado ?>"/>
+    <input type="hidden" id="hdnNomeUsuario" value="<?= $nomeUsuarioLogado ?>"/>
+    <input type="hidden" id="hdnSiglaUsuario" value="<?= $siglaUsuarioLogado ?>"/>
+    <input type="hidden" id="hdnIdUnidadeAtual" value="<?= $idUnidadeAtual ?>"/>
+    <input type="hidden" id="hdnSiglaUnidadeAtual" value="<?= $siglaUnidadeAtual ?>"/>
+    <input type="hidden" id="hdnDescricaoUnidadeAtual" value="<?= $descricaoUnidadeAtual ?>"/>
+    <input type="hidden" id="hdnLinkCadastroResposta" value="<?php echo $strUrlCadastroResposta ?>"/>
+    <input type="hidden" id="hdnLinkCadastroReiteracao" value="<?php echo $strUrlCadastroReiteracao ?>"/>
     <input type="hidden" id="hdnIdDocumentoArvore" name="hdnIdDocumentoArvore" value="<?= $_GET['id_documento'] ?>"/>
-    <input type="hidden" id="hdnIdProcedimentoArvore" name="hdnIdProcedimentoArvore"
-           value="<?= $_GET['id_procedimento'] ?>"/>
-
+    <input type="hidden" id="hdnIdProcedimentoArvore" name="hdnIdProcedimentoArvore" value="<?= $_GET['id_procedimento'] ?>"/>
 
     </form>
 

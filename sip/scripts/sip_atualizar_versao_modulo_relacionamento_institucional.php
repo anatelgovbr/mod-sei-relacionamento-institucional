@@ -66,15 +66,6 @@ class MdRiAtualizadorSipRN extends InfraRN
         die;
     }
 
-    protected function normalizaVersao($versao)
-    {
-		$ultimoPonto = strrpos($versao, '.');
-		if ($ultimoPonto !== false) {
-			$versao = substr($versao, 0, $ultimoPonto) . substr($versao, $ultimoPonto + 1);
-		}
-		return $versao;
-	}
-
     protected function atualizarVersaoConectado()
     {
 
@@ -90,7 +81,7 @@ class MdRiAtualizadorSipRN extends InfraRN
 
             //testando versao do framework
             $numVersaoInfraRequerida = '2.0.18';
-            if ($this->normalizaVersao(VERSAO_INFRA) < $this->normalizaVersao($numVersaoInfraRequerida)) {
+            if (version_compare(VERSAO_INFRA, $numVersaoInfraRequerida) < 0) {
                 $this->finalizar('VERSÃO DO FRAMEWORK PHP INCOMPATÍVEL (VERSÃO ATUAL ' . VERSAO_INFRA . ', SENDO REQUERIDA VERSÃO IGUAL OU SUPERIOR A ' . $numVersaoInfraRequerida . ')', true);
             }
 
@@ -126,7 +117,8 @@ class MdRiAtualizadorSipRN extends InfraRN
 
             }
 
-            $this->finalizar('FIM');
+            $this->logar('SCRIPT EXECUTADO EM: ' . date('d/m/Y H:i:s'));
+			$this->finalizar('FIM');
             InfraDebug::getInstance()->setBolDebugInfra(true);
         } catch (Exception $e) {
             InfraDebug::getInstance()->setBolLigado(true);

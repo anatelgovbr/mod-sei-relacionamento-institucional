@@ -74,7 +74,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                                value="<?= $idProcedimento ?>"/>
                         <input type="hidden" name="hdnTbDocumento" value="<?php echo $strGridDemandaExterna ?>"
                                id="hdnTbDocumento"/>
-                        <input type="hidden" name="hdnDataDocumento" id="hdnDataDocumento"
+                        <input type="hidden" id="hdnDataDocumento"
                                value="<?= $hdnDataGeracao ?>"/>
                         <input type="hidden" name="hdnIdDocumento" id="hdnIdDocumento" value="<?= $hdnIdDocumento ?>"/>
 
@@ -89,7 +89,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                             Número no Órgão Demandante:
                         </label>
                         <div class="bloco input-group mb-3">
-                            <input type="text" id="txtNumeroOrgaoDemandante" name="txtNumeroOrgaoDemandante"
+                            <input type="text" id="txtNumeroOrgaoDemandante"
                                    class="infraText "
                                    onkeypress="maskNumOrgaoDemandante(this,event,50)" maxlength="50"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>" value=""/>
@@ -104,7 +104,6 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                                class="infraLabelOpcional">Tipo de Processo no Órgão Demandante:</label>
                         <div class="bloco input-group mb-3">
                             <select id="selTipoProcessoOrgaoDemandante"
-                                    name="selTipoProcessoOrgaoDemandante"
                                     class="infraSelect "
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strSelectTipoProcessoDemandante ?>
@@ -141,8 +140,8 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                         </table>
                         <input type="hidden" name="hdnTbOrgaoDemandante" id="hdnTbOrgaoDemandante"
                                value="<?= $strGridTipoProcesso ?>"/>
-                        <input type="hidden" name="hdnIdNumeroDemandante" id="hdnIdNumeroDemandante" value=""/>
-                        <input type="hidden" name="hdnBolAlterar" id="hdnBolAlterar" value="<?= $bolAlterar ?>"/>
+                        <input type="hidden" id="hdnIdNumeroDemandante" value=""/>
+                        <input type="hidden" id="hdnBolAlterar" value="<?= $bolAlterar ?>"/>
                         <!--FIM TABELA DEMANDA-->
                     </div>
                 </div>

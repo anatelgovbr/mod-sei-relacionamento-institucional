@@ -617,10 +617,18 @@
 
     function verificarNumeroSeiDuplicado() {
         var tabela = document.getElementById('tbReiteracao');
+        var tabela2 = document.getElementById('tbReiteracao2');
         var numeroSei = document.getElementById('txtNumeroSei').value.trim();
         var valido = true;
         for (var i = 1; i < tabela.rows.length; i++) {
             var numeroSeiTabela = tabela.rows[i].getElementsByTagName('input')[0].value.trim();
+            if (numeroSeiTabela == numeroSei) {
+                valido = false;
+                break;
+            }
+        }
+        for (var i = 1; i < tabela2.rows.length; i++) {
+            var numeroSeiTabela = tabela2.rows[i].getElementsByTagName('input')[0].value.trim();
             if (numeroSeiTabela == numeroSei) {
                 valido = false;
                 break;
