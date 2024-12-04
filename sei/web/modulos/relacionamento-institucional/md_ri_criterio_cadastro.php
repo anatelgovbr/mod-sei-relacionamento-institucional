@@ -49,6 +49,7 @@ switch ($_GET['acao']) {
         #region Monta os options de cada campo
 
         $dataCorte = '';
+        $arrDataCorte = [];
 
         //obtendo valor atualizado do campo data de corte (quando o form para inserçao ou update)
         $mdRiCadastroRN = new MdRiCriterioCadastroRN();
