@@ -112,10 +112,6 @@
         changeNumeroSei();
         habilitarNumeroSei();
 
-        //Verifica Dados do form
-        //redimensiona o iframe e //Controla dados da Modal Demandante
-        window.setInterval('(verificarDadosModal())', 1000);
-
         //verificar se é alteração para esconder os campos
         verificarAlteracao();
     }
@@ -142,16 +138,6 @@
 
         for (var i = 0; i < objs.length; i++) {
             objs[i].style.display = valor;
-        }
-        
-    }
-
-    function verificarDadosModal(){
-        var hdnPopUpFoiAberta =  document.getElementById("hdnControlPopUp").value == '1';
-        var popUpFechada      = (parent.document.getElementById('divInfraModalFundo') != null) && parent.document.getElementById('divInfraModalFundo').getAttribute("style").indexOf('hidden') >= 0;
-
-        if(hdnPopUpFoiAberta && popUpFechada){
-            recarregarTabelaDemandante();
         }
     }
 
@@ -271,7 +257,6 @@
 
     function atualizarTabelaLocalidade(idUfRemover){
         if (objTabelaDinamicaLocalidades.procuraLinhaUF(idUfRemover)!=null){
-            console.log(objTabelaDinamicaLocalidades.procuraLinhaUF(idUfRemover));
             objTabelaDinamicaLocalidades.removerLinha(objTabelaDinamicaLocalidades.procuraLinhaUF(idUfRemover));
         }
 
@@ -345,7 +330,6 @@
 
             if (id != '') {
                 options = document.getElementById('selCompMunicipio').options;
-                console.log(id);
                 if (options != null) {
                     for (var i = 0; i < options.length; i++) {
                         if (options[i].value == id) {
@@ -736,10 +720,8 @@
         };
 
         objTabelaDinamicaDemandante.alterar = function (arr) {
-            alterarGridDinamicaDemandante(arr);
+            alterarGridDinamicaDemandante();
         };
-
-
       }
     
     function adicionarGridDemandante(addStyle) {
@@ -773,35 +755,12 @@
 
     }
 
-    function alterarGridDinamicaDemandante(arr){
-
-        //Set Hidden Controle da Popup
-        document.getElementById("hdnControlPopUp").value = '1';
-
-        var frm = document.getElementById('frmDemandaExternaCadastro');
-        document.getElementById('hdnContatoObject').value = 'hdnRetornoModal';
-        document.getElementById('hdnContatoIdentificador').value = document.getElementById('hdnIdContato').value;
-
-        var actionAnterior = frm.action;
-
-        var windowFeatures = "location=1,status=1,resizable=1,scrollbars=1";
-
+    function alterarGridDinamicaDemandante(){
         var link = document.getElementById('hdnUrlPopUpContato').value;
-
-         var janela = infraAbrirJanela('',
-            'janelaAlterarContato',
-            780,
-            600,
-            windowFeatures); //popUp
-
-        frm.target = 'janelaAlterarContato';
-        frm.action = link;
-
-        frm.submit();
-
-        frm.target = '_blank';
-        frm.action = actionAnterior;
-        frm.target = '';
+        seiCadastroContato(document.getElementById('hdnIdContato').value , 'hdnRetornoModal' , 'frmDemandaExternaCadastro' , link);
+        $("div[id^='divInfraSparklingModalClose']", window.top.document).on('click',function(){
+            recarregarTabelaDemandante( document.getElementById('hdnIdContato').value );
+        });
     }
 
     function recarregarTabelaDemandante(idContato){
@@ -1793,28 +1752,20 @@ function removeItensComboLocalidadeVinculada( arrSelecionados ){
 		    dataType: 'JSON',
 		    async: false,
 		    data : formData,
-		    
 		    success: function(data, textStatus, jqXHR)
 		    {
-		        //data - response from server
-		        
 		        if( data != null && data != undefined ){
-                //console.log( 'Sigla UF: ' + data.uf_sigla );
-
 			      siglaUf = data.uf_sigla;
-			      //alert( siglaUf );
                   addUfOptionMunicipio(id_municipio, data.uf_id);
 			      return;
-		        } 
-		    	
+		        }
 		    },
-		    
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
 		       alert('Erro' + textStatus);
 		       return;
 		    }
-		    
+
 		});
   	
    }

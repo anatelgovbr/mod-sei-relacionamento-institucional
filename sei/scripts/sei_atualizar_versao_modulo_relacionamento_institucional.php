@@ -75,7 +75,8 @@ class MdRiAtualizadorSeiRN extends InfraRN
             //checando BDs suportados
             if (!(BancoSEI::getInstance() instanceof InfraMySql) &&
                 !(BancoSEI::getInstance() instanceof InfraSqlServer) &&
-                !(BancoSEI::getInstance() instanceof InfraOracle)) {
+                !(BancoSEI::getInstance() instanceof InfraOracle) &&
+                !(BancoSEI::getInstance() instanceof InfraPostgreSql)) {
                 $this->finalizar('BANCO DE DADOS NÃO SUPORTADO: ' . get_parent_class(BancoSEI::getInstance()), true);
             }
 
@@ -229,7 +230,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_cadastro (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_cadastro (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_cadastro', 1);
         }
 
@@ -246,7 +247,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_processo (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_processo (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_tipo_processo', 1);
         }
 
@@ -317,7 +318,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_servico (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_servico (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_servico', 1);
         }
 
@@ -351,7 +352,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_subtema (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_subtema (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_subtema', 1);
         }
 
@@ -367,7 +368,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_classificacao_tema (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_classificacao_tema (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_classificacao_tema', 1);
         }
 
@@ -442,7 +443,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_controle (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_controle (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_tipo_controle', 1);
         }
 
@@ -477,7 +478,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_reiteracao (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_reiteracao (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_tipo_reiteracao', 1);
         }
 
@@ -506,7 +507,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_rel_reit_doc (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_rel_reit_doc (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_rel_reit_doc', 1);
         }
 
@@ -525,7 +526,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_rel_reit_unid (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_rel_reit_unid (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_rel_reit_unid', 1);
         }
 
@@ -543,7 +544,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_resposta (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_tipo_resposta (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_tipo_resposta', 1);
         }
 
@@ -576,7 +577,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_resposta (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_resposta (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_resposta', 1);
         }
 
@@ -612,7 +613,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_resposta_reiteracao (id bigint not null primary key AUTO_INCREMENT, campo char(1) null) AUTO_INCREMENT = 1');
         } else if (BancoSEI::getInstance() instanceof InfraSqlServer) {
             BancoSEI::getInstance()->executarSql('create table seq_md_ri_resposta_reiteracao (id bigint identity(1,1), campo char(1) null)');
-        } else if (BancoSEI::getInstance() instanceof InfraOracle) {
+        } else if (BancoSEI::getInstance() instanceof InfraOracle || BancoSEI::getInstance() instanceof InfraPostgreSql) {
             BancoSEI::getInstance()->criarSequencialNativa('seq_md_ri_resposta_reiteracao', 1);
         }
 
@@ -642,52 +643,59 @@ class MdRiAtualizadorSeiRN extends InfraRN
 
     protected function instalarv101()
     {
-        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.1 DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
-        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
-        BancoSEI::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.0.1\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
-
-        $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.1 DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SEI');
+        $nmVersao = '1.0.1';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSAO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
+        $this->atualizarNumeroVersao($nmVersao);
     }
 
     protected function instalarv102()
     {
-        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.2 DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
-        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
-        BancoSEI::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.0.2\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
-
-        $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.0.2 DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SEI');
+        $nmVersao = '1.0.2';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSAO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
+        $this->atualizarNumeroVersao($nmVersao);
     }
 
     protected function instalarv110()
     {
-        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.1.0 DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
-
+        $nmVersao = '1.1.0';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSAO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
         $objInfraMetaBD = new InfraMetaBD(BancoSEI::getInstance());
-
         $arrTabelas = array('md_ri_cadastro, md_ri_classificacao_tema, md_ri_crit_cad, md_ri_rel_cad_cidade, md_ri_rel_cad_classif, md_ri_rel_cad_contato, md_ri_rel_cad_localidade, md_ri_rel_cad_servico, md_ri_rel_cad_tipo_prc, md_ri_rel_cad_tp_ctrl, md_ri_rel_cad_uf, md_ri_rel_cad_unidade, md_ri_rel_class_tema_subtema, md_ri_rel_crit_cad_cont, md_ri_rel_crit_cad_proc, md_ri_rel_crit_cad_serie, md_ri_rel_crit_cad_unid, md_ri_rel_reit_doc, md_ri_rel_reit_unid, md_ri_resposta, md_ri_resposta_reiteracao, md_ri_servico, md_ri_subtema, md_ri_tipo_controle, md_ri_tipo_processo, md_ri_tipo_reiteracao, md_ri_tipo_resposta');
-
         $this->fixIndices($objInfraMetaBD, $arrTabelas);
-
-        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
-        BancoSEI::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'1.1.0\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
-
-        $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 1.1.0 DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SEI');
+        $this->atualizarNumeroVersao($nmVersao);
     }
 
     protected function instalarv200()
     {
-        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 2.0.0 DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
-
+        $nmVersao = '2.0.0';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSAO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
         $objInfraMetaBD = new InfraMetaBD(BancoSEI::getInstance());
-
         $arrTabelas = array('md_ri_cadastro, md_ri_classificacao_tema, md_ri_crit_cad, md_ri_rel_cad_cidade, md_ri_rel_cad_classif, md_ri_rel_cad_contato, md_ri_rel_cad_localidade, md_ri_rel_cad_servico, md_ri_rel_cad_tipo_prc, md_ri_rel_cad_tp_ctrl, md_ri_rel_cad_uf, md_ri_rel_cad_unidade, md_ri_rel_class_tema_subtema, md_ri_rel_crit_cad_cont, md_ri_rel_crit_cad_proc, md_ri_rel_crit_cad_serie, md_ri_rel_crit_cad_unid, md_ri_rel_reit_doc, md_ri_rel_reit_unid, md_ri_resposta, md_ri_resposta_reiteracao, md_ri_servico, md_ri_subtema, md_ri_tipo_controle, md_ri_tipo_processo, md_ri_tipo_reiteracao, md_ri_tipo_resposta');
-
         $this->fixIndices($objInfraMetaBD, $arrTabelas);
+        $this->atualizarNumeroVersao($nmVersao);
+    }
 
-        $this->logar('ATUALIZANDO PARÂMETRO ' . $this->nomeParametroModulo . ' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
-        BancoSEI::getInstance()->executarSql('UPDATE infra_parametro SET valor = \'2.0.0\' WHERE nome = \'' . $this->nomeParametroModulo . '\' ');
+    /**
+     * Atualiza o número de versão do módulo na tabela de parâmetro do sistema
+     *
+     * @param string $parStrNumeroVersao
+     * @return void
+     */
+    private function atualizarNumeroVersao($parStrNumeroVersao)	{
+        $this->logar('ATUALIZANDO PARÂMETRO '. $this->nomeParametroModulo .' NA TABELA infra_parametro PARA CONTROLAR A VERSÃO DO MÓDULO');
 
-        $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO 2.0.0 DO ' . $this->nomeDesteModulo . ' REALIZADA COM SUCESSO NA BASE DO SEI');
+        $objInfraParametroDTO = new InfraParametroDTO();
+        $objInfraParametroDTO->setStrNome($this->nomeParametroModulo);
+        $objInfraParametroDTO->retTodos();
+        $objInfraParametroBD = new InfraParametroBD(BancoSEI::getInstance());
+        $arrObjInfraParametroDTO = $objInfraParametroBD->listar($objInfraParametroDTO);
+
+        foreach ($arrObjInfraParametroDTO as $objInfraParametroDTO) {
+            $objInfraParametroDTO->setStrValor($parStrNumeroVersao);
+            $objInfraParametroBD->alterar($objInfraParametroDTO);
+        }
+
+        $this->logar('INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO '. $parStrNumeroVersao .' DO '. $this->nomeDesteModulo .' REALIZADA COM SUCESSO NA BASE DO SEI');
     }
 
     protected function fixIndices(InfraMetaBD $objInfraMetaBD, $arrTabelas)

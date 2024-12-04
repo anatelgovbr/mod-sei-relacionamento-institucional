@@ -26,12 +26,12 @@ FIELDSET DEMANDANTE-->
             <!--FIM TABELA DEMANDANTE-->
 
             <input type="hidden" id="hdnControlPopUp" value="0"/>
-            <input type="hidden" name="hdnContatoObject" id="hdnContatoObject" value=""/>
-            <input type="hidden" id="hdnContatoIdentificador" value='<?php echo $hdnIdContato; ?>'/>
-            <input type="hidden" id="hdnUrlPopUpContato" value="<?php echo $strUrlDemandante; ?>"/>
-            <input type="hidden" id="hdnIdContato" value='<?php echo $hdnIdContato ?>'/>
-            <input type="hidden" id="hdnTbDemandante" value="<?php echo $strGridDemandante ?>"/>
-            <input type="hidden" id="hdnDadosDemandante" value='<?php echo is_array($arrayDemandante) && count($arrayDemandante) > 0 ? json_encode($arrayDemandante, JSON_FORCE_OBJECT) : null ?>'/>
+            <input type="hidden" id="hdnContatoObject" name="hdnContatoObject" value=""/>
+            <input type="hidden" id="hdnContatoIdentificador" name="hdnContatoIdentificador" value='<?= $hdnIdContato ?>'/>
+            <input type="hidden" id="hdnUrlPopUpContato" value="<?= $strUrlDemandante ?>"/>
+            <input type="hidden" id="hdnIdContato" value='<?= $hdnIdContato ?>'/>
+            <input type="hidden" id="hdnTbDemandante" value="<?= $strGridDemandante ?>"/>
+            <input type="hidden" id="hdnDadosDemandante" value='<?= is_array($arrayDemandante) && count($arrayDemandante) > 0 ? json_encode($arrayDemandante, JSON_FORCE_OBJECT) : null ?>'/>
 
         </fieldset>
     </div>
