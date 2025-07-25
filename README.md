@@ -43,7 +43,7 @@
 	- Tão quanto ocorre com as atualizações do SEI, versões futuras deste Módulo continuarão a atualizar e criar Recursos e associá-los apenas aos Perfis "Básico" e "Administrador".
 	- Todos os recursos do Módulo iniciam pelo sufix **"md_ri_"**.
 3. Acesse o [Manual de Administração](https://docs.google.com/document/d/e/2PACX-1vT5UelbUpJbVYFVlk0KnU9Jfc_l2igsvkW_G4wEceDIf7rQMDzhVLPTF5vFZ5HivP1qqVLg4YuIdCev/pub) do módulo.
-4. Acesse o [Manual do Usuário](https://docs.google.com/document/d/e/2PACX-1vRBe72KVSlCzoJP617O3-nwwp34kVoVL9zgk227s6e1_zZLno9obfLSIcUJPjxslDfn3e1kafNzqCCL/pub) do módulo.
+4. Acesse o [Manual do Usuário](https://docs.google.com/document/d/e/2PACX-1vT-EHTqgK7kIUPkq-ecijbU4BQ_Up_WlZWQDDDsIULBmz_5NnRQFtWcZ6d8GE9ya3_ROlL0OM3oPbv0/pub) do módulo.
 5. **IMPORTANTE**:
     - Este Módulo tem por finalidade adicionar aos Processos afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo etc) telas para o Cadastro da Demanda, de suas Respostas e de suas possíveis Reiterações, agregando aos mencionados processos dados para controle das demandas institucionais dentro do SEI.
     - Para o adequado uso do Módulo o órgão já deve possuir organizado seu processo afeto a Relacionamento Institucional, com processo mapeado, competências bem definidas e procedimentos estabelecidos, especialmente por meio do envolvimento da área que coordene o assunto como um todo dentro do órgão.
