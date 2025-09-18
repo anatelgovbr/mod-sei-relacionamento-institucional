@@ -524,7 +524,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             Tipo de Resposta:
                         </label>
                         <div class="input-group mb-3">
-                            <select id="selDemandaTipoResposta" class="infraSelect form-control"
+                            <select id="selDemandaTipoResposta" class="infraSelect form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value=""></option>
                                 <?= $strItensSelTipoResposta ?>
@@ -593,7 +593,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             <label id="lblReiteracao" for="selReiteracao" class="infraLabelObrigatorio">
                                 Reiteração:
                             </label>
-                            <select id="selReiteracao" class="infraSelect form-control"
+                            <select id="selReiteracao" class="infraSelect form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value=""></option>
                                 <?= $strItensSelReiteracao ?>
@@ -644,7 +644,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                 Tipo de Resposta:
                             </label>
                             <div class="input-group mb-3">
-                                <select id="selReiteracaoTipoResposta" class="infraSelect form-control"
+                                <select id="selReiteracaoTipoResposta" class="infraSelect form-select"
                                         tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                     <option value=""></option>
                                     <?= $strItensSelTipoResposta ?>

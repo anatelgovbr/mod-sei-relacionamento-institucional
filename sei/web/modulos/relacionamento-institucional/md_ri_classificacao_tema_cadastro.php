@@ -232,7 +232,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3">
                             <select tabindex="445" id="selDescricaoSubtema" name="selDescricaoSubtema" size="10"
-                                    multiple="multiple" class="infraSelect">
+                                    multiple="multiple" class="infraSelect form-select">
                                 <?= $strItensSelSubtemas ?>
                             </select>
                             <div class="botoes">

@@ -627,13 +627,17 @@
                 break;
             }
         }
-        for (var i = 1; i < tabela2.rows.length; i++) {
-            var numeroSeiTabela = tabela2.rows[i].getElementsByTagName('input')[0].value.trim();
-            if (numeroSeiTabela == numeroSei) {
-                valido = false;
-                break;
+
+        if ( tabela2 ) {
+            for (var i = 1; i < tabela2.rows.length; i++) {
+                var numeroSeiTabela = tabela2.rows[i].getElementsByTagName('input')[0].value.trim();
+                if (numeroSeiTabela == numeroSei) {
+                    valido = false;
+                    break;
+                }
             }
         }
+
         return valido;
     }
 

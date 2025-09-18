@@ -173,7 +173,7 @@ $numRegistros = count($arrObjServicoRelacionamentoInstitucional);
 #Tabela de resultado.
 if ($numRegistros > 0) {
 
-    $strResultado .= '<table class="infraTable table" summary="Serviços">';
+    $strResultado .= '<table class="infraTable" summary="Serviços">';
     $strResultado .= '<caption class="infraCaption">';
     $strResultado .= PaginaSEI::getInstance()->gerarCaptionTabela('Serviços', $numRegistros);
     $strResultado .= '</caption>';
@@ -196,7 +196,7 @@ if ($numRegistros > 0) {
         $strNomeServicoParametro = PaginaSEI::getInstance()->formatarParametrosJavaScript($arrObjServicoRelacionamentoInstitucional[$i]->getStrNome());
         $bolRegistroAtivo = $arrObjServicoRelacionamentoInstitucional[$i]->getStrSinAtivo() == 'S';
 
-        $strCssTr = !$bolRegistroAtivo ? '<tr class="trVermelha">' : ($strCssTr == '<tr class="infraTrClara">' ? '<tr class="infraTrEscura">' : '<tr class="infraTrClara">');
+        $strCssTr = !$bolRegistroAtivo ? '<tr class="infraTrVermelha">' : ($strCssTr == '<tr class="infraTrClara">' ? '<tr class="infraTrEscura">' : '<tr class="infraTrClara">');
         $strResultado .= $strCssTr;
 
         #Linha Checkbox

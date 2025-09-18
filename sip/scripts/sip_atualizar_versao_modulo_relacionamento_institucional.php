@@ -5,10 +5,10 @@ class MdRiAtualizadorSipRN extends InfraRN
 {
 
     private $numSeg = 0;
-    private $versaoAtualDesteModulo = '2.0.0';
+    private $versaoAtualDesteModulo = '2.1.0';
     private $nomeDesteModulo = 'MÓDULO DE RELACIONAMENTO INSTITUCIONAL';
     private $nomeParametroModulo = 'VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL';
-    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2', '1.1.0', '2.0.0');
+    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2', '1.1.0', '2.0.0', '2.1.0');
 
     public function __construct()
     {
@@ -81,7 +81,7 @@ class MdRiAtualizadorSipRN extends InfraRN
             }
 
             //testando versao do framework
-            $numVersaoInfraRequerida = '2.29.0';
+            $numVersaoInfraRequerida = '2.41.1';
             if (version_compare(VERSAO_INFRA, $numVersaoInfraRequerida) < 0) {
                 $this->finalizar('VERSÃO DO FRAMEWORK PHP INCOMPATÍVEL (VERSÃO ATUAL ' . VERSAO_INFRA . ', SENDO REQUERIDA VERSÃO IGUAL OU SUPERIOR A ' . $numVersaoInfraRequerida . ')', true);
             }
@@ -110,6 +110,8 @@ class MdRiAtualizadorSipRN extends InfraRN
                     $this->instalarv110();
                 case '1.1.0':
                     $this->instalarv200();
+                case '2.0.0':
+                    $this->instalarv210();
                     break;
 
                 default:
@@ -547,6 +549,14 @@ class MdRiAtualizadorSipRN extends InfraRN
     protected function instalarv200()
     {
         $nmVersao = '2.0.0';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SIP');
+        $this->atualizarNumeroVersao($nmVersao);
+    }
+
+    protected function instalarv210()
+    {
+        // SEI 5.0
+        $nmVersao = '2.1.0';
         $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSÃO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SIP');
         $this->atualizarNumeroVersao($nmVersao);
     }

@@ -104,7 +104,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                                class="infraLabelOpcional">Tipo de Processo no Órgão Demandante:</label>
                         <div class="bloco input-group mb-3">
                             <select id="selTipoProcessoOrgaoDemandante"
-                                    class="infraSelect "
+                                    class="infraSelect form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strSelectTipoProcessoDemandante ?>
 

@@ -21,7 +21,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
                         <select id="selCompEstado" name="selCompEstado[]" size="6" multiple="multiple"
-                                class="infraSelect selInfoDemanda"
+                                class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelEstado ?>
                         </select>
@@ -56,7 +56,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
                         <select id="selCompMunicipio" name="selCompMunicipio[]" size="6" multiple="multiple"
-                                class="infraSelect selInfoDemanda"
+                                class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelMunicipio ?>
                         </select>
@@ -82,7 +82,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
                             Cidades:
                         </label>
                         <div class="input-group mb-3">
-                            <select id="selMunicipio" class="infraSelect selInfoDemanda"
+                            <select id="selMunicipio" class="infraSelect selInfoDemanda form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <option value="null" selected="selected"></option>
                                 <?= $strSelectMunicipioLocalidade ?>
@@ -154,7 +154,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
-                        <select id="selCompEntidade" name="selCompEntidade[]" size="6" multiple="multiple" class="infraSelect selInfoDemanda"
+                        <select id="selCompEntidade" name="selCompEntidade[]" size="6" multiple="multiple" class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelEntidade ?>
                         </select>
@@ -189,7 +189,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
-                        <select id="selCompServico" name="selCompServico[]" size="6" multiple="multiple" class="infraSelect selInfoDemanda"
+                        <select id="selCompServico" name="selCompServico[]" size="6" multiple="multiple" class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelServico ?>
                         </select>
@@ -226,7 +226,7 @@ FIELDSET INFORMA합ES SOBRE DEMANDA
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
                         <select id="selCompClassificacaoTema" name="selCompClassificacaoTema[]" size="6" multiple="multiple"
-                                class="infraSelect selInfoDemanda"
+                                class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelClassificacaoTema ?>
                         </select>

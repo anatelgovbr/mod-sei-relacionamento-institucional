@@ -49,7 +49,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group mb-3 divIcones">
                         <select id="selCompUnidade" name="selCompUnidade[]" size="6" multiple="multiple"
-                                class="infraSelect selInfoDemanda"
+                                class="infraSelect selInfoDemanda form-select"
                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                             <?= $strItensSelUnidade ?>
                         </select>
@@ -91,7 +91,7 @@ FIELDSET CONTROLE SOBRE DEMANDA-->
                                 Tipo de Controle:
                             </label>
                             <div class="input-group mb-3" id="divIconesCompEstado">
-                                <select id="selTipoControle" class="infraSelect"
+                                <select id="selTipoControle" class="infraSelect form-select"
                                         style="width: 265px;"
                                         tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                     <?= $strSelectTipoControle ?>

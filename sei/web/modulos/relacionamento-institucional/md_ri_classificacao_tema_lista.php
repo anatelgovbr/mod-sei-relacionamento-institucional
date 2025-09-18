@@ -253,7 +253,7 @@ try {
             $strCaptionTabela = 'Classificação de Temas Inativos';
         }
 
-        $strResultado .= '<table class="infraTable table" summary="' . $strSumarioTabela . '">' . "\n";
+        $strResultado .= '<table class="infraTable" summary="' . $strSumarioTabela . '">' . "\n";
         $strResultado .= '<caption class="infraCaption">' . PaginaSEI::getInstance()->gerarCaptionTabela($strCaptionTabela, $numRegistros) . '</caption>';
         $strResultado .= '<tr>';
 
@@ -299,7 +299,7 @@ try {
                 if ($arrObjSubtemaRIDTO[$i]->getStrSinAtivo() == 'S') {
                     $strCssTr = ($strCssTr == '<tr class="infraTrClara">') ? '<tr class="infraTrEscura">' : '<tr class="infraTrClara">';
                 } else {
-                    $strCssTr = '<tr class="trVermelha">';
+                    $strCssTr = '<tr class="infraTrVermelha">';
                 }
             }
             $strResultado .= $strCssTr;
@@ -393,7 +393,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             Tema:
                         </label>
                         <select tabindex="446" onchange="filtrarClassificacaoTema();" id="selTema" name="selTema"
-                                class="infraSelect selClass form-control">
+                                class="infraSelect selClass form-select">
                             <option value="" selected="selected">
                                 Todos
                             </option>
@@ -405,7 +405,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             Subtema:
                         </label>
                         <select tabindex="448" onchange="filtrarClassificacaoTema();" id="selSubtema" name="selSubtema"
-                                class="infraSelect selClass form-control">
+                                class="infraSelect selClass form-select">
                             <option value="" selected="selected">
                                 Todos
                             </option>
