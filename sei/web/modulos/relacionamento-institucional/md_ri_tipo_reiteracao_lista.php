@@ -225,7 +225,7 @@ try {
             $strCaptionTabela = 'Tipos de Reiteração Inativos';
         }
 
-        $strResultado .= '<table class="infraTable table" summary="' . $strSumarioTabela . '">' . "\n";
+        $strResultado .= '<table class="infraTable" summary="' . $strSumarioTabela . '">' . "\n";
         $strResultado .= '<caption class="infraCaption">' . PaginaSEI::getInstance()->gerarCaptionTabela($strCaptionTabela, $numRegistros) . '</caption>';
         $strResultado .= '<tr>';
 
@@ -261,7 +261,7 @@ try {
             if ($arrObjTpReiteracaoRIDTO[$i]->getStrSinAtivo() == 'S') {
                 $strCssTr = ($strCssTr == '<tr class="infraTrClara">') ? '<tr class="infraTrEscura">' : '<tr class="infraTrClara">';
             } else {
-                $strCssTr = '<tr class="trVermelha">';
+                $strCssTr = '<tr class="infraTrVermelha">';
             }
 
             $strResultado .= $strCssTr;

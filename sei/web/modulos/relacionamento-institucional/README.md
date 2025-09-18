@@ -1,7 +1,7 @@
 # Módulo de Relacionamento Institucional
 
 ## Requisitos
-- Requisito Mínimo é o SEI 4.0.12 instalado/atualizado - Não é compatível com versões anteriores e em versões mais recentes é necessário conferir antes se possui compatibilidade.
+- Requisito Mínimo é o SEI 4.1.5 instalado/atualizado - Não é compatível com versões anteriores e em versões mais recentes é necessário conferir antes se possui compatibilidade.
    - Verificar valor da constante de versão no arquivo /sei/web/SEI.php ou, após logado no sistema, parando o mouse sobre a logo do SEI no canto superior esquerdo.
 - Antes de executar os scripts de instalação/atualização, o usuário de acesso aos bancos de dados do SEI e do SIP, constante nos arquivos ConfiguracaoSEI.php e ConfiguracaoSip.php, deverá ter permissão de acesso total ao banco de dados, permitindo, por exemplo, criação e exclusão de tabelas.
 - Os códigos-fonte do Módulo podem ser baixados a partir do link a seguir, devendo sempre utilizar a versão mais recente: [https://github.com/anatelgovbr/mod-sei-relacionamento-institucional/releases](https://github.com/anatelgovbr/mod-sei-relacionamento-institucional/releases "Clique e acesse")
@@ -42,8 +42,8 @@
 	- Independente da criação de outros Perfis, os recursos indicados para o Perfil "Básico" ou "Administrador" devem manter correspondência com os Perfis dos Usuários internos que utilizarão o Módulo e dos Usuários Administradores do Módulo.
 	- Tão quanto ocorre com as atualizações do SEI, versões futuras deste Módulo continuarão a atualizar e criar Recursos e associá-los apenas aos Perfis "Básico" e "Administrador".
 	- Todos os recursos do Módulo iniciam pelo sufix **"md_ri_"**.
-3. Acesse no link a seguir o Manual de Administração [https://goo.gl/pqIoZY](https://goo.gl/pqIoZY "Clique e acesse")
-4. Acesse no link a seguir o Manual do Usuário Interno: [https://goo.gl/oo34ur](https://goo.gl/oo34ur "Clique e acesse")
+3. Acesse o [Manual de Administração](https://docs.google.com/document/d/e/2PACX-1vT5UelbUpJbVYFVlk0KnU9Jfc_l2igsvkW_G4wEceDIf7rQMDzhVLPTF5vFZ5HivP1qqVLg4YuIdCev/pub) do módulo.
+4. Acesse o [Manual do Usuário](https://docs.google.com/document/d/e/2PACX-1vRBe72KVSlCzoJP617O3-nwwp34kVoVL9zgk227s6e1_zZLno9obfLSIcUJPjxslDfn3e1kafNzqCCL/pub) do módulo.
 5. **IMPORTANTE**:
     - Este Módulo tem por finalidade adicionar aos Processos afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo etc) telas para o Cadastro da Demanda, de suas Respostas e de suas possíveis Reiterações, agregando aos mencionados processos dados para controle das demandas institucionais dentro do SEI.
     - Para o adequado uso do Módulo o órgão já deve possuir organizado seu processo afeto a Relacionamento Institucional, com processo mapeado, competências bem definidas e procedimentos estabelecidos, especialmente por meio do envolvimento da área que coordene o assunto como um todo dentro do órgão.

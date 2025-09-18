@@ -162,7 +162,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3" id="divChk">
                             <input <?php echo $checkedMerito ?> type="checkbox" name="chkMerito"
-                                                                class="infraCheckbox form-control"
+                                                                class="infraCheckbox form-check-input"
                                                                 id="chkMerito">
 
                             <label id="lblMerito" for="lblMerito" class="infraLabel">

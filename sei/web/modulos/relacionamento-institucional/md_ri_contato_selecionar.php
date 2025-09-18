@@ -171,7 +171,7 @@
                 Tipo de Contato:
             </label>
 
-            <select id="selTipoContato" name="selTipoContato" class="infraSelect"
+            <select id="selTipoContato" name="selTipoContato" class="infraSelect form-select"
                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                 <?= $strItensSelTipoContato ?>
             </select>

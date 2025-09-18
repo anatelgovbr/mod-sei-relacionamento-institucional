@@ -5,10 +5,10 @@ class MdRiAtualizadorSeiRN extends InfraRN
 {
 
     private $numSeg = 0;
-    private $versaoAtualDesteModulo = '2.0.0';
+    private $versaoAtualDesteModulo = '2.1.0';
     private $nomeDesteModulo = 'MÓDULO DE RELACIONAMENTO INSTITUCIONAL';
     private $nomeParametroModulo = 'VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL';
-    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2', '1.1.0', '2.0.0');
+    private $historicoVersoes = array('1.0.0', '1.0.1', '1.0.2', '1.1.0', '2.0.0','2.1.0');
 
     public function __construct()
     {
@@ -81,7 +81,7 @@ class MdRiAtualizadorSeiRN extends InfraRN
             }
 
             //testando versao do framework
-            $numVersaoInfraRequerida = '2.29.0';
+            $numVersaoInfraRequerida = '2.41.1';
             if (version_compare(VERSAO_INFRA, $numVersaoInfraRequerida) < 0) {
                 $this->finalizar('VERSÃO DO FRAMEWORK PHP INCOMPATÍVEL (VERSÃO ATUAL ' . VERSAO_INFRA . ', SENDO REQUERIDA VERSÃO IGUAL OU SUPERIOR A ' . $numVersaoInfraRequerida . ')', true);
             }
@@ -110,6 +110,8 @@ class MdRiAtualizadorSeiRN extends InfraRN
                     $this->instalarv110();
                 case '1.1.0':
                     $this->instalarv200();
+                case '2.0.0':
+                    $this->instalarv210();
                     break;
 
                 default:
@@ -672,6 +674,14 @@ class MdRiAtualizadorSeiRN extends InfraRN
         $objInfraMetaBD = new InfraMetaBD(BancoSEI::getInstance());
         $arrTabelas = array('md_ri_cadastro, md_ri_classificacao_tema, md_ri_crit_cad, md_ri_rel_cad_cidade, md_ri_rel_cad_classif, md_ri_rel_cad_contato, md_ri_rel_cad_localidade, md_ri_rel_cad_servico, md_ri_rel_cad_tipo_prc, md_ri_rel_cad_tp_ctrl, md_ri_rel_cad_uf, md_ri_rel_cad_unidade, md_ri_rel_class_tema_subtema, md_ri_rel_crit_cad_cont, md_ri_rel_crit_cad_proc, md_ri_rel_crit_cad_serie, md_ri_rel_crit_cad_unid, md_ri_rel_reit_doc, md_ri_rel_reit_unid, md_ri_resposta, md_ri_resposta_reiteracao, md_ri_servico, md_ri_subtema, md_ri_tipo_controle, md_ri_tipo_processo, md_ri_tipo_reiteracao, md_ri_tipo_resposta');
         $this->fixIndices($objInfraMetaBD, $arrTabelas);
+        $this->atualizarNumeroVersao($nmVersao);
+    }
+
+    protected function instalarv210()
+    {
+        // SEI 5.0
+        $nmVersao = '2.1.0';
+        $this->logar('EXECUTANDO A INSTALAÇÃO/ATUALIZAÇÃO DA VERSAO '. $nmVersao .' DO ' . $this->nomeDesteModulo . ' NA BASE DO SEI');
         $this->atualizarNumeroVersao($nmVersao);
     }
 

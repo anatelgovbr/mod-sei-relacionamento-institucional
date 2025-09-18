@@ -243,7 +243,13 @@ PaginaSEI::getInstance()->montarMeta();
 PaginaSEI::getInstance()->montarTitle(':: ' . PaginaSEI::getInstance()->getStrNomeSistema() . ' - ' . $strTitulo . ' ::');
 PaginaSEI::getInstance()->montarStyle();
 PaginaSEI::getInstance()->abrirStyle();
-require_once 'md_ri_reiteracao_cadastro_css.php';
+//require_once 'md_ri_reiteracao_cadastro_css.php';
+?>
+.form-group {
+    margin-bottom: 1rem;
+}
+
+<?php
 PaginaSEI::getInstance()->fecharStyle();
 PaginaSEI::getInstance()->montarJavaScript();
 PaginaSEI::getInstance()->fecharHead();
@@ -290,14 +296,14 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                             <legend class="infraLegend">&nbsp;Reiterações&nbsp;</legend>
 
                             <!--FIELDSET NUMERO SEI-->
-                            <div class="row">
+                            <div class="row mb-2">
                                 <!--NUMERO SEI-->
                                 <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                     <label id="lblNumeroSei" for="txtNumeroSei" accesskey="f" class="infraLabelObrigatorio">
                                         Número SEI:
                                     </label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="txtNumeroSei" class="infraText form-control"
+                                    <div class="input-group">
+                                        <input type="text" id="txtNumeroSei" class="infraText form-control" style="margin-right: 6px;"
                                                onkeypress="return infraMascaraNumero(this,event,100);" maxlength="100"
                                                tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                                value="<?= $txtNumeroSei ?>"/>
@@ -314,7 +320,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                     <label id="lblTipo" for="txtTipo" accesskey="f" class="infraLabelObrigatorio">
                                         Tipo:
                                     </label>
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" id="txtTipo" name="txtTipo" class="infraText form-control"
                                                disabled="disabled"
                                                size="50"
@@ -324,28 +330,28 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                 </div>
                                 <!--FIM TIPO-->
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <!--TIPO REITERAÇÃO -->
                                 <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                     <label id="lblTipoReiteracao" for="selTipoReiteracao" accesskey="f"
                                            class="infraLabelObrigatorio">
                                         Tipo de Reiteração:
                                     </label>
-                                    <select id="selTipoReiteracao" class="infraSelect form-control"
+                                    <select id="selTipoReiteracao" class="infraSelect form-select"
                                             tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
 										<?= $strItensSelTipoReiteracao ?>
                                     </select>
                                 </div>
                                 <!--FIM TIPO REITERAÇÃO -->
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <!-- DATA FINAL PARA RESPOSTA -->
                                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                     <label id="lblDataCerta" accesskey="" for="rdoDataCerta" class="infraLabelObrigatorio"
                                            tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                         Data Final para Resposta:
                                     </label>
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input onchange="return validarFormatoData(this);" type="text" id="txtDataCerta"
                                                onkeypress="return infraMascaraData(this, event)"
                                                class="infraText form-control"
@@ -369,10 +375,10 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                     <input type="hidden" id="hdnIdUnidade" class="infraText" value=""/>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
-                                    <div class="input-group mb-3">
-                                        <select id="selUnidade" name="selUnidade" multiple="multiple" class="infraSelect"
+                                    <div class="input-group mb-2">
+                                        <select id="selUnidade" name="selUnidade" multiple="multiple" class="infraSelect form-select"
                                                 tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
 											<?= $strItensSelUnidade ?>
                                         </select>

@@ -317,7 +317,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3">
                             <select id="selUnidade" name="selUnidade" size="6" multiple="multiple"
-                                    class="infraSelect selCriteriosCadastro"
+                                    class="infraSelect selCriteriosCadastro form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strItensSelUnidade ?>
                             </select>
@@ -357,7 +357,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3">
                             <select id="selTipoProcesso" name="selTipoProcesso" size="6" multiple="multiple"
-                                    class="infraSelect selCriteriosCadastro"
+                                    class="infraSelect selCriteriosCadastro form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strItensSelTipoProcesso ?>
                             </select>
@@ -401,7 +401,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3">
                             <select id="selTipoDocumento" name="selTipoDocumento" size="6" multiple="multiple"
-                                    class="infraSelect selCriteriosCadastro"
+                                    class="infraSelect selCriteriosCadastro form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strItensSelSerie ?>
                             </select>
@@ -445,7 +445,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"'); ?>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="input-group mb-3">
                             <select id="selTipoContato" name="selTipoContato" size="6" multiple="multiple"
-                                    class="infraSelect selCriteriosCadastro"
+                                    class="infraSelect selCriteriosCadastro form-select"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strItensSelTipoContato ?>
                             </select>
