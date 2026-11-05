@@ -59,14 +59,6 @@ function validarCadastro() {
     document.getElementById('txtNome').focus();
     return false;
   }
-
-  var optionsSub = document.getElementById('selDescricaoSubtema').options;
-  
-  if( optionsSub.length == 0 ){
-    alert('Informe ao menos um subtema.');
-    document.getElementById('selDescricaoSubtema').focus();
-    return false;
-  } 
   
   return true;
 }
@@ -82,7 +74,8 @@ function carregarComponenteSubtema(){
 	objAutoCompletarSubtema.limparCampo = true;
 
 	objAutoCompletarSubtema.prepararExecucao = function(){
-	    return 'palavras_pesquisa='+document.getElementById('txtSubtema').value;
+	    return 'palavras_pesquisa='+document.getElementById('txtSubtema').value
+	        +'&id_tipo_controle_demanda='+document.getElementById('hdnIdTipoControleDemanda').value;
 	};
 	  
 	objAutoCompletarSubtema.processarResultado = function(id,nome,complemento){
@@ -121,7 +114,6 @@ function carregarComponenteSubtema(){
     objLupaSubtema = new infraLupaSelect('selDescricaoSubtema' , 'hdnSubtema',  '<?=$strLinkSubtemaSelecao?>');
     objLupaSubtema.processarRemocao = function(){
         return removerClassSubtema();
-
     }
 
 }

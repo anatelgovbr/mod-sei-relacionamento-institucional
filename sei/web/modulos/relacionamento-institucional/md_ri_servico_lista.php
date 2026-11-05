@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @since  11/08/2016
- * @author André Luiz <andre.luiz@castgroup.com.br>
- */
-
 require_once dirname(__FILE__) . '/../../SEI.php';
 
 session_start();
@@ -64,7 +59,7 @@ switch ($_GET['acao']) {
             $objServicoRelacionamentoInstitucionalRN = new MdRiServicoRN();
             $objServicoRelacionamentoInstitucionalRN->reativar($arrObjServicoRelacionamentoInstitucional);
 
-            PaginaSEI::getInstance()->adicionarMensagem('Operação realizada com sucesso.');
+            //PaginaSEI::getInstance()->adicionarMensagem('Operação realizada com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
         } catch (Exception $e) {
             PaginaSEI::getInstance()->processarExcecao($e);
         }
@@ -132,9 +127,6 @@ if (!$bolSelecionar) {
                                     <span class="infraTeclaAtalho">N</span>ovo
                               </button>';
 
-    $arrComandos[] = '<button type="button" accesskey="I" id="btnImprimir" onclick="imprimir()" class="infraButton">
-                                    <span class="infraTeclaAtalho">I</span>mprimir
-                              </button>';
     $arrComandos[] = '<button type="button" accesskey="c" id="btnFechar" onclick="fechar()" class="infraButton">
                                     Fe<span class="infraTeclaAtalho">c</span>har
                               </button>';
@@ -288,6 +280,6 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
     </form>
 
 <?php
+require_once 'md_ri_servico_lista_js.php';
 PaginaSEI::getInstance()->fecharBody();
 PaginaSEI::getInstance()->fecharHtml();
-require_once 'md_ri_servico_lista_js.php';

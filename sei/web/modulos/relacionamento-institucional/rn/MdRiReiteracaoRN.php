@@ -34,7 +34,7 @@
 
                 return $objReiteracaoBD->consultar($objReiteracaoDTO);
             } catch (Exception $e) {
-                throw new InfraException ('Erro ao consultar Reiteração.', $e);
+                throw new InfraException ('Erro ao consultar Solicitação', $e);
             }
         }
 
@@ -45,7 +45,7 @@
 
                 return $objReiteracaoBD->contar($objReiteracaoDTO);
             } catch (Exception $e) {
-                throw new InfraException ('Erro ao contar Reiteração.', $e);
+                throw new InfraException ('Erro ao contar Solicitação', $e);
             }
         }
 
@@ -73,7 +73,7 @@
         
         		return $objReiteracaoBD->listar($objReiteracaoDTO);
         	} catch (Exception $e) {
-        		throw new InfraException ('Erro ao consultar Reiteração.', $e);
+        		throw new InfraException ('Erro ao consultar Solicitação', $e);
         	}
         }
 

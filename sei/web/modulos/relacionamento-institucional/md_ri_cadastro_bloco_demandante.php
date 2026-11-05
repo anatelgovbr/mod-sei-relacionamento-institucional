@@ -1,12 +1,12 @@
 <!--
-Include chamado pela pagina principal de cadastro/ediçao de demanda externa
+Include chamado pela pagina principal de cadastro/edição de demanda externa
 FIELDSET DEMANDANTE-->
 <div class="row linha">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <fieldset id="fldDemandante" class="infraFieldset hideInicio form-control"
                   style="<?php echo ($strGridDemandante == '') ? 'display: none' : ''; ?>">
 
-            <legend class="infraLegend">&nbsp;Demandante&nbsp;</legend>
+            <legend class="infraLegend">&nbsp;Informações sobre Demandante(s)&nbsp;</legend>
             <!--TABELA DEMANDANTE-->
             <table class="infraTable table" summary="Demanda" id="tbDemandante">
 
@@ -14,6 +14,7 @@ FIELDSET DEMANDANTE-->
 
                 <tr>
                     <th class="infraTh" style="display: none;">ID do Contato</th>
+                    <th class="infraTh" style="display: none;">Url Demandante</th>
                     <th class="infraTh" align="center">Tipo de Contato</th>
                     <th class="infraTh" align="center">Pessoa Jurídica</th>
                     <th class="infraTh" align="center">Contato</th>

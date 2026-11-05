@@ -41,10 +41,6 @@
         location.href = "<?= $strUrlNovo ?>";
     }
 
-    function imprimir() {
-        infraImprimirTabela();
-    }
-
     function fechar() {
         location.href = "<?= $strUrlFechar ?>";
     }

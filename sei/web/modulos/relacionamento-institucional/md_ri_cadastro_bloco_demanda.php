@@ -1,5 +1,5 @@
 <!--
-Include chamado pela pagina principal de cadastro/ediçao de demanda externa
+Arquivo incluído pela página principal de cadastro/edição de demanda externa.
 FIELDSET DEMANDA-->
 
 <?php
@@ -10,6 +10,32 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <fieldset id="fldDemanda" class="infraFieldset form-control">
                 <legend class="infraLegend">&nbsp;Demanda&nbsp;</legend>
+
+                <!--TIPO DE CONTROLE DE DEMANDAS-->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="divTipoControleDemanda">
+                    <?php if ($bolExibirSelectTipoControle) { ?>
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding-left: 0px !important;">
+                            <label id="lblTipoControleDemanda" for="selTipoControleDemanda" class="infraLabelObrigatorio">
+                                Tipo de Controle de Demandas:
+                            </label>
+                            <select id="selTipoControleDemanda" class="infraSelect mb-4 w-100"<?= $bolTipoControleTravado ? ' disabled="disabled"' : '' ?>
+                                    onchange="carregarConfiguracoesGrupoParametrizacao(this.value);">
+                                <?= $strItensSelTipoControleDemanda ?>
+                            </select>
+                        </div>
+                    <?php } ?>
+                        <div id="divMdRiAvisoGrupoParam" class="md-ri-aviso-gp" style="display:none"></div>
+                    <?php if (!$bolEdicaoDemandaExterna && trim((string) $strErroTipoControleDemanda) !== '') { ?>
+                        <div class="md-ri-aviso-gp"><b>Atenção:</b> <?= PaginaSEI::tratarHTML((string) $strErroTipoControleDemanda) ?></div>
+                    <?php } ?>
+                    </div>
+                </div>
+                <!--FIM TIPO DE CONTROLE DE DEMANDAS-->
+
+                <!-- Campos que dependem das parametrizacoes do Tipo de Controle escolhido -->
+                <div id="divMdRiDemandaCampos"<?= $bolExibirFormularioInicial ? '' : ' style="display:none"' ?>>
+
                 <div class="row">
                     <!--NUMERO SEI-->
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" id="divNumeroSei">
@@ -17,13 +43,13 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                             Número SEI:
                         </label>
                         <div class="input-group mb-4">
-                            <input type="text" id="txtNumeroSei" name="txtNumeroSei" class="infraText "
+                            <input type="text" id="txtNumeroSei" name="txtNumeroSei" class="infraText w-85"
                                    onkeyup="infraMascaraNumero(this, event, 100);" maxlength="100"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                    value="<?= $txtNumeroSei ?>"/>
 
                             <button type="button" accesskey="V" id="btnValidar" onclick="validarNumeroSEI()"
-                                    class="infraButton">
+                                    class="infraButton w-15 ml-0 pl-1 pr-1">
                                 <span class="infraTeclaAtalho">V</span>alidar
                             </button>
                         </div>
@@ -33,16 +59,16 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                     <!--TIPO-->
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" id="divTipo">
                         <label id="lblTipo" for="txtTipo" accesskey="f" class="infraLabelObrigatorio">
-                            Tipo:
+                            Tipo do Documento:
                         </label>
                         <div class="input-group mb-3">
-                            <input type="text" id="txtTipo" name="txtTipo" class="infraText "
+                            <input type="text" id="txtTipo" name="txtTipo" class="infraText w-85"
                                    readonly="readonly"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>"
                                    value="<?= $txtTipo ?>"/>
 
                             <button type="button" id="btnAdicionar" onclick="adicionarDocumento()"
-                                    class="infraButton" style="display: none">
+                                    class="infraButton w-15 ml-0 pl-1 pr-1" style="display: none">
                                 Adicionar
                             </button>
                         </div>
@@ -77,6 +103,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                         <input type="hidden" id="hdnDataDocumento"
                                value="<?= $hdnDataGeracao ?>"/>
                         <input type="hidden" name="hdnIdDocumento" id="hdnIdDocumento" value="<?= $hdnIdDocumento ?>"/>
+						<input type="hidden" name="hdnNumeroSeiPrefill" id="hdnNumeroSeiPrefill" value="<?= $txtNumeroSei ?>"/>
 
                         <!--FIM TABELA DEMANDA-->
                     </div>
@@ -90,7 +117,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                         </label>
                         <div class="bloco input-group mb-3">
                             <input type="text" id="txtNumeroOrgaoDemandante"
-                                   class="infraText "
+                                   class="infraText w-100" autocomplete="off"
                                    onkeypress="maskNumOrgaoDemandante(this,event,50)" maxlength="50"
                                    tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>" value=""/>
 
@@ -104,7 +131,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                                class="infraLabelOpcional">Tipo de Processo no Órgão Demandante:</label>
                         <div class="bloco input-group mb-3">
                             <select id="selTipoProcessoOrgaoDemandante"
-                                    class="infraSelect form-select"
+                                    class="infraSelect form-select" autocomplete="off"
                                     tabindex="<?= PaginaSEI::getInstance()->getProxTabDados() ?>">
                                 <?= $strSelectTipoProcessoDemandante ?>
 
@@ -123,7 +150,7 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="divTableOrgaoDemandante">
                         <!--TABELA DEMANDA-->
-                        <table class="infraTable table" summary="Orgão Demandante" id="tbOrgaoDemandante"
+                        <table class="infraTable table" summary="Órgão Demandante" id="tbOrgaoDemandante"
                                style="<?php echo $strGridTipoProcesso == '' ? 'display:none' : '' ?>">
 
                             <caption class="infraCaption" style="display: none"> &nbsp;</caption>
@@ -145,6 +172,8 @@ $strSelectTipoProcessoDemandante = MdRiTipoProcessoINT::montarSelectTipoProcesso
                         <!--FIM TABELA DEMANDA-->
                     </div>
                 </div>
+
+                </div><!-- divMdRiDemandaCampos -->
             </fieldset>
             <!--FIELDSET FIM DEMANDA-->
         </div>

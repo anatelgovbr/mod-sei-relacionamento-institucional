@@ -19,7 +19,12 @@
         {
             return BancoSEI::getInstance();
         }
-        
+
+        public static function getInstance(): self
+        {
+            return new MdRiClassificacaoTemaRN();
+        }
+
         protected function cadastrarControlado(MdRiClassificacaoTemaDTO $objClassificacaoTemaRelacionamentoInstitucionalDTO)
         {
 
@@ -44,10 +49,10 @@
                 return $objRetorno;
 
             } catch (Exception $e) {
-                throw new InfraException ('Erro cadastrando a Classificação do Tema do Relacionamento Institucional.', $e);
+                throw new InfraException ('Erro cadastrando a Classificação do Tema do Controle de Demandas.', $e);
             }
         }
-        
+
         private function _validarStrClassificacaoTema(MdRiClassificacaoTemaDTO $objClassificacaoTemaRelacionamentoInstitucionalDTO, InfraException $objInfraException)
         {
 
@@ -58,18 +63,13 @@
 
             $objClassificacaoTemaRelacionamentoInstitucionalDTO2 = new MdRiClassificacaoTemaDTO ();
             $classTema                                           = trim($objClassificacaoTemaRelacionamentoInstitucionalDTO->getStrClassificacaoTema());
+            $idTipoControleDemanda = trim($objClassificacaoTemaRelacionamentoInstitucionalDTO->getNumIdTipoControleDemanda());
             $objClassificacaoTemaRelacionamentoInstitucionalDTO2->setStrClassificacaoTema($classTema);
-
+            $objClassificacaoTemaRelacionamentoInstitucionalDTO2->setNumIdTipoControleDemanda($idTipoControleDemanda);
 
             // Valida Quantidade de Caracteres
             if (strlen($objClassificacaoTemaRelacionamentoInstitucionalDTO->getStrClassificacaoTema()) > 70) {
                 $objInfraException->adicionarValidacao('Nome possui tamanho superior a 70 caracteres.');
-            }
-
-
-            //Validação de Subtemas Associados
-            if (count($objClassificacaoTemaRelacionamentoInstitucionalDTO->getArrObjRelSubtemaDTO()) == 0) {
-                $objInfraException->adicionarValidacao('Subtemas associados não informados.');
             }
 
             // VALIDACAO A SER EXECUTADA NA INSERÇAO DE NOVOS REGISTROS
@@ -127,7 +127,7 @@
             }
         }
 
-        private function _salvarRelacionamentosAlteracao($arrAdd = array(), $alteracao = false, $idClass )
+        private function _salvarRelacionamentosAlteracao($idClass, $arrAdd = [], $alteracao = false)
         {
 
             if (count($arrAdd) > 0) {
@@ -173,11 +173,11 @@
 
                 // Auditoria
             } catch (Exception $e) {
-                throw new InfraException ('Erro excluindo a Classificação do Tema do Relacionamento Institucional.', $e);
+                throw new InfraException ('Erro excluindo a Classificação do Tema do Controle de Demandas.', $e);
             }
         }
 
-   
+
         protected function alterarControlado($objClassificacaoTemaRelacionamentoInstitucionalDTO)
         {
 
@@ -207,7 +207,7 @@
 
 
                 $objRelClassTemaSubtemaRN->excluirRelacionamentos($objRelClassTemaSubtemaDTO, true, $arrExcluidos);
-                $this->_salvarRelacionamentosAlteracao($arrAdicionados, true, $objClassificacaoTemaRelacionamentoInstitucionalDTO->getNumIdClassificacaoTemaRelacionamentoInstitucional());
+                $this->_salvarRelacionamentosAlteracao($objClassificacaoTemaRelacionamentoInstitucionalDTO->getNumIdClassificacaoTemaRelacionamentoInstitucional(), $arrAdicionados, true);
 
                 $objClassificacaoTemaRelacionamentoInstitucionalBD = new MdRiClassificacaoTemaBD ($this->getObjInfraIBanco());
                 $objClassificacaoTemaRelacionamentoInstitucionalBD->alterar($objClassificacaoTemaRelacionamentoInstitucionalDTO);
@@ -215,14 +215,14 @@
 
                 // Auditoria
             } catch (Exception $e) {
-                throw new InfraException ('Erro alterando a Classificação do Tema do Relacionamento Institucional.', $e);
+                throw new InfraException ('Erro alterando a Classificação do Tema do Controle de Demandas.', $e);
             }
         }
 
         private function _retornaArrTemasAtuais($objClassTemaRIDTO){
             $arrClassTemaSubDTO = $objClassTemaRIDTO->getArrObjRelSubtemaDTO();
 
-            $arrSubtemasAfter = array();
+            $arrSubtemasAfter = [];
 
             if (count($arrClassTemaSubDTO) > 0) {
                 foreach ($arrClassTemaSubDTO as $key => $objRel) {
@@ -235,7 +235,7 @@
         }
 
         private function _retornaArrTemasSalvos($objClassTemaRIDTO){
-            $arrSubtemaBefore = array();
+            $arrSubtemaBefore = [];
             $objRelClassTemaSubtemaRN = new MdRiRelClassificacaoTemaSubtemaRN();
             $objRelClassTemaSubtemaDTO = new MdRiRelClassificacaoTemaSubtemaDTO();
             $objRelClassTemaSubtemaDTO->setNumIdClassificacaoTema($objClassTemaRIDTO->getNumIdClassificacaoTemaRelacionamentoInstitucional());
@@ -251,7 +251,7 @@
             return $arrSubtemaBefore;
         }
 
-      
+
         protected function consultarConectado($objClassificacaoTemaRelacionamentoInstitucionalDTO)
         {
             try {
@@ -262,11 +262,11 @@
 
                 return $ret;
             } catch (Exception $e) {
-                throw new InfraException('Erro consultando a Classificação do Tema do Relacionamento Institucional.', $e);
+                throw new InfraException('Erro consultando a Classificação do Tema do Controle de Demandas.', $e);
             }
         }
 
-      
+
         protected function listarConectado(MdRiClassificacaoTemaDTO $objClassificacaoTemaRelacionamentoInstitucionalDTO)
         {
 
@@ -277,7 +277,7 @@
                 return $ret;
 
             } catch (Exception $e) {
-                throw new InfraException ('Erro listando a Classificação do Tema do Relacionamento Institucional.', $e);
+                throw new InfraException ('Erro listando a Classificação do Tema do Controle de Demandas.', $e);
             }
         }
     }

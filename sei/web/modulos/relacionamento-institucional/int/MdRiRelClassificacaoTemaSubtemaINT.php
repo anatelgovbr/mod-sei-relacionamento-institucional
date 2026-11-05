@@ -4,7 +4,6 @@
 
     class MdRiRelClassificacaoTemaSubtemaINT extends InfraINT
     {
-
         public static function validarExclusaoRelClassSubt($idClassTema, $idSubtema)
         {
             $objRelCadClassTemaDTO = new MdRiRelCadastroClassificacaoTemaDTO();
@@ -17,7 +16,7 @@
             if($count > 0)
             {
                 $xml .= '<Msg>';
-                $xml .= 'A exclusão do Tema não é permitida pois, já existem processos de relacionamento institucional vinculados.';
+                $xml .= 'A exclusão do Tema não é permitida pois, já existem processos de controle de demandas vinculados.';
                 $xml .= '</Msg>';
             }
 
@@ -25,7 +24,4 @@
 
             return $xml;
         }
-
-       
-
     }

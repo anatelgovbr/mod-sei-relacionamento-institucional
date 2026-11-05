@@ -1,20 +1,11 @@
-<?
-/**
- * ANATEL
- *
- * 15/08/2016 - criado por jaqueline.mendes@castgroup.com.br - CASTGROUP
- *
- */
-
+<?php
 
 try {
     require_once dirname(__FILE__) . '/../../SEI.php';
 
     session_start();
 
-
     SessaoSEI::getInstance()->validarLink();
-
     PaginaSEI::getInstance()->prepararSelecao('md_ri_tipo_processo_selecionar');
 
     SessaoSEI::getInstance()->validarPermissao($_GET['acao']);
@@ -23,7 +14,7 @@ try {
         case 'md_ri_tipo_processo_excluir':
             try {
                 $arrStrIds = PaginaSEI::getInstance()->getArrStrItensSelecionados();
-                $arrObjTpProcessoRIDTO = array();
+                $arrObjTpProcessoRIDTO = [];
                 for ($i = 0; $i < count($arrStrIds); $i++) {
                     $objTpProcessoRIDTO = new MdRiTipoProcessoDTO();
                     $objTpProcessoRIDTO->setNumIdTipoProcessoRelacionamentoInstitucional($arrStrIds[$i]);
@@ -42,7 +33,7 @@ try {
         case 'md_ri_tipo_processo_desativar':
             try {
                 $arrStrIds = PaginaSEI::getInstance()->getArrStrItensSelecionados();
-                $arrObjTpProcessoRIDTO = array();
+                $arrObjTpProcessoRIDTO = [];
                 for ($i = 0; $i < count($arrStrIds); $i++) {
                     $objTpProcessoRIDTO = new MdRiTipoProcessoDTO();
                     $objTpProcessoRIDTO->retTodos();
@@ -65,7 +56,7 @@ try {
 
                 try {
                     $arrStrIds = PaginaSEI::getInstance()->getArrStrItensSelecionados();
-                    $arrObjTpProcessoRIDTO = array();
+                    $arrObjTpProcessoRIDTO = [];
                     for ($i = 0; $i < count($arrStrIds); $i++) {
                         $objTpProcessoRIDTO = new MdRiTipoProcessoDTO();
                         $objTpProcessoRIDTO->retTodos();
@@ -74,7 +65,7 @@ try {
                     }
                     $objTpProcessoRIRN = new MdRiTipoProcessoRN();
                     $objTpProcessoRIRN->reativar($arrObjTpProcessoRIDTO);
-                    PaginaSEI::getInstance()->adicionarMensagem('Operação realizada com sucesso.');
+                    //PaginaSEI::getInstance()->adicionarMensagem('Operação realizada com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
                 } catch (Exception $e) {
                     PaginaSEI::getInstance()->processarExcecao($e);
                 }
@@ -119,7 +110,7 @@ try {
 
     }
 
-    $arrComandos = array();
+    $arrComandos = [];
 
     $strLinkPesquisar = PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=' . $_GET['acao'] . '&acao_origem=' . $_GET['acao']));
     $arrComandos[] = '<button type="button" accesskey="P" id="btnPesquisar" value="Pesquisar" onclick="filtrarTipoProcesso();" class="infraButton"><span class="infraTeclaAtalho">P</span>esquisar</button>';
@@ -157,28 +148,16 @@ try {
 
     if ($numRegistros > 0) {
 
-        $bolCheck = false;
+        $bolAcaoSelecionar = ($_GET['acao'] == 'md_ri_tipo_processo_selecionar');
 
-        if ($_GET['acao'] == 'md_ri_tipo_processo_selecionar') {
-            $bolAcaoCadastrar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_cadastrar');;
-            $bolAcaoReativar = false;
-            $bolAcaoConsultar = false;
-            $bolAcaoAlterar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_alterar');
-            $bolAcaoImprimir = false;
-            $bolAcaoExcluir = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_excluir');
-            $bolAcaoDesativar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_desativar');
-            $bolAcaoImprimir = false;
-            $bolCheck = true;
+        $bolAcaoCadastrar = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_cadastrar');
+        $bolAcaoReativar  = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_reativar');
+        $bolAcaoConsultar = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_consultar');
+        $bolAcaoAlterar   = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_alterar');
+        $bolAcaoExcluir   = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_excluir');
+        $bolAcaoDesativar = !$bolAcaoSelecionar && SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_desativar');
 
-        } else {
-            $bolAcaoReativar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_reativar');
-            $bolAcaoConsultar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_consultar');
-            $bolAcaoAlterar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_alterar');
-            $bolAcaoImprimir = true;
-            $bolAcaoExcluir = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_excluir');
-            $bolAcaoDesativar = SessaoSEI::getInstance()->verificarPermissao('md_ri_tipo_processo_desativar');
-        }
-
+        $bolCheck = true; // Mantém true para o checkbox de transporte múltiplo
 
         if ($_GET['acao'] == 'md_ri_tipo_processo_selecionar') {
 
@@ -193,7 +172,7 @@ try {
             }
 
             if ($bolAcaoExcluirTopo) {
-                $bolCheck = true;
+                $bolCheck = false;
                 $strLinkExcluir = SessaoSEI::getInstance()->assinarLink('controlador.php?acao=md_ri_tipo_processo_excluir&acao_origem=' . $_GET['acao']);
             }
 
@@ -305,10 +284,6 @@ try {
         $strResultado .= '</table>';
     }
 
-    if ($bolAcaoImprimir) {
-        $arrComandos[] = '<button type="button" accesskey="I" id="btnImprimir" value="" onclick="infraImprimirTabela();" class="infraButton"><span class="infraTeclaAtalho">I</span>mprimir</button>';
-    }
-
     if ($_GET['acao'] == 'md_ri_tipo_processo_selecionar') {
         $arrComandos[] = '<button type="button" accesskey="C" id="btnFecharSelecao" value="Fechar" onclick="window.close();" class="infraButton">Fe<span class="infraTeclaAtalho">c</span>har</button>';
     } else {
@@ -337,7 +312,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
     <form id="frmProcessoRILista" method="post"
           action="<?= PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=' . $_GET['acao'] . '&acao_origem=' . $_GET['acao'])) ?>">
 
-        <?
+        <?php
         PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
         ?>
         <div class="row linha">
@@ -366,8 +341,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
             </div>
         </div>
     </form>
-<?
+<?php
+require_once('md_ri_tipo_processo_lista_js.php');
 PaginaSEI::getInstance()->fecharBody();
 PaginaSEI::getInstance()->fecharHtml();
-require_once('md_ri_tipo_processo_lista_js.php');
-?>

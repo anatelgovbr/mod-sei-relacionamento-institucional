@@ -18,7 +18,7 @@
 
     function acaoDesativar(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_subtema_selecionar') {
@@ -73,7 +73,7 @@
 
     function acaoExcluir(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_subtema_selecionar') {
@@ -109,6 +109,42 @@
 
         if (confirm("Confirma exclusão do Subtema \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
+            document.getElementById('frmSubtemaRILista').action = '<?=$strLinkExcluir?>';
+            document.getElementById('frmSubtemaRILista').submit();
+        }
+    }
+
+    function acaoDesativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma desativação dos Subtemas selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmSubtemaRILista').action = '<?=$strLinkDesativar?>';
+            document.getElementById('frmSubtemaRILista').submit();
+        }
+    }
+
+    function acaoReativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma reativação dos Subtemas selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmSubtemaRILista').action = '<?=$strLinkReativar?>';
+            document.getElementById('frmSubtemaRILista').submit();
+        }
+    }
+
+    function acaoExclusaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma exclusão dos Subtemas selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
             document.getElementById('frmSubtemaRILista').action = '<?=$strLinkExcluir?>';
             document.getElementById('frmSubtemaRILista').submit();
         }

@@ -17,7 +17,7 @@
 
     function acaoDesativar(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_tipo_reiteracao_selecionar') {
@@ -51,7 +51,7 @@
 
         }
 
-        if (confirm("Confirma desativação do Tipo de Reiteração \"" + desc + "\"?")) {
+        if (confirm("Confirma desativação do Tipo de Solicitação \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
             document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkDesativar?>';
             document.getElementById('frmTipoReiteracaoRILista').submit();
@@ -59,7 +59,7 @@
     }
 
     function acaoReativar(id, desc) {
-        if (confirm("Confirma reativação do Tipo de Reiteração \"" + desc + "\"?")) {
+        if (confirm("Confirma reativação do Tipo de Solicitação \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
             document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkReativar?>';
             document.getElementById('frmTipoReiteracaoRILista').submit();
@@ -68,7 +68,7 @@
 
     function acaoExcluir(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_tipo_reiteracao_selecionar') {
@@ -102,8 +102,44 @@
 
         }
 
-        if (confirm("Confirma exclusão do Tipo de Reiteração \"" + desc + "\"?")) {
+        if (confirm("Confirma exclusão do Tipo de Solicitação \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
+            document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkExcluir?>';
+            document.getElementById('frmTipoReiteracaoRILista').submit();
+        }
+    }
+
+    function acaoDesativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma desativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkDesativar?>';
+            document.getElementById('frmTipoReiteracaoRILista').submit();
+        }
+    }
+
+    function acaoReativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma reativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkReativar?>';
+            document.getElementById('frmTipoReiteracaoRILista').submit();
+        }
+    }
+
+    function acaoExclusaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma exclusão dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
             document.getElementById('frmTipoReiteracaoRILista').action = '<?=$strLinkExcluir?>';
             document.getElementById('frmTipoReiteracaoRILista').submit();
         }

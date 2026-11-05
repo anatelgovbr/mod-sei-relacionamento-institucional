@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
     function inicializar() {
-        if ('<?=$_GET['acao']?>' == 'tipo_controle_relacionamento_institucional_selecionar') {
+        if ('<?php echo $_GET['acao']; ?>' == 'md_ri_tipo_controle_selecionar') {
             infraReceberSelecao();
             document.getElementById('btnFecharSelecao').focus();
         } else {
@@ -16,16 +16,13 @@
     }
 
     function acaoDesativar(id, desc) {
+        var acao = '<?php echo $_GET['acao']; ?>';
 
-        <? $strAcao = $_GET['acao']; ?>
-        var acao = '<?=$strAcao?>';
-
-        if (acao == 'tipo_controle_relacionamento_institucional_selecionar') {
+        if (acao == 'md_ri_tipo_controle_selecionar') {
 
             /*
-            Na linha de cada registro, na ação de Desativar e Excluir , aplicar regra adicional que checa se o item foi previamente selecionado. 
-            Se tiver sido, exibir a seguinte:    "Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a
-            operação, antes retorne à tela anterior para remover a seleção."
+            Na linha de cada registro, na ação de Desativar e Excluir, aplicar regra adicional que checa se o item foi previamente selecionado
+            Se tiver sido, exibir: "Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção"
             */
 
             var arrElem = document.getElementsByClassName("infraCheckbox");
@@ -42,7 +39,7 @@
                     var valorDisabled = item.disabled;
 
                     if ((valorDisabled || valorDisabled == 'disabled') && (valorMarcado || valorMarcado == 'checked')) {
-                        alert("Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção.");
+                        alert("Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção");
                         return;
                     }
                 }
@@ -51,7 +48,7 @@
 
         }
 
-        if (confirm("Confirma desativação do Tipo de Controle da Demanda \"" + desc + "\"?")) {
+        if (confirm("Confirma desativação do Tipo de Demandas \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
             document.getElementById('frmTpControleRILista').action = '<?=$strLinkDesativar?>';
             document.getElementById('frmTpControleRILista').submit();
@@ -59,7 +56,7 @@
     }
 
     function acaoReativar(id, desc) {
-        if (confirm("Confirma reativação do Tipo de Controle da Demanda \"" + desc + "\"?")) {
+        if (confirm("Confirma reativação do Tipo de Demandas \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
             document.getElementById('frmTpControleRILista').action = '<?=$strLinkReativar?>';
             document.getElementById('frmTpControleRILista').submit();
@@ -67,16 +64,13 @@
     }
 
     function acaoExcluir(id, desc) {
+        var acao = '<?php echo $_GET['acao']; ?>';
 
-        <? $strAcao = $_GET['acao']; ?>
-        var acao = '<?=$strAcao?>';
-
-        if (acao == 'tipo_controle_relacionamento_institucional_selecionar') {
+        if (acao == 'md_ri_tipo_controle_selecionar') {
 
             /*
-            Na linha de cada registro, na ação de Desativar e Excluir , aplicar regra adicional que checa se o item foi previamente selecionado. 
-            Se tiver sido, exibir a seguinte:    "Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a
-            operação, antes retorne à tela anterior para remover a seleção."
+            Na linha de cada registro, na ação de Desativar e Excluir, aplicar regra adicional que checa se o item foi previamente selecionado
+            Se tiver sido, exibir: "Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção"
             */
 
             var arrElem = document.getElementsByClassName("infraCheckbox");
@@ -93,7 +87,7 @@
                     var valorDisabled = item.disabled;
 
                     if ((valorDisabled || valorDisabled == 'disabled') && (valorMarcado || valorMarcado == 'checked')) {
-                        alert("Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção.");
+                        alert("Não é permitido desativar ou excluir item já selecionado. Caso deseje efetivar a operação, antes retorne à tela anterior para remover a seleção");
                         return;
                     }
                 }
@@ -102,8 +96,44 @@
 
         }
 
-        if (confirm("Confirma exclusão do Tipo de Controle da Demanda \"" + desc + "\"?")) {
+        if (confirm("Confirma exclusão do Tipo de Demandas \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
+            document.getElementById('frmTpControleRILista').action = '<?=$strLinkExcluir?>';
+            document.getElementById('frmTpControleRILista').submit();
+        }
+    }
+
+    function acaoDesativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma desativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTpControleRILista').action = '<?=$strLinkDesativar?>';
+            document.getElementById('frmTpControleRILista').submit();
+        }
+    }
+
+    function acaoReativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma reativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTpControleRILista').action = '<?=$strLinkReativar?>';
+            document.getElementById('frmTpControleRILista').submit();
+        }
+    }
+
+    function acaoExclusaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma exclusão dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
             document.getElementById('frmTpControleRILista').action = '<?=$strLinkExcluir?>';
             document.getElementById('frmTpControleRILista').submit();
         }

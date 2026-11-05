@@ -17,7 +17,7 @@
 
     function acaoDesativar(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_tipo_resposta_selecionar') {
@@ -69,7 +69,7 @@
 
     function acaoExcluir(id, desc) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_tipo_resposta_selecionar') {
@@ -105,6 +105,42 @@
 
         if (confirm("Confirma exclusão do Tipo de Resposta \"" + desc + "\"?")) {
             document.getElementById('hdnInfraItemId').value = id;
+            document.getElementById('frmTipoRespostaRILista').action = '<?=$strLinkExcluir?>';
+            document.getElementById('frmTipoRespostaRILista').submit();
+        }
+    }
+
+    function acaoDesativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma desativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTipoRespostaRILista').action = '<?=$strLinkDesativar?>';
+            document.getElementById('frmTipoRespostaRILista').submit();
+        }
+    }
+
+    function acaoReativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma reativação dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('frmTipoRespostaRILista').action = '<?=$strLinkReativar?>';
+            document.getElementById('frmTipoRespostaRILista').submit();
+        }
+    }
+
+    function acaoExclusaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum item selecionado.');
+            return;
+        }
+        if (confirm('Confirma exclusão dos itens selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
             document.getElementById('frmTipoRespostaRILista').action = '<?=$strLinkExcluir?>';
             document.getElementById('frmTipoRespostaRILista').submit();
         }

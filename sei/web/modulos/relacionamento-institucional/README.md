@@ -1,7 +1,9 @@
-# Módulo de Relacionamento Institucional
+# Módulo de Controle de Demandas
+
+A partir da versão 3.0.0, o antigo Módulo de Relacionamento Institucional passa a se chamar Módulo de Controle de Demandas. A pasta "/sei/web/modulos/relacionamento-institucional", a classe "RelacionamentoInstitucionalIntegracao", os nomes dos scripts de banco e este repositório continuam com os nomes anteriores.
 
 ## Requisitos
-- Requisito Mínimo é o SEI 4.1.5 instalado/atualizado - Não é compatível com versões anteriores e em versões mais recentes é necessário conferir antes se possui compatibilidade.
+- Requisito Mínimo é o SEI 5.0.3 instalado/atualizado - Não é compatível com versões anteriores e em versões mais recentes é necessário conferir antes se possui compatibilidade.
    - Verificar valor da constante de versão no arquivo /sei/web/SEI.php ou, após logado no sistema, parando o mouse sobre a logo do SEI no canto superior esquerdo.
 - Antes de executar os scripts de instalação/atualização, o usuário de acesso aos bancos de dados do SEI e do SIP, constante nos arquivos ConfiguracaoSEI.php e ConfiguracaoSip.php, deverá ter permissão de acesso total ao banco de dados, permitindo, por exemplo, criação e exclusão de tabelas.
 - Os códigos-fonte do Módulo podem ser baixados a partir do link a seguir, devendo sempre utilizar a versão mais recente: [https://github.com/anatelgovbr/mod-sei-relacionamento-institucional/releases](https://github.com/anatelgovbr/mod-sei-relacionamento-institucional/releases "Clique e acesse")
@@ -30,22 +32,32 @@
 
 		/usr/bin/php -c /etc/php.ini /opt/sei/scripts/sei_atualizar_versao_modulo_relacionamento_institucional.php 2>&1 > atualizacao_modulo_relacionamento_institucional_sei.log
 
-7. **IMPORTANTE**: Na execução dos dois scripts de banco acima, ao final deve constar o termo "FIM", o "TEMPO TOTAL DE EXECUÇÃO" e a informação de que a instalação/atualização foi realizada com sucesso na base de dados correspondente (SEM ERROS). Do contrário, o script não foi executado até o final e algum dado não foi inserido/atualizado no respectivo banco de dados, devendo recuperar o backup do banco e repetir o procedimento.
-   - Constando ao final da execução do script as informações indicadas, pode logar no SEI e SIP e verificar no menu **Infra > Parâmetros** dos dois sistemas se consta o parâmetro "VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL" com o valor da última versão do módulo.
-8. Em caso de erro durante a execução do script, verificar (lendo as mensagens de erro e no menu Infra > Log do SEI e do SIP) se a causa é algum problema na infraestrutura local ou ajustes indevidos na estrutura de banco do core do sistema. Neste caso, após a correção, deve recuperar o backup do banco pertinente e repetir o procedimento, especialmente a execução dos scripts de banco indicados acima.
-9. Após a execução com sucesso, com um usuário com permissão de Administrador no SEI, seguir os passos dispostos no tópico "Orientações Negociais" mais abaixo.
+7. **Somente na atualização a partir da versão 2.x do Módulo**, logo após o script do item anterior e na mesma janela de manutenção, rodar o script de migração de dados "/sei/scripts/sei_script_migracao_dados_modulo_ri_3_0_0.php" em linha de comando no servidor do SEI. Ele converte os dados da versão anterior para a nova estrutura, e sem ele os cadastros já existentes não são exibidos corretamente. Ao final do log deverá ser informado "VALIDAÇÃO FINAL CONCLUÍDA COM SUCESSO". Em instalação nova, a migração não é necessária. Exemplo de comando de execução:
+
+		/usr/bin/php -c /etc/php.ini /opt/sei/scripts/sei_script_migracao_dados_modulo_ri_3_0_0.php 2>&1 > migracao_dados_controle_demandas_sei.log
+
+   - O script de migração só funciona depois do script do SEI do item anterior. Se alguma tabela da nova estrutura não existir, ele para sem gravar dados e informa a tabela que falta.
+   - O script de migração pode ser executado novamente com segurança: cada fase calcula o que ainda falta migrar, e uma execução interrompida continua de onde parou.
+   - O tempo de execução depende da quantidade de cadastros e da latência entre o servidor e o banco de dados. Execute o script no servidor do SEI, na mesma rede do banco, e não por túnel ou conexão remota.
+   - As tabelas legadas de Critérios para Cadastro e de local (UF, Cidade e Localidade) são a origem da migração e foram mantidas nesta versão. Não exclua essas tabelas manualmente.
+8. **IMPORTANTE**: Na execução dos scripts de banco do SIP e do SEI acima, ao final deve constar o termo "FIM", o "TEMPO TOTAL DE EXECUÇÃO" e a informação de que a instalação/atualização foi realizada com sucesso na base de dados correspondente (SEM ERROS). Do contrário, o script não foi executado até o final e algum dado não foi inserido/atualizado no respectivo banco de dados, devendo recuperar o backup do banco e repetir o procedimento.
+   - Constando ao final da execução do script as informações indicadas, pode logar no SEI e SIP e verificar no menu **Infra > Parâmetros** dos dois sistemas se consta o parâmetro "VERSAO_MODULO_CONTROLE_DE_DEMANDAS" com o valor da última versão do módulo.
+   - Na atualização a partir da versão 2.x, os scripts substituem o parâmetro antigo "VERSAO_MODULO_RELACIONAMENTO_INSTITUCIONAL" pelo novo e excluem o antigo automaticamente.
+9. Em caso de erro durante a execução do script, verificar (lendo as mensagens de erro e no menu Infra > Log do SEI e do SIP) se a causa é algum problema na infraestrutura local ou ajustes indevidos na estrutura de banco do core do sistema. Neste caso, após a correção, deve recuperar o backup do banco pertinente e repetir o procedimento, especialmente a execução dos scripts de banco indicados acima.
+10. Após a execução com sucesso, com um usuário com permissão de Administrador no SEI, seguir os passos dispostos no tópico "Orientações Negociais" mais abaixo.
 	
 ## Orientações Negociais
-1. Imediatamente após a instalação com sucesso, com usuário com permissão de "Administrador" do SEI, acessar os menus de administração do Módulo pelo seguinte caminho: Administração > Relacionamento Institucional.
-2. O script de banco do SIP já cria todos os Recursos e Menus e os associam automaticamente ao Perfil "Básico" ou ao Perfil "Administrador".
-	- Caso tenha interesse em descentralizar a Administração do Módulo para a área responsável pelo Relacionamento Institucional no órgão (coordenação de respostas às Demandas Externas de outros órgãos ou instituições), sugerimos que crie o Perfil "Administrador - Relacionamento Institucional" e vincule a ele os mesmos recursos e menus vinculados ao Perfil "Administrador" **que inicie por "md_ri_"**.
+1. Imediatamente após a instalação com sucesso, com usuário com permissão de "Administrador" do SEI, acessar os menus de administração do Módulo pelo seguinte caminho: Administração > Controle de Demandas.
+   - Na atualização a partir da versão 2.x, revisar o Tipo de Controle de Demandas "Controle de demandas Externo", o Grupo de Parametrização "Parametrização Padrão para Exibição de Campos" e as Situações criados pelo script de migração de dados.
+2. O script de banco do SIP já cria todos os Recursos e Menus e os associam automaticamente ao Perfil "Básico" ou ao Perfil "Administrador", e cria o Perfil "Gestor de Controle de Demandas".
+	- Caso tenha interesse em descentralizar a Administração do Módulo para a área responsável pelo Controle de Demandas no órgão (coordenação de respostas às Demandas Externas de outros órgãos ou instituições), vincule os usuários dessa área ao Perfil "Gestor de Controle de Demandas" e indique-os como gestores no Tipo de Controle de Demandas correspondente. O Gestor altera os Tipos de Controle de Demandas em que consta como gestor e as tabelas de apoio desses Tipos. Criar, excluir, desativar e reativar Tipos de Controle de Demandas continua exclusivo do Perfil "Administrador".
 	- Independente da criação de outros Perfis, os recursos indicados para o Perfil "Básico" ou "Administrador" devem manter correspondência com os Perfis dos Usuários internos que utilizarão o Módulo e dos Usuários Administradores do Módulo.
 	- Tão quanto ocorre com as atualizações do SEI, versões futuras deste Módulo continuarão a atualizar e criar Recursos e associá-los apenas aos Perfis "Básico" e "Administrador".
 	- Todos os recursos do Módulo iniciam pelo sufix **"md_ri_"**.
 3. Acesse o [Manual de Administração](https://docs.google.com/document/d/e/2PACX-1vT5UelbUpJbVYFVlk0KnU9Jfc_l2igsvkW_G4wEceDIf7rQMDzhVLPTF5vFZ5HivP1qqVLg4YuIdCev/pub) do módulo.
 4. Acesse o [Manual do Usuário](https://docs.google.com/document/d/e/2PACX-1vRBe72KVSlCzoJP617O3-nwwp34kVoVL9zgk227s6e1_zZLno9obfLSIcUJPjxslDfn3e1kafNzqCCL/pub) do módulo.
 5. **IMPORTANTE**:
-    - Este Módulo tem por finalidade adicionar aos Processos afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo etc) telas para o Cadastro da Demanda, de suas Respostas e de suas possíveis Reiterações, agregando aos mencionados processos dados para controle das demandas institucionais dentro do SEI.
+    - Este Módulo tem por finalidade adicionar aos Processos afetos a Relacionamento Institucional (Demanda Externa, Acompanhamento Legislativo etc) telas para o Cadastro da Demanda, de suas Respostas e de suas possíveis Solicitações, agregando aos mencionados processos dados para controle das demandas institucionais dentro do SEI.
     - Para o adequado uso do Módulo o órgão já deve possuir organizado seu processo afeto a Relacionamento Institucional, com processo mapeado, competências bem definidas e procedimentos estabelecidos, especialmente por meio do envolvimento da área que coordene o assunto como um todo dentro do órgão.
     - A falta do entendimento da finalidade do Módulo e baixa maturidade sobre o tratamento de demandas de Relacionamento Institucional poderá comprometer a qualidade do seu uso, pois o processo relacionado é mais importante do que qualquer ferramenta que lhe dê suporte.
     - Destacamos a necessidade do órgão que pretender utilizar este Módulo possuir ferramenta de _dashboards_ e relatório (BI), para construção de painéis sobre os dados que os Usuários preencherão em cada processo sob o controle do Módulo, com vistas a ter dados consolidados e sobre pendências afetos ao uso do Módulo.

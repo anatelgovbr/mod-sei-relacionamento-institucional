@@ -35,7 +35,7 @@
                 }
 
             } catch (Exception $e) {
-                throw new InfraException ('Erro ao salvar as Unidades da Reiteração.', $e);
+                throw new InfraException ('Erro ao salvar as Unidades da Solicitação.', $e);
             }
         }
 
@@ -46,7 +46,7 @@
 
                 return $objRelReitUnidBD->listar($objRelReitUnidadeDTO);
             } catch (Exception $e) {
-                throw new InfraException ('Erro ao listar as Unidades da Reiteração.', $e);
+                throw new InfraException ('Erro ao listar as Unidades da Solicitação.', $e);
             }
         }
 
@@ -57,7 +57,7 @@
 
                 return $objRelReitUnidBD->contar($objRelReitUnidadeDTO);
             } catch (Exception $e) {
-                throw new InfraException ('Erro contando as Unidades da Reiteração.', $e);
+                throw new InfraException ('Erro contando as Unidades da Solicitação.', $e);
             }
         }
 
@@ -70,7 +70,7 @@
                     $objRelReitUnidRelacionamentoInstitucionalBD->excluir($objRelReitUnidadeDTO);
                 }
             } catch (Exception $e) {
-                throw new InfraException ('Erro ao excluir as Unidades da Reiteração.', $e);
+                throw new InfraException ('Erro ao excluir as Unidades da Solicitação.', $e);
             }
         }
         

@@ -18,6 +18,11 @@
             return BancoSEI::getInstance();
         }
 
+        public static function getInstance(): self
+        {
+            return new MdRiServicoRN();
+        }
+
         protected function cadastrarControlado(MdRiServicoDTO $objServicoRelacionamentoInstitucionalDTO)
         {
             try {
@@ -167,5 +172,5 @@
                 $objInfraException->adicionarValidacao('A exclusão do serviço não é permitida, pois já existem registros vinculados.');
             }
         }
-
+ 
     }

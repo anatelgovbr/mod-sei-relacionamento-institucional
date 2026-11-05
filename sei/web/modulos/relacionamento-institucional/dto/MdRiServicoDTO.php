@@ -8,25 +8,16 @@
      */
     class MdRiServicoDTO extends InfraDTO
     {
-        public function getStrNomeTabela()
+        public function getStrNomeTabela(): string
         {
             return 'md_ri_servico';
         }
 
-        public function montar()
+        public function montar(): void
         {
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdServicoRI',
-                                           'id_md_ri_servico');
-
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_STR,
-                                           'Nome',
-                                           'nome');
-
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_STR,
-                                           'SinAtivo',
-                                           'sin_ativo');
-
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM, 'IdServicoRI', 'id_md_ri_servico');
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_STR, 'Nome', 'nome');
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_STR, 'SinAtivo', 'sin_ativo');
             $this->configurarPK('IdServicoRI', InfraDTO::$TIPO_PK_NATIVA);
         }
 
