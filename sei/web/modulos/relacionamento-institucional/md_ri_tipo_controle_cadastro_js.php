@@ -1,8 +1,8 @@
 <script type="text/javascript">
 function inicializar(){
-  if ('<?=$_GET['acao']?>'=='md_ri_tipo_controle_cadastrar'){
+  if ('<?php echo $_GET['acao']; ?>'=='md_ri_tipo_controle_cadastrar'){
     document.getElementById('txtNome').focus();
-  } else if ('<?=$_GET['acao']?>'=='md_ri_tipo_controle_consultar'){
+  } else if ('<?php echo $_GET['acao']; ?>'=='md_ri_tipo_controle_consultar'){
     infraDesabilitarCamposAreaDados();
   }else{
     document.getElementById('btnCancelar').focus();
@@ -12,7 +12,7 @@ function inicializar(){
 
 function validarCadastro() {
   if (infraTrim(document.getElementById('txtNome').value)=='') {
-    alert('Informe o Nome.');
+    alert('Informe o nome');
     document.getElementById('txtNome').focus();
     return false;
   }

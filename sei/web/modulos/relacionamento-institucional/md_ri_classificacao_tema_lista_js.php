@@ -19,7 +19,7 @@
 
     function acaoDesativar(id, desc, idSub) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_classificacao_tema_selecionar') {
@@ -76,7 +76,7 @@
 
     function acaoExcluir(id, desc, idSub) {
 
-        <? $strAcao = $_GET['acao']; ?>
+        <?php $strAcao = $_GET['acao']; ?>
         var acao = '<?=$strAcao?>';
 
         if (acao == 'md_ri_classificacao_tema_selecionar') {
@@ -113,6 +113,45 @@
         if (confirm("Confirma exclusão do Tema \"" + desc + "\"?")) {
             document.getElementById('hdnSubtemaSelect').value = idSub;
             document.getElementById('hdnInfraItemId').value = id;
+            document.getElementById('frmClassificacaoTemaRILista').action = '<?=$strLinkExcluir?>';
+            document.getElementById('frmClassificacaoTemaRILista').submit();
+        }
+    }
+
+    function acaoDesativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum vínculo Tema/Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma desativação dos vínculos Tema/Subtema selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('hdnSubtemaSelect').value = '';
+            document.getElementById('frmClassificacaoTemaRILista').action = '<?=$strLinkDesativar?>';
+            document.getElementById('frmClassificacaoTemaRILista').submit();
+        }
+    }
+
+    function acaoReativacaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum vínculo Tema/Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma reativação dos vínculos Tema/Subtema selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('hdnSubtemaSelect').value = '';
+            document.getElementById('frmClassificacaoTemaRILista').action = '<?=$strLinkReativar?>';
+            document.getElementById('frmClassificacaoTemaRILista').submit();
+        }
+    }
+
+    function acaoExclusaoMultipla() {
+        if (document.getElementById('hdnInfraItensSelecionados').value == '') {
+            alert('Nenhum vínculo Tema/Subtema selecionado.');
+            return;
+        }
+        if (confirm('Confirma exclusão dos vínculos Tema/Subtema selecionados?')) {
+            document.getElementById('hdnInfraItemId').value = '';
+            document.getElementById('hdnSubtemaSelect').value = '';
             document.getElementById('frmClassificacaoTemaRILista').action = '<?=$strLinkExcluir?>';
             document.getElementById('frmClassificacaoTemaRILista').submit();
         }

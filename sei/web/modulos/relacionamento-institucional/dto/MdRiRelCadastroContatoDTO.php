@@ -38,6 +38,11 @@
                                                       'c.nome',
                                                       'contato c');
 
+            $this->adicionarAtributoTabelaRelacionada(InfraDTO::$PREFIXO_STR,
+                                                      'SiglaContato',
+                                                      'c.sigla',
+                                                      'contato c');
+
         }
 
     }

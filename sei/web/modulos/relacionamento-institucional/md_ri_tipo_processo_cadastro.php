@@ -1,27 +1,16 @@
-<?
-/**
- * ANATEL
- *
- * 15/08/2016 - criado por jaqueline.mendes@castgroup.com.br - CAST GROUP
- *
- */
+<?php
 
 try {
     require_once dirname(__FILE__) . '/../../SEI.php';
 
     session_start();
-
     SessaoSEI::getInstance()->validarLink();
-
     PaginaSEI::getInstance()->verificarSelecao('md_ri_tipo_processo_selecionar');
-
     SessaoSEI::getInstance()->validarPermissao($_GET['acao']);
-
     $objTpProcessoRIDTO = new MdRiTipoProcessoDTO();
-
     $strDesabilitar = '';
 
-    $arrComandos = array();
+    $arrComandos = [];
 
     switch ($_GET['acao']) {
         case 'md_ri_tipo_processo_cadastrar':
@@ -38,7 +27,7 @@ try {
                 try {
                     $objTpProcessoRIRN = new MdRiTipoProcessoRN();
                     $objTpProcessoRIDTO = $objTpProcessoRIRN->cadastrar($objTpProcessoRIDTO);
-                    PaginaSEI::getInstance()->adicionarMensagem('Os dados cadastrados foram salvos com sucesso.');
+                    //PaginaSEI::getInstance()->adicionarMensagem('Os dados cadastrados foram salvos com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
                     header('Location: ' . SessaoSEI::getInstance()->assinarLink('controlador.php?id_tipo_processo_litigioso=' . $_POST['hdnIdTipoControleLitigioso'] . '&acao=' . PaginaSEI::getInstance()->getAcaoRetorno() . '&acao_origem=' . $_GET['acao'] . '&id_tipo_processo_ri=' . $objTpProcessoRIDTO->getNumIdTipoProcessoRelacionamentoInstitucional() . PaginaSEI::getInstance()->montarAncora($objTpProcessoRIDTO->getNumIdTipoProcessoRelacionamentoInstitucional())));
                     die;
                 } catch (Exception $e) {
@@ -76,7 +65,7 @@ try {
                 try {
                     $objTpProcessoRIRN = new MdRiTipoProcessoRN();
                     $objTpProcessoRIRN->alterar($objTpProcessoRIDTO);
-                    PaginaSEI::getInstance()->adicionarMensagem('Os dados foram alterados com sucesso.');
+                    //PaginaSEI::getInstance()->adicionarMensagem('Os dados foram alterados com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
                     header('Location: ' . SessaoSEI::getInstance()->assinarLink('controlador.php?id_tipo_processo_litigioso=' . $_POST['hdnIdTipoControleLitigioso'] . '&acao=' . PaginaSEI::getInstance()->getAcaoRetorno() . '&acao_origem=' . $_GET['acao'] . PaginaSEI::getInstance()->montarAncora($objTpProcessoRIDTO->getNumIdTipoProcessoRelacionamentoInstitucional())));
                     die;
                 } catch (Exception $e) {
@@ -121,14 +110,14 @@ PaginaSEI::getInstance()->abrirJavaScript();
 ?>
 
 
-<?
+<?php
 PaginaSEI::getInstance()->fecharJavaScript();
 PaginaSEI::getInstance()->fecharHead();
 PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
 ?>
     <form id="frmTpProcessoCadastro" method="post" onsubmit="return OnSubmitForm();"
           action="<?= PaginaSEI::getInstance()->formatarXHTML(SessaoSEI::getInstance()->assinarLink('controlador.php?acao=' . $_GET['acao'] . '&acao_origem=' . $_GET['acao'])) ?>">
-        <?
+        <?php
         PaginaSEI::getInstance()->montarBarraComandosSuperior($arrComandos);
         PaginaSEI::getInstance()->abrirAreaDados('30em');
         ?>
@@ -141,7 +130,7 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                                  id="imgAjuda"
                                  src="<?= PaginaSEI::getInstance()->getDiretorioSvgGlobal() ?>/ajuda.svg?<?= Icone::VERSAO ?>"
                                  name="ajuda"
-                                 onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Relacionamento Institucional a indicação de Processo no Órgão Demandante não é obrigatória, mas caso tenha número de identificação da demanda no Órgão Demandante é necessário indicar o Tipo de Processo no Órgão Demandante selecionando a opção a partir da lista aqui parametrizada.\n\nPor exemplo, no Órgão Demandante o processo pode ter seu número próprio e identificado como CPI, Inquérito Civil, Inquérito Penal, Processo Judicial, Projeto de Lei, Ação Civil Pública etc.', 'Ajuda');"
+                                 onmouseover="return infraTooltipMostrar('Nas telas dos Usuários no Cadastro da Demanda de Controle de Demandas a indicação de Processo no Órgão Demandante não é obrigatória, mas caso tenha número de identificação da demanda no Órgão Demandante é necessário indicar o Tipo de Processo no Órgão Demandante selecionando a opção a partir da lista aqui parametrizada.\n\nPor exemplo, no Órgão Demandante o processo pode ter seu número próprio e identificado como CPI, Inquérito Civil, Inquérito Penal, Processo Judicial, Projeto de Lei, Ação Civil Pública etc.', 'Ajuda');"
                                  onmouseout="return infraTooltipOcultar();"
                                  class="infraImgModulo"/>
                         </label>
@@ -155,12 +144,11 @@ PaginaSEI::getInstance()->abrirBody($strTitulo, 'onload="inicializar();"');
                 </div>
             </div>
         </div>
-        <?
+        <?php
         PaginaSEI::getInstance()->fecharAreaDados();
         ?>
     </form>
-<?
+<?php
+require_once('md_ri_tipo_processo_cadastro_js.php');
 PaginaSEI::getInstance()->fecharBody();
 PaginaSEI::getInstance()->fecharHtml();
-require_once('md_ri_tipo_processo_cadastro_js.php');
-?>

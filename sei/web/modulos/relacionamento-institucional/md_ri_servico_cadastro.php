@@ -46,7 +46,7 @@ switch ($_GET['acao']) {
             try {
                 $objServicoRelacionamentoInstitucionalRN = new MdRiServicoRN();
                 $arrObjServicoRelacionamentoInstitucional = $objServicoRelacionamentoInstitucionalRN->cadastrar($objServicoRelacionamentoInstitucionalDTO);
-                PaginaSEI::getInstance()->adicionarMensagem('Os dados cadastrados foram salvos com sucesso.');
+                //PaginaSEI::getInstance()->adicionarMensagem('Os dados cadastrados foram salvos com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
                 header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI()));
             } catch (Exception $e) {
                 PaginaSEI::getInstance()->processarExcecao($e);
@@ -75,7 +75,7 @@ switch ($_GET['acao']) {
                 $objServicoRelacionamentoInstitucionalDTO->setNumIdServicoRI($_POST['hdnIdServicoRI']);
                 $objServicoRelacionamentoInstitucionalDTO->setStrNome(trim($_POST['txtNome']));
                 $objServicoRelacionamentoInstitucionalRN->alterar($objServicoRelacionamentoInstitucionalDTO);
-                PaginaSEI::getInstance()->adicionarMensagem('Os dados foram alterados com sucesso.');
+                //PaginaSEI::getInstance()->adicionarMensagem('Os dados foram alterados com sucesso.', InfraPagina::$TIPO_MSG_AVISO);
                 header('Location: ' . montarLinkVoltar($objServicoRelacionamentoInstitucionalDTO->getNumIdServicoRI()));
             } catch (Exception $e) {
                 PaginaSEI::getInstance()->processarExcecao($e);

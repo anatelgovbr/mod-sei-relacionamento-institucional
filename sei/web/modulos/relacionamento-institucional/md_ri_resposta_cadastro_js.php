@@ -1,4 +1,5 @@
 <script type="text/javascript">
+// TODO: [3.1.0] Arquivo sem uso - sera removido na versao 3.1.0 do modulo.
     function inicializar() {
         infraEfeitoTabelas();
     }
@@ -19,7 +20,7 @@
 
         if (qtdLinhas > 0 || (alterar == 1 && qtdLinhasReit == 0)) {
             salvarValoresResposta();
-            //Add Condicional de Reiteração
+            //Add Condicional de Solicitação
             salvarValoresReiteracao();
             document.getElementById('hdnSalvar').value = 'S';
             document.getElementById('frmRespostaCadastro').submit();
@@ -133,7 +134,7 @@
         //captionTabResp
         var caption = reiteracao ? document.getElementById('captionTabReiteracao') : document.getElementById('captionTabResp');
         var unicoRegistro = qtdLinhas == 1 ? 'registro' : 'registros';
-        var tabela = reiteracao ? 'Reiterações' : 'Respostas';
+        var tabela = reiteracao ? 'Solicitações' : 'Respostas';
         var captionAtualizado = 'Lista de ' + tabela + ' (' + qtdLinhas + ' ' + unicoRegistro + '):';
 
         caption.innerHTML = captionAtualizado;
@@ -218,7 +219,7 @@
             }
 
             if (!valido) {
-                alert('O documento indicado já respondeu a reiteração selecionada.');
+                alert('O documento indicado já respondeu a solicitação selecionada.');
             }
         }
 
@@ -356,7 +357,7 @@
 
         if (reit) {
             var reiteracao = document.getElementById('selReiteracao');
-            retorno = reiteracao.value == '' ? 'Reiteração' : '';
+            retorno = reiteracao.value == '' ? 'Solicitação' : '';
         }
 
         retorno = numeroSei.value == '' && retorno == '' ? 'Número SEI' : retorno;
@@ -404,7 +405,7 @@
 
         var html = '';
         var id = reiteracao ? '2' : '';
-        var tabela = reiteracao ? 'Reiterações' : 'Respostas';
+        var tabela = reiteracao ? 'Solicitações' : 'Respostas';
         var reiteracaoSelect = '';
         var valorDocReit = '';
         var classe = reiteracao ? 'docsei docreit' : 'docsei tabresp';

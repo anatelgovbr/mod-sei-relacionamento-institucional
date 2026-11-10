@@ -1,11 +1,6 @@
-<?
-    /**
-     * ANATEL
-     *
-     * 11/10/2016 - criado por marcelo.bezerra@cast.com.br - CAST
-     *
-     */
-
+<?php
+// TODO: [3.1.0] Arquivo sem uso - sera removido na versao 3.1.0 do modulo.
+ 
     require_once dirname(__FILE__) . '/../../../SEI.php';
 
     class MdRiTipoControleINT extends InfraINT
@@ -15,7 +10,7 @@
         public static function montarSelectTipoControleRI($strPrimeiroItemValor, $strPrimeiroItemDescricao, $strValorItemSelecionado)
         {
 
-            $objTipoControleRIRN = new MdRiTipoControleRN();
+            $objTipoControleRIRN = MdRiTipoControleRN::getInstance();
 
             $objTipoControleRIDTO = new MdRiTipoControleDTO();
             $objTipoControleRIDTO->retTodos();

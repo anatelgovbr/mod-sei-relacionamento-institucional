@@ -1,4 +1,4 @@
-<?
+<?php
     /**
      *
      * 07/03/2016 - criado por marcelo.bezerra - CAST

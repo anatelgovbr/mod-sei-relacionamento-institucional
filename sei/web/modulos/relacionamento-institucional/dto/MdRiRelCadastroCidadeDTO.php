@@ -1,4 +1,5 @@
 <?php
+// TODO: [3.1.0] Arquivo sem uso - sera removido na versao 3.1.0 do modulo.
     /**
      * ANATEL
      *

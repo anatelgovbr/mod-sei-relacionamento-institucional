@@ -23,9 +23,14 @@
                                            'IdRespostaRI',
                                            'id_md_ri_resposta');
 
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdMdRiCadastro',
-                                           'id_md_ri_cadastro');
+			$this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
+										   'IdMdRiCadastro',
+										   'id_md_ri_cadastro');
+
+			// Vinculo com Controle sobre a Demanda (Identificacao)
+			$this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
+										   'IdMdRiCtrlDemanda',
+										   'id_md_ri_ctrl_demanda');
 
             $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
                                            'IdUnidade',
@@ -49,11 +54,12 @@
 
             $this->configurarPK('IdRespostaRI', InfraDTO::$TIPO_PK_NATIVA);
 
-            $this->configurarFK('IdMdRiCadastro', 'md_ri_cadastro cad', 'cad.id_md_ri_cadastro');
-            $this->configurarFK('IdUnidade', 'unidade u', 'u.id_unidade');
-            $this->configurarFK('IdTipoRespostaRI', 'md_ri_tipo_resposta tpr', 'tpr.id_md_ri_tipo_resposta');
-            $this->configurarFK('IdUsuario', 'usuario us', 'us.id_usuario');
-            $this->configurarFK('IdDocumento', 'documento d', 'd.id_documento');
+			$this->configurarFK('IdMdRiCadastro', 'md_ri_cadastro cad', 'cad.id_md_ri_cadastro');
+			$this->configurarFK('IdMdRiCtrlDemanda', 'md_ri_ctrl_demanda cd', 'cd.id_md_ri_ctrl_demanda', InfraDTO::$TIPO_FK_OPCIONAL);
+			$this->configurarFK('IdUnidade', 'unidade u', 'u.id_unidade');
+			$this->configurarFK('IdTipoRespostaRI', 'md_ri_tipo_resposta tpr', 'tpr.id_md_ri_tipo_resposta');
+			$this->configurarFK('IdUsuario', 'usuario us', 'us.id_usuario');
+			$this->configurarFK('IdDocumento', 'documento d', 'd.id_documento');
 
             $this->adicionarAtributoTabelaRelacionada(InfraDTO::$PREFIXO_STR,
                                                       'TipoResposta',

@@ -1,35 +1,21 @@
-<?
-    /**
-     * ANATEL
-     *
-     * 14/10/2016 - criado por marcelo.bezerra@castgroup.com.br - CAST
-     *
-     */
+<?php
 
     require_once dirname(__FILE__) . '/../../../SEI.php';
 
     class MdRiRelCadastroClassificacaoTemaDTO extends InfraDTO
     {
 
-        public function getStrNomeTabela()
+        public function getStrNomeTabela(): string
         {
             return 'md_ri_rel_cad_classif';
         }
 
-        public function montar()
+        public function montar(): void
         {
 
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdMdRiCadastro',
-                                           'id_md_ri_cadastro');
-
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdClassificacaoTema',
-                                           'id_md_ri_classificacao_tema');
-
-            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM,
-                                           'IdSubtema',
-                                           'id_md_ri_subtema');
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM, 'IdMdRiCadastro', 'id_md_ri_cadastro');
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM, 'IdClassificacaoTema', 'id_md_ri_classificacao_tema');
+            $this->adicionarAtributoTabela(InfraDTO::$PREFIXO_NUM, 'IdSubtema', 'id_md_ri_subtema');
 
             $this->configurarPK('IdClassificacaoTema', InfraDTO::$TIPO_PK_INFORMADO);
             $this->configurarPK('IdSubtema', InfraDTO::$TIPO_PK_INFORMADO);
@@ -37,11 +23,13 @@
 
             $this->configurarFK('IdClassificacaoTema',
                                 'md_ri_rel_class_tema_subtema classSub',
-                                'classSub.id_md_ri_classificacao_tema');
+                                'classSub.id_md_ri_classificacao_tema',
+                                InfraDTO::$TIPO_FK_OPCIONAL);
 
             $this->configurarFK('IdSubtema',
                                 'md_ri_rel_class_tema_subtema classSub',
-                                'classSub.id_md_ri_subtema');
+                                'classSub.id_md_ri_subtema',
+                                InfraDTO::$TIPO_FK_OPCIONAL);
 
             $this->configurarFK('IdMdRiCadastro',
                                 'md_ri_cadastro cad',
@@ -53,7 +41,8 @@
 
             $this->configurarFK('IdSubtema',
                                 'md_ri_subtema sub',
-                                'sub.id_md_ri_subtema');
+                                'sub.id_md_ri_subtema',
+                                InfraDTO::$TIPO_FK_OPCIONAL);
 
             $this->adicionarAtributoTabelaRelacionada(InfraDTO::$PREFIXO_STR,
                                                       'NomeClassTema',

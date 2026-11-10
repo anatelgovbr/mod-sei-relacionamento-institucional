@@ -1,7 +1,8 @@
 <?php
-    try {
-        require_once dirname(__FILE__) . '/../../SEI.php';
-        SessaoSEI::getInstance()->validarLink();
+	try {
+		require_once dirname(__FILE__) . '/../../SEI.php';
+
+		SessaoSEI::getInstance()->validarLink();
         PaginaSEI::getInstance()->prepararSelecao('md_ri_contato_selecionar');
         SessaoSEI::getInstance()->validarPermissao($_GET['acao']);
 
@@ -16,11 +17,11 @@
                 $strTitulo = PaginaSEI::getInstance()->getTituloSelecao('Selecionar Contato', 'Selecionar Contato');
                 break;
 
-            default:
-                throw new InfraException("Ação '" . $_GET['acao'] . "' não reconhecida.");
-        }
+			default:
+				throw new InfraException("Ação '" . $_GET['acao'] . "' Não reconhecida");
+		}
 
-        #Botões de ação do topo
+		#Botões de ação do topo
         $arrComandos[] = '<button type="button" accesskey="P" id="btnPesquisar" onclick="pesquisar()" class="infraButton">
                                     <span class="infraTeclaAtalho">P</span>esquisar
                               </button>';
@@ -33,38 +34,139 @@
                                     Fe<span class="infraTeclaAtalho">c</span>har
                             </button>';
 
-        #Montar o Select
-        $strItensSelTipoContato = MdRiCadastroINT::montarSelectTipoContato('null', '', $_POST['selTipoContato']);
+		#Fazer a pesquisa
+		$arrIdTipoContato = [];
+		$arrIdTipoContatoPermitidos = [];
+		$arrIdTipoContatoAcesso = [];
 
-        #Fazer a pesquisa
-        $arrIdTipoContato     = array();
-        $objRelCritCadTipoDTO = new MdRiRelCriterioCadastroTipoContatoDTO();
-        $objRelCritCadTipoDTO->setNumIdCriterioCadastro(MdRiCriterioCadastroRN::ID_CRITERIO_CADASTRO);
-        $objRelCritCadTipoDTO->retNumIdTipoContato();
-
-        $objRelCritCadTipoContatoRN = new MdRiRelCriterioCadastroTipoContatoRN();
-        $arrIdTipoContato           = InfraArray::converterArrInfraDTO($objRelCritCadTipoContatoRN->listar($objRelCritCadTipoDTO), 'IdTipoContato');
-
-        if (isset($_POST['selTipoContato']) && $_POST['selTipoContato'] != 'null') {
-            $arrIdTipoContato = array($_POST['selTipoContato']);
+        $numIdGrupoParam = 0;
+        if (SessaoSEI::getInstance()->isSetAtributo('md_ri_ctx_id_gp_param')) {
+            $numIdGrupoParam = (int)SessaoSEI::getInstance()->getAtributo('md_ri_ctx_id_gp_param');
         }
 
-        $objContatoDTO = new ContatoDTO();
-        $objContatoDTO->retNumIdContato();
-        $objContatoDTO->retStrNome();
-        $objContatoDTO->retStrSigla();
+		// Com Grupo de Parametrizacao: tipos de contato permitidos vem da regra do grupo
+		if ($numIdGrupoParam > 0) {
+			$objRegraDTO = new MdRiGrupoParamRegraDTO();
+			$objRegraDTO->retNumIdMdRiGrupoParamRegra();
+			$objRegraDTO->retStrNomeCampoSei();
+			$objRegraDTO->setNumIdMdRiGrupoParametrizacao($numIdGrupoParam);
+			$objRegraDTO->setStrNomeCampoSei(MdRiGrupoParamRegraDTO::CAMPO_ENTIDADES_REL);
+			$objRegraDTO->retArrObjMdRiRelGrupoParamEntidadesRelacionadasDTO();
+
+			$objRegra = MdRiGrupoParamRegraRN::getInstance()->consultar($objRegraDTO);
+			if ($objRegra) {
+				$arrRel = $objRegra->getArrObjMdRiRelGrupoParamEntidadesRelacionadasDTO();
+				if (is_array($arrRel)) {
+					foreach ($arrRel as $objRel) {
+						$arrIdTipoContatoPermitidos[] = (int)$objRel->getNumIdTipoContato();
+					}
+				}
+			}
+
+			// Garante consistencia com o Tipo de Controle de Demanda selecionado
+			$numIdTipoControleDemandaCtx = 0;
+			if (SessaoSEI::getInstance()->isSetAtributo('md_ri_ctx_id_tipo_controle_demanda')) {
+				$numIdTipoControleDemandaCtx = (int)SessaoSEI::getInstance()->getAtributo('md_ri_ctx_id_tipo_controle_demanda');
+			}
+			if ($numIdTipoControleDemandaCtx > 0 && is_array($arrIdTipoContatoPermitidos) && count($arrIdTipoContatoPermitidos) > 0) {
+				$objRelTpCtrlDTO = new MdRiRelTipoControleDemandaContDTO();
+				$objRelTpCtrlDTO->retNumIdTipoContato();
+				$objRelTpCtrlDTO->setNumIdTipoControleDemanda($numIdTipoControleDemandaCtx);
+				$arrRelTpCtrl = MdRiRelTipoControleDemandaContRN::getInstance()->listar($objRelTpCtrlDTO);
+				$arrIdsTpCtrl = InfraArray::converterArrInfraDTO($arrRelTpCtrl, 'IdTipoContato');
+				if (is_array($arrIdsTpCtrl) && count($arrIdsTpCtrl) > 0) {
+					$arrIdTipoContatoPermitidos = array_values(array_intersect($arrIdTipoContatoPermitidos, $arrIdsTpCtrl));
+				} else {
+					$arrIdTipoContatoPermitidos = [];
+				}
+			}
+
+			// Tipos permitidos (por grupo)
+			$arrIdTipoContato = $arrIdTipoContatoPermitidos;
+		} else {
+			// Sem grupo: mantem criterio fixo
+			$objRelCritCadTipoDTO = new MdRiRelCriterioCadastroTipoContatoDTO();
+            $objRelCritCadTipoDTO->setNumIdCriterioCadastro(MdRiCriterioCadastroRN::ID_CRITERIO_CADASTRO);
+            $objRelCritCadTipoDTO->retNumIdTipoContato();
+
+			$objRelCritCadTipoContatoRN = new MdRiRelCriterioCadastroTipoContatoRN();
+			$arrIdTipoContato = InfraArray::converterArrInfraDTO($objRelCritCadTipoContatoRN->listar($objRelCritCadTipoDTO), 'IdTipoContato');
+		}
+
+		// Restringe aos tipos de contato com acesso na unidade
+		$objPesquisaTipoContatoDTO = new PesquisaTipoContatoDTO();
+		$objPesquisaTipoContatoDTO->setStrStaAcesso(TipoContatoRN::$TA_CONSULTA_RESUMIDA);
+		$objTipoContatoRN = new TipoContatoRN();
+		$arrIdTipoContatoAcesso = $objTipoContatoRN->pesquisarAcessoUnidade($objPesquisaTipoContatoDTO);
+
+		if (is_array($arrIdTipoContato) && count($arrIdTipoContato) > 0 && is_array($arrIdTipoContatoAcesso) && count($arrIdTipoContatoAcesso) > 0) {
+			$arrIdTipoContato = array_values(array_intersect($arrIdTipoContato, $arrIdTipoContatoAcesso));
+		} else {
+			$arrIdTipoContato = [];
+		}
+
+		#Montar o Select
+		if ($numIdGrupoParam > 0) {
+			// Mostra no filtro apenas os tipos permitidos no Grupo de Parametrizacao
+			$objTipoContatoDTO = new TipoContatoDTO();
+			$objTipoContatoDTO->retNumIdTipoContato();
+			$objTipoContatoDTO->retStrNome();
+			$objTipoContatoDTO->setOrdStrNome(InfraDTO::$TIPO_ORDENACAO_ASC);
+
+			$arrObjTipoContatoDTO = [];
+			if (is_array($arrIdTipoContatoPermitidos) && count($arrIdTipoContatoPermitidos) > 0) {
+				$objTipoContatoDTO->setNumIdTipoContato($arrIdTipoContatoPermitidos, InfraDTO::$OPER_IN);
+				$objTipoContatoRN = new TipoContatoRN();
+				$arrObjTipoContatoDTO = $objTipoContatoRN->listarRN0337($objTipoContatoDTO);
+			}
+
+			$strItensSelTipoContato = InfraINT::montarSelectArrInfraDTO(
+				'null',
+				'',
+				$_POST['selTipoContato'],
+				$arrObjTipoContatoDTO,
+				'IdTipoContato',
+				'Nome'
+			);
+		} else {
+			$strItensSelTipoContato = MdRiCadastroINT::montarSelectTipoContato('null', '', $_POST['selTipoContato']);
+		}
+
+		if (isset($_POST['selTipoContato']) && $_POST['selTipoContato'] != 'null') {
+			// Se estiver em modo grupo, nao permite filtrar fora da lista permitida
+			if ($numIdGrupoParam > 0) {
+				if (in_array((int)$_POST['selTipoContato'], $arrIdTipoContatoPermitidos, true)) {
+					$arrIdTipoContato = array((int)$_POST['selTipoContato']);
+				} else {
+					$arrIdTipoContato = $arrIdTipoContatoPermitidos;
+				}
+			} else {
+				$arrIdTipoContato = array($_POST['selTipoContato']);
+			}
+		}
+
+		$objContatoDTO = new ContatoDTO();
+		$objContatoDTO->retNumIdContato();
+		$objContatoDTO->retStrNome();
+		$objContatoDTO->retStrSigla();
 
         if (isset ($_POST ['txtPalavrasPesquisaContatos']) && trim($_POST ['txtPalavrasPesquisaContatos']) != '') {
             $objContatoDTO->setStrPalavrasPesquisa($_POST['txtPalavrasPesquisaContatos']);
         }
 
-        $objContatoDTO->setNumIdTipoContato($arrIdTipoContato, InfraDTO::$OPER_IN);
+		if (is_array($arrIdTipoContato) && count($arrIdTipoContato) > 0) {
+			$objContatoDTO->setNumIdTipoContato($arrIdTipoContato, InfraDTO::$OPER_IN);
+			$objContatoDTO->setStrSinAtivoTipoContato('S');
+		} else {
+			// Evita excecao do InfraDTO ao receber array vazio
+			$objContatoDTO->setNumIdContato(0);
+		}
         $objContatoDTO->setStrSinAtivo('S');
         $objContatoDTO->setOrdStrNome(InfraDTO::$TIPO_ORDENACAO_ASC);
 
         $objContatoRN = new ContatoRN();
 
-        #Preparar Paginação
+		#Preparar Paginacao
         $numRegistrosPorPagina = 50;
         PaginaSEI::getInstance()->prepararPaginacao($objContatoDTO, $numRegistrosPorPagina);
         PaginaSEI::getInstance()->prepararOrdenacao($objContatoDTO, 'Nome', InfraDTO::$TIPO_ORDENACAO_ASC);
@@ -82,11 +184,12 @@
             $strResultado .= '<caption class="infraCaption">';
             $strResultado .= PaginaSEI::getInstance()->gerarCaptionTabela('Contatos', $numRegistros);
             $strResultado .= '</caption>';
-            #Cabeçalho da Tabela
+
+			#Cabeçalho da Tabela
             $strResultado .= '<tr>';
             $strResultado .= '<th class="infraTh" align="center" width="1%">' . PaginaSEI::getInstance()->getThCheck() . '</th>';
             $strResultado .= '<th class="infraTh" width="auto">' . PaginaSEI::getInstance()->getThOrdenacao($objContatoDTO, 'Contatos', 'Nome', $arrObjContatoDTO) . '</th>';
-            $strResultado .= '<th class="infraTh" width="15%">Ações</th>';
+			$strResultado .= '<th class="infraTh" width="15%">Acoes</th>';
             $strResultado .= '</tr>';
 
             #Linhas
